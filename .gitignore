@@ -1,0 +1,5 @@
+build
+powturbo
+*.pem
+.vscode
+assets/sodium.js
