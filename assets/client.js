@@ -25,7 +25,7 @@ const QRCODE_CORRECT_LEVEL = 1; // 0 for L, !0 for H
 const state = {
 	id: null,
 	bK: null,
-	link: null, // base64url link
+	link: null, // share link
 	qrVisible: false,
 	pendingSecret: null,
 	originalPlaceholder: null,
@@ -175,6 +175,22 @@ function cloneBytes(view)
 	return copy;
 }
 
+function bytesToHex(bytes)
+{
+	let out = '';
+	for (let i = 0; i < bytes.length; i++)
+		out += bytes[i].toString(16).padStart(2, '0');
+	return out;
+}
+
+function equal16B(a, b)
+{
+	const wa = new Uint32Array(a.buffer, a.byteOffset, 4);
+	const wb = new Uint32Array(b.buffer, b.byteOffset, 4);
+	return !((wa[0] ^ wb[0]) | (wa[1] ^ wb[1]) | (wa[2] ^ wb[2]) |
+		 (wa[3] ^ wb[3]));
+}
+
 function updateQr()
 {
 	const wrap = $('qrWrap');
@@ -255,28 +271,28 @@ function setLink(origin, id, bK)
 		return;
 	}
 
-	let keyArray = null;
+	let keyBytes = null;
 	let idBytes = null;
 	try {
 		const normalized = normalizeOrigin(origin);
-		keyArray = base64UrlDecode(bK);
-		if (!keyArray || keyArray.length !== KEY_SIZE)
+		keyBytes = base64UrlDecode(bK);
+		if (!keyBytes || keyBytes.length !== KEY_SIZE)
 			throw new Error('Key length mismatch');
 		idBytes = base64UrlDecode(id);
 		if (!idBytes || idBytes.length !== ID_SIZE)
 			throw new Error('ID length mismatch');
 
-		const canonicalKey = base64UrlEncode(keyArray);
-		const linkBase64 = normalized + '/#' + id + '/' + canonicalKey;
-
-		state.id = id;
-		state.bK = canonicalKey;
-		state.link = linkBase64;
+		const keyBase64Url = base64UrlEncode(keyBytes);
+		const idBase64Url = base64UrlEncode(idBytes);
+		state.link =
+			normalized + '/#' + idBase64Url + '/' + keyBase64Url;
+		state.id = idBase64Url;
+		state.bK = keyBase64Url;
 
 		if (wrap)
 			wrap.style.display = 'flex';
 		if (input)
-			input.value = linkBase64;
+			input.value = state.link;
 		if (copyBtn)
 			copyBtn.style.display = 'inline-block';
 		const host = $('host');
@@ -289,8 +305,8 @@ function setLink(origin, id, bK)
 		updateQr();
 		return;
 	} finally {
-		if (keyArray)
-			keyArray.fill(0);
+		if (keyBytes)
+			keyBytes.fill(0);
 		if (idBytes)
 			idBytes.fill(0);
 	}
@@ -370,14 +386,14 @@ async function deriveIdFromKeyAndSalt(keyBytes, saltBytes)
 {
 	const hkdfKey = await crypto.subtle.importKey('raw', keyBytes, 'HKDF',
 						      false, ['deriveBits']);
-	const bits = await crypto.subtle.deriveBits({
+	const bytes = await crypto.subtle.deriveBits({
 		name: 'HKDF',
 		hash: HKDF_HASH,
 		salt: saltBytes,
 		info: HKDF_INFO_ID
 	},
-						    hkdfKey, ID_SIZE * 8);
-	return base64UrlEncode(new Uint8Array(bits));
+						     hkdfKey, ID_SIZE * 8);
+	return new Uint8Array(bytes);
 }
 
 async function derivePasswordKey(password, saltBytes, usages)
@@ -444,10 +460,12 @@ async function sendSecret(autoCopy = false)
 	let keyBytes = null;
 	let nonce = null;
 	let salt = null;
+	let idBytes = null;
 	let payload = null;
 	let taggedPayload = null;
 	let ciphertext = null;
 	let blob = null;
+	let idBase64Url = null;
 	try {
 		const origin = getOrigin();
 		const textField = $('text');
@@ -461,9 +479,10 @@ async function sendSecret(autoCopy = false)
 		nonce = crypto.getRandomValues(new Uint8Array(NONCE_SIZE));
 		salt = crypto.getRandomValues(new Uint8Array(SALT_SIZE));
 		// Construct an ID
-		const id = await deriveIdFromKeyAndSalt(keyBytes, salt);
+		idBytes = await deriveIdFromKeyAndSalt(keyBytes, salt);
+		idBase64Url = base64UrlEncode(idBytes);
 		// Form aad
-		const aad = encoder.encode('id=' + id);
+		const aad = encoder.encode('id=' + idBase64Url);
 		if (hasPassword) {
 			// Get the Pk
 			const passwordKey = await derivePasswordKey(
@@ -513,7 +532,8 @@ async function sendSecret(autoCopy = false)
 				  false);
 			return;
 		}
-		const url = normalizeOrigin(origin) + '/blob/' + id;
+		const url = normalizeOrigin(origin) + '/blob/' +
+			    bytesToHex(idBytes);
 		// Send the data
 		const res = await fetch(url, {
 			method: 'POST',
@@ -531,8 +551,8 @@ async function sendSecret(autoCopy = false)
 		}
 
 		// === Decryption link ===
-		const bK = base64UrlEncode(keyBytes);
-		setLink(origin, id, bK);
+		const keyBase64Url = base64UrlEncode(keyBytes);
+		setLink(origin, idBase64Url, keyBase64Url);
 		const passwordNote =
 			hasPassword ?
 				' This secret requires the password you set during creation.' :
@@ -580,6 +600,8 @@ async function sendSecret(autoCopy = false)
 			nonce.fill(0);
 		if (salt)
 			salt.fill(0);
+		if (idBytes)
+			idBytes.fill(0);
 	}
 	lockTextarea(false);
 }
@@ -622,13 +644,19 @@ async function tryToReceiveSecret()
 	let keyBytes = null;
 	let buf = null;
 	let plaintextBytes = null;
+	let idBytes = null;
+	let derivedIdBytes = null;
 	try {
 		const origin = getOrigin();
 		keyBytes = base64UrlDecode(info.bK);
 		if (keyBytes.length !== KEY_SIZE)
 			throw new Error('Key length mismatch');
+		idBytes = base64UrlDecode(info.id);
+		if (!idBytes || idBytes.length !== ID_SIZE)
+			throw new Error('ID length mismatch');
 		setStatus('Fetching secret…');
-		const url = normalizeOrigin(origin) + '/blob/' + info.id;
+		const url = normalizeOrigin(origin) + '/blob/' +
+			    bytesToHex(idBytes);
 		// Fetch the blob
 		const res = await fetch(url);
 		if (!res.ok) {
@@ -647,13 +675,16 @@ async function tryToReceiveSecret()
 		const salt = buf.subarray(NONCE_SIZE, NONCE_SIZE + SALT_SIZE);
 		const ct = buf.subarray(NONCE_SIZE + SALT_SIZE);
 
-		const derivedId = await deriveIdFromKeyAndSalt(keyBytes, salt);
+		derivedIdBytes = await deriveIdFromKeyAndSalt(keyBytes, salt);
 		// Check the id
-		if (derivedId !== info.id) {
+		if (!equal16B(derivedIdBytes, idBytes)) {
+			const derivedIdBase64Url =
+				base64UrlEncode(derivedIdBytes);
 			const err = new Error(`ID mismatch: derived ID' (${
-				derivedId}) !== provided ID (${info.id}).`);
+				derivedIdBase64Url}) !== provided ID (${
+				info.id}).`);
 			err.name = 'IdMismatchError';
-			err.derivedId = derivedId;
+			err.derivedId = derivedIdBase64Url;
 			err.providedId = info.id;
 			throw err;
 		}
@@ -718,6 +749,10 @@ async function tryToReceiveSecret()
 			plaintextBytes.fill(0);
 		if (keyBytes)
 			keyBytes.fill(0);
+		if (idBytes)
+			idBytes.fill(0);
+		if (derivedIdBytes)
+			derivedIdBytes.fill(0);
 		if (buf)
 			buf.fill(0);
 		lockTextarea(false);

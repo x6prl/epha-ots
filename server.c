@@ -39,6 +39,7 @@
 #define DEFAULT_THREAD_POOL_SIZE 4
 #define MAX_ID_LEN 128 // TODO: use uint32_t
 #define MIN_BLOB_SIZE (12 + 16 + 2 + 16) // nonce + salt + marker + GCM tag
+#define BLOB_ID_HEX_LEN 32
 
 #define RL_RATE 100.0
 #define RL_BURST 2000.0
@@ -421,19 +422,19 @@ enum BlobPutStatus {
 	BLOB_PUT_OOM
 };
 
-// Ensure user-provided identifier only contains safe URL-friendly characters.
-static bool id_valid(const char *id)
+// Ensure blob id is canonical lowercase hex.
+static bool id_valid(char *id)
 {
 	if (!id)
 		return false;
 	size_t len = strlen(id);
-	if (len == 0 || len > MAX_ID_LEN)
+	if (len != BLOB_ID_HEX_LEN || len > MAX_ID_LEN)
 		return false;
 	for (size_t i = 0; i < len; i++) {
 		unsigned char c = (unsigned char)id[i];
-		if (isalnum(c) || c == '-' || c == '_' || c == '=')
-			continue;
-		return false;
+		if (!isxdigit(c))
+			return false;
+		id[i] = (char)tolower(c);
 	}
 	return true;
 }
