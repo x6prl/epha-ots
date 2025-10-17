@@ -78,6 +78,26 @@ Docs:
 
 Alternatively you can use Tor onion-service.
 
+## CMake building options
+
+You can control compile-time features via CMake options.
+
+- `FILELOG`: write logs to `epha.log` (file logger)
+- `SYSLOG`: send logs to the system logger
+- `JS_MINIFY`: use minified JS assets
+
+Examples:
+
+```bash
+# enable file logging, denableisable syslog (Debug build)
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DFILELOG=OFF -DSYSLOG=OFF
+cmake --build build -j
+
+# minify JavaScript, enable syslog, disable file logging (Release build)
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DJS_MINIFY=ON -DFILELOG=OFF -DSYSLOG=ON
+cmake --build build -j
+```
+
 ## Key generation
 
 ```bash
