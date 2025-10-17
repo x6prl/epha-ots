@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <microhttpd.h>
 
-static inline const char *now_local_iso8601()
+static __always_inline const char *now_local_iso8601()
 {
 	static thread_local char buf[32];
 	time_t t = time(NULL);
@@ -12,15 +12,7 @@ static inline const char *now_local_iso8601()
 	if (!localtime_r(&t, &tm))
 		return NULL;
 	if (strftime(buf, 32, "%Y-%m-%d %H:%M:%S %z", &tm) == 0)
-		return NULL;
-	size_t n = 0;
-	while (buf[n])
-		n++;
-	if (n >= 5) { // ...HH:MM
-		for (size_t i = n + 1; i-- > n - 1;)
-			buf[i] = buf[i - 1];
-		buf[n - 2] = ':';
-	}
+		return "time buffer too small";
 	return buf;
 }
 
