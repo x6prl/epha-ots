@@ -16,6 +16,7 @@ const BLOB_TYPE_PASSWORD_VALUE = 0x7337;
 const MAX_BLOB_SIZE = 128 * 1024; // 128 KiB
 const PBKDF2_ITERATIONS = 200000;
 const PBKDF2_HASH = 'SHA-256';
+const HKDF_HASH = 'SHA-256';
 
 const QRCODE_SIZE = 220;
 const QRCODE_BORDER = 10;
@@ -371,7 +372,7 @@ async function deriveIdFromKeyAndSalt(keyBytes, saltBytes)
 						      false, ['deriveBits']);
 	const bits = await crypto.subtle.deriveBits({
 		name: 'HKDF',
-		hash: 'SHA-256',
+		hash: HKDF_HASH,
 		salt: saltBytes,
 		info: HKDF_INFO_ID
 	},
@@ -454,8 +455,8 @@ async function sendSecret(autoCopy = false)
 		const passwordValue = passwordInput.value;
 		const hasPassword = typeof passwordValue === 'string' &&
 				    passwordValue.length > 0;
-		payload = encoder.encode(
-			textField.value); // Generate random bytes
+		payload = encoder.encode(textField.value);
+		// Generate random bytes
 		keyBytes = crypto.getRandomValues(new Uint8Array(KEY_SIZE));
 		nonce = crypto.getRandomValues(new Uint8Array(NONCE_SIZE));
 		salt = crypto.getRandomValues(new Uint8Array(SALT_SIZE));
