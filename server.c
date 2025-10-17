@@ -24,15 +24,7 @@
 #include <time.h>
 #include <unistd.h>
 
-static inline void dlog(const char *__restrict fmt, ...)
-{
-#ifdef DEBUG
-	printf(fmt, __va_arg_pack());
-	fflush(stdout);
-#else
-	(void)fmt;
-#endif
-}
+#include "log.h"
 #include "debug_stuff.h"
 
 #ifndef MAX
@@ -174,7 +166,7 @@ bool assets_load()
 		FILE **f = &file_descriptors[i];
 		*f = fopen(file_path, "rb");
 		if (!*f) {
-			fprintf(stderr, "Failed to open %s\n", file_path);
+			LOGE("Failed to open %s", file_path);
 			goto close_assets_file_descriptors_and_exit_with_error;
 		}
 		if (fseek(*f, 0, SEEK_END) != 0) {
@@ -201,8 +193,7 @@ close_assets_file_descriptors_and_exit_with_error:
 	// allocate memory
 	assets_memory = (uint8_t *)malloc(assets_size_total);
 	if (!assets_memory) {
-		fprintf(stderr, "Failed to allocate %lu bytes\n",
-			assets_size_total);
+		LOGE("Failed to allocate %lu bytes", assets_size_total);
 		for (uint i = 0; ASSETS_COUNT; ++i) {
 			fclose(file_descriptors[i]);
 			assets_free();
@@ -218,8 +209,7 @@ close_assets_file_descriptors_and_exit_with_error:
 		FILE *f = file_descriptors[i];
 		size_t bytes_read = fread(current_ptr, 1, asset_size, f);
 		if (bytes_read != asset_size) {
-			fprintf(stderr, "Error while reading %s\n",
-				asset_file_paths[i]);
+			LOGE("Error while reading %s", asset_file_paths[i]);
 			// close opened file descriptors, free memory and exit with error
 			for (; i < ASSETS_COUNT; ++i) {
 				fclose(file_descriptors[i]);
@@ -232,13 +222,13 @@ close_assets_file_descriptors_and_exit_with_error:
 		asset->size = asset_size;
 		current_ptr += asset_size;
 	}
-	printf("%u static assets loaded for paths:\n", ASSETS_COUNT);
+	LOG("%u static assets loaded for paths:", ASSETS_COUNT);
 	for (uint i = 0; i < ASSETS_COUNT; ++i) {
-		printf("%s\n", asset_paths[i]);
-		dlog("%s\t%.1fKiB\n", asset_file_paths[i],
+		LOG("%s", asset_paths[i]);
+		LOGD("%s\t%.1fKiB\n", asset_file_paths[i],
 		     (float)assets[i].size / 1024.f);
 	}
-	dlog("total size %lu bytes\n", assets_size_total);
+	LOGD("total size %lu bytes\n", assets_size_total);
 	return true;
 }
 
@@ -284,8 +274,7 @@ bool tls_data_load(const char *cert_path, const char *key_path)
 
 	cert_file = fopen(cert_path, "rb");
 	if (!cert_file) {
-		fprintf(stderr, "Failed to open certificate file %s\n",
-			cert_path);
+		LOGE("Failed to open certificate file %s", cert_path);
 		goto cleanup;
 	}
 	if (fseek(cert_file, 0, SEEK_END) != 0) {
@@ -300,7 +289,7 @@ bool tls_data_load(const char *cert_path, const char *key_path)
 
 	key_file = fopen(key_path, "rb");
 	if (!key_file) {
-		fprintf(stderr, "Failed to open key file %s\n", key_path);
+		LOGE("Failed to open key file %s", key_path);
 		goto cleanup;
 	}
 	if (fseek(key_file, 0, SEEK_END) != 0) {
@@ -317,9 +306,8 @@ bool tls_data_load(const char *cert_path, const char *key_path)
 	tls_key_and_cert_memory =
 		(uint8_t *)malloc(tls_key_and_cert_memory_size);
 	if (!tls_key_and_cert_memory) {
-		fprintf(stderr,
-			"Failed to allocate %zu bytes for certificate the and the key\n",
-			tls_key_and_cert_memory_size);
+		LOGE("Failed to allocate %zu bytes for certificate the and the key",
+		     tls_key_and_cert_memory_size);
 		goto cleanup;
 	}
 	tls_key = tls_key_and_cert_memory;
@@ -327,15 +315,14 @@ bool tls_data_load(const char *cert_path, const char *key_path)
 
 	size_t read = fread(tls_cert, 1, cert_size, cert_file);
 	if (read != cert_size) {
-		fprintf(stderr, "Failed to read certificate file %s\n",
-			cert_path);
+		LOGE("Failed to read certificate file %s", cert_path);
 		goto cleanup;
 	}
 	tls_cert[cert_size] = '\0';
 
 	read = fread(tls_key, 1, key_size, key_file);
 	if (read != key_size) {
-		fprintf(stderr, "Failed to read key file %s\n", key_path);
+		LOGE("Failed to read key file %s", key_path);
 		goto cleanup;
 	}
 	tls_key[key_size] = '\0';
@@ -373,7 +360,7 @@ static void blob_free_locked(struct blob_t *b)
 // Frees expired blobs until shutdown is requested
 static void *reaper_thread(void *arg)
 {
-	dlog("%s\n", __FUNCTION__);
+	LOGD("%s\n", __FUNCTION__);
 	(void)arg;
 	for (;;) {
 		if (reaper_stop)
@@ -409,8 +396,8 @@ static uint8_t *find_10(const uint8_t *data, size_t size, const char ch)
 					first = total == 1 ? data + i : first;
 				}
 				// TODO: didn't managed yet
-				// dlog("%c %u %u\n", data[i], i, total);
-				// dlog("add %u \t first %p",
+				// LOGD("%c %u %u\n", data[i], i, total);
+				// LOGD("add %u \t first %p",
 				//      0xFF ^ (data[i] - ch),
 				//      (uint8_t *)((uint64_t)(data + i) *
 				// 		 (total & 1)));
@@ -597,7 +584,7 @@ static bool rl_allow(const struct sockaddr *sa)
 		ok = true;
 	}
 	pthread_mutex_unlock(&g_rl_mu);
-	dlog("%s ---> %b\n", __FUNCTION__, ok);
+	LOGD("%s ---> %b\n", __FUNCTION__, ok);
 	return ok;
 }
 
@@ -608,7 +595,7 @@ static enum MHD_Result send_response(struct MHD_Connection *c, unsigned code,
 				     const char *content_type,
 				     enum MHD_ResponseMemoryMode mode)
 {
-	dlog("responding %lu bytes of %s\n", len, content_type);
+	LOGD("responding %lu bytes of %s\n", len, content_type);
 	struct MHD_Response *r =
 		MHD_create_response_from_buffer(len, (void *)data, mode);
 	if (!r)
@@ -682,18 +669,18 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 	const union MHD_ConnectionInfo *ci = MHD_get_connection_info(
 		conn, MHD_CONNECTION_INFO_CLIENT_ADDRESS);
 #ifdef DEBUG
-	dlog("====== REQ %s ======\n", now_local_iso8601());
-	dlog("%s %s %s\n", method, url, ver);
+	LOGD("====== REQ %s ======\n", now_local_iso8601());
+	LOGD("%s %s %s\n", method, url, ver);
 	/* 	if (ci && ci->client_addr)
 		log_client_addr(ci->client_addr);
 
-	dlog("-- Headers --\n");
+	LOGD("-- Headers --\n");
 	MHD_get_connection_values(conn, MHD_HEADER_KIND, &log_header_cb, NULL);
 
-	dlog("-- Cookies --\n");
+	LOGD("-- Cookies --\n");
 	MHD_get_connection_values(conn, MHD_COOKIE_KIND, &log_cookie_cb, NULL);
 
-	dlog("-- Query Args --\n");
+	LOGD("-- Query Args --\n");
 	MHD_get_connection_values(conn, MHD_GET_ARGUMENT_KIND, &log_query_cb,
 				  NULL);
 
@@ -701,7 +688,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 		conn, MHD_HEADER_KIND, MHD_HTTP_HEADER_CONTENT_TYPE);
 	const char *clen = MHD_lookup_connection_value(
 		conn, MHD_HEADER_KIND, MHD_HTTP_HEADER_CONTENT_LENGTH);
-	dlog("-- Body plan -- Content-Type: %s | Content-Length: %s\n",
+	LOGD("-- Body plan -- Content-Type: %s | Content-Length: %s\n",
 	     ctype ? ctype : "(none)", clen ? clen : "(unknown)") */
 	;
 #endif
@@ -719,7 +706,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 	// Per-IP debounce
 	// TODO fix debounce; Tailscale proxy is local, parse X-Forwarded-For header
 	if (false && !ctx->rate_checked) {
-		dlog("rate dhecking path\n");
+		LOGD("rate dhecking path\n");
 		bool allowed = true;
 		if (ci && ci->client_addr)
 			allowed = rl_allow(ci->client_addr);
@@ -747,7 +734,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 					     asset->size, asset->content_type,
 					     MHD_RESPMEM_PERSISTENT);
 		} else if (0 == strcmp(url, "/status")) {
-			dlog("%s requested…", url);
+			LOGD("%s requested…", url);
 			// STATUS
 			int used = 0, cap = 0;
 			pthread_mutex_lock(&blob_storage.mutex);
@@ -759,7 +746,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 				"{\"ok\":true,\"in_use\":%d,\"max\":%d}", used,
 				cap);
 		} else if (0 == strncmp(url, "/blob/", 6)) {
-			dlog("%s requested…", url);
+			LOGD("%s requested…", url);
 			// BLOB
 			char id[MAX_ID_LEN + 1];
 			if (!parse_blob_id(url, id))
@@ -779,9 +766,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 			return res;
 
 		} else {
-			fprintf(stderr,
-				"Client tried to GET %s which is not found\n",
-				url);
+			LOGE("Client tried to GET %s which is not found", url);
 		}
 	}
 	// POST /blob/<ID>
@@ -922,6 +907,9 @@ int main(int argc, char **argv)
 		}
 	}
 
+	log_init();
+	LOG("Epha init.");
+
 	if (thread_pool_size == 0) {
 		long cpu = sysconf(_SC_NPROCESSORS_ONLN);
 		if (cpu > 1 && cpu <= (long)UINT_MAX)
@@ -934,16 +922,18 @@ int main(int argc, char **argv)
 	blob_storage.items =
 		(struct blob_t *)calloc(max_blobs, sizeof(struct blob_t));
 	if (!blob_storage.items) {
-		fprintf(stderr, "OOM\n");
-		return 1;
+		LOGE("OOM");
+		log_close();
+		return EXIT_FAILURE;
 	}
 	blob_storage.capacity = max_blobs;
 	blob_storage.ttl_seconds = ttl_sec;
 
 	pthread_t tid;
 	if (pthread_create(&tid, NULL, reaper_thread, NULL) != 0) {
-		fprintf(stderr, "Failed to start reaper\n");
-		return 1;
+		LOGE("Failed to start reaper");
+		log_close();
+		return EXIT_FAILURE;
 	}
 	reaper_tid = tid;
 	reaper_started = true;
@@ -951,27 +941,28 @@ int main(int argc, char **argv)
 	// TLS
 	if (use_tls) {
 		if (!MHD_is_feature_supported(MHD_FEATURE_TLS)) {
-			fprintf(stderr,
-				"libmicrohttpd built without TLS; use --http or install "
-				"TLS-enabled build.\n");
+			LOGE("libmicrohttpd built without TLS; use --http or install "
+			     "TLS-enabled build.");
+			log_close();
 			return EXIT_FAILURE;
 		}
 		if (tls_data_load(cert_path, key_path)) {
-			fprintf(stderr,
-				"Failed to read TLS cert/key (cert=%s, key=%s)\n",
-				cert_path, key_path);
+			LOGE("Failed to read TLS cert/key (cert=%s, key=%s)",
+			     cert_path, key_path);
+			log_close();
 			return EXIT_FAILURE;
 		}
 	}
 
 	if (!MHD_is_feature_supported(MHD_FEATURE_THREADS)) {
-		fprintf(stderr,
-			"libmicrohttpd built without thread support; thread pool required.\n");
+		LOGE("libmicrohttpd built without thread support; thread pool required.");
+		log_close();
 		return EXIT_FAILURE;
 	}
 
 	if (!assets_load()) {
-		fprintf(stderr, "Failed to load assets.\n");
+		LOGE("Failed to load assets.");
+		log_close();
 		return EXIT_FAILURE;
 	}
 
@@ -1004,21 +995,20 @@ int main(int argc, char **argv)
 
 	if (!d) {
 		perror("MHD_start_daemon");
-		fprintf(stderr,
-			"Failed to start daemon on port %u. Hints:\n"
-			"  - Port busy? try --port 9000\n"
-			"  - TLS disabled in libmicrohttpd? use --http\n"
-			"  - Invalid cert/key? regenerate dev certs\n",
-			port);
+		LOGE("Failed to start daemon on port %u. Hints:\n"
+		     "  - Port busy? try --port 9000\n"
+		     "  - TLS disabled in libmicrohttpd? use --http\n"
+		     "  - Invalid cert/key? regenerate dev certs",
+		     port);
 		tls_data_free();
+		log_close();
 		return EXIT_FAILURE;
 	}
 
-	printf("%s epha-ots server on :%u (TTL=%ds, max=%d, 1MiB/blob, pool=%u threads)\n",
-	       use_tls ? "HTTPS" : "HTTP", port, ttl_sec, max_blobs,
-	       thread_pool_size);
-	printf("Endpoints: POST /blob/<id>, GET /blob/<id>, GET /status\n");
-	fflush(stdout);
+	LOG("%s epha-ots server on :%u (TTL=%ds, max=%d, 1MiB/blob, pool=%u threads)",
+	    use_tls ? "HTTPS" : "HTTP", port, ttl_sec, max_blobs,
+	    thread_pool_size);
+	LOG("Endpoints: POST /blob/<id>, GET /blob/<id>, GET /status");
 
 	signal(SIGINT, on_sigint);
 	signal(SIGTERM, on_sigint);
@@ -1045,5 +1035,8 @@ int main(int argc, char **argv)
 		    (size_t)blob_storage.capacity * sizeof(struct blob_t));
 	free(blob_storage.items);
 	pthread_mutex_unlock(&blob_storage.mutex);
-	return 0;
+
+	LOG("Epha exit normal.");
+	log_close();
+	return EXIT_SUCCESS;
 }

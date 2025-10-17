@@ -1,19 +1,17 @@
-
-// time_str.h (достаточно положить всё и в один .c)
 #pragma once
+
 #include <time.h>
 #include <stdio.h>
 #include <microhttpd.h>
 
-static inline const char *now_local_iso8601(void)
+static inline const char *now_local_iso8601()
 {
-	enum { BUF = 32 };
-	static _Thread_local char buf[BUF];
+	static thread_local char buf[32];
 	time_t t = time(NULL);
 	struct tm tm;
 	if (!localtime_r(&t, &tm))
 		return NULL;
-	if (strftime(buf, BUF, "%Y-%m-%d %H:%M:%S %z", &tm) == 0)
+	if (strftime(buf, 32, "%Y-%m-%d %H:%M:%S %z", &tm) == 0)
 		return NULL;
 	size_t n = 0;
 	while (buf[n])
@@ -36,7 +34,7 @@ static enum MHD_Result log_header_cb(void *cls, enum MHD_ValueKind kind,
 {
 	(void)cls;
 	(void)kind;
-	dlog("H  %s: %s\n", k ? k : "", v ? v : "");
+	LOG("H  %s: %s\n", k ? k : "", v ? v : "");
 	return MHD_YES;
 }
 static enum MHD_Result log_cookie_cb(void *cls, enum MHD_ValueKind kind,
@@ -44,7 +42,7 @@ static enum MHD_Result log_cookie_cb(void *cls, enum MHD_ValueKind kind,
 {
 	(void)cls;
 	(void)kind;
-	dlog("CK %s=%s\n", k ? k : "", v ? v : "");
+	LOG("CK %s=%s\n", k ? k : "", v ? v : "");
 	return MHD_YES;
 }
 static enum MHD_Result log_query_cb(void *cls, enum MHD_ValueKind kind,
@@ -52,13 +50,13 @@ static enum MHD_Result log_query_cb(void *cls, enum MHD_ValueKind kind,
 {
 	(void)cls;
 	(void)kind;
-	dlog("Q  %s=%s\n", k ? k : "", v ? v : "");
+	LOG("Q  %s=%s\n", k ? k : "", v ? v : "");
 	return MHD_YES;
 }
 static void log_client_addr(const struct sockaddr *sa)
 {
 	if (!sa) {
-		dlog("Client: (unknown)\n");
+		LOG("Client: (unknown)\n");
 		return;
 	}
 	char host[NI_MAXHOST] = "";
@@ -73,6 +71,6 @@ static void log_client_addr(const struct sockaddr *sa)
 		inet_ntop(AF_INET6, &in6->sin6_addr, host, sizeof(host));
 		port = ntohs(in6->sin6_port);
 	}
-	dlog("Client: %s:%u\n", host[0] ? host : "(unprintable)",
-	     (unsigned)port);
+	LOG("Client: %s:%u\n", host[0] ? host : "(unprintable)",
+	    (unsigned)port);
 }
