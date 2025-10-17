@@ -17,26 +17,6 @@ The instance is only sometimes available because it runs from my laptop.
 - Memory-only blob store with configurable TTL and capacity limits.
 - Optional QR-code generation for easy handoff between devices.
 
-## Support the developement
-
-### ETH
-
-```
-0xA33dbE6d7c49b76Bb3c22cbfd2B0d83597709008
-```
-
-### BTC
-
-```
-bc1qnnhvqhpmkglv2gmejmjr06a7f0aktxmrt7n586
-```
-
-### XMR
-
-```
-45dwLodwU3vLE6XHojBY7m1w7T9NH6dEiagfKmGzo7Fu4SDLYgfcjzn9rYxb55DcSYGp3qA2PkKoz8WWECxGDitqU8u8itB
-```
-
 ## Build & Run
 
 ```bash
@@ -122,6 +102,26 @@ openssl req -x509 -newkey rsa:2048 -nodes -keyout key.pem -out cert.pem -days 36
 2. `Pk` encrypts the UTF-8 secret with AES-GCM (same nonce/aad) to produce an inner ciphertext. The client then prefixes the tag `T = 0x7337` to that ciphertext before applying the outer `K` encryption.
 3. After retrieving the blob, the browser first decrypts `ct` with `K`, reads `T`, and only asks for the password when `T` signals a protected payload. The server never sees whether a password was used.
 4. The password is cleared after submitting and the password-derived key material is wiped from memory.
+
+## Support the developement
+
+### ETH
+
+```
+0xA33dbE6d7c49b76Bb3c22cbfd2B0d83597709008
+```
+
+### BTC
+
+```
+bc1qnnhvqhpmkglv2gmejmjr06a7f0aktxmrt7n586
+```
+
+### XMR
+
+```
+45dwLodwU3vLE6XHojBY7m1w7T9NH6dEiagfKmGzo7Fu4SDLYgfcjzn9rYxb55DcSYGp3qA2PkKoz8WWECxGDitqU8u8itB
+```
 
 ## License
 
