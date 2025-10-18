@@ -402,22 +402,19 @@ async function derivePasswordKey(password, saltBytes, usages)
 	let keyMaterial;
 	try {
 		keyMaterial = await crypto.subtle.importKey(
-			'raw', passwordBytes, 'PBKDF2', false, ['deriveBits']);
+			'raw', passwordBytes, 'PBKDF2', false, ['deriveKey']);
 	} finally {
 		passwordBytes.fill(0);
 	}
-	const bits = await crypto.subtle.deriveBits({
-		name: 'PBKDF2',
-		salt: saltBytes,
-		iterations: PBKDF2_ITERATIONS,
-		hash: PBKDF2_HASH
-	},
-						    keyMaterial, KEY_SIZE * 8);
-	const derived = new Uint8Array(bits);
-	const key = await crypto.subtle.importKey(
-		'raw', derived, { name: 'AES-GCM', length: KEY_SIZE * 8 },
-		false, usages);
-	derived.fill(0);
+	const key = await crypto.subtle.deriveKey(
+		{
+			name: 'PBKDF2',
+			salt: saltBytes,
+			iterations: PBKDF2_ITERATIONS,
+			hash: PBKDF2_HASH,
+		},
+		keyMaterial, { name: 'AES-GCM', length: KEY_SIZE * 8 }, false,
+		usages);
 	return key;
 }
 
