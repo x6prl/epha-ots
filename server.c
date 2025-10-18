@@ -1006,9 +1006,9 @@ int main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 
-	LOG("%s epha-ots server on :%u (TTL=%ds, max=%d, 1MiB/blob, pool=%u threads)",
+	LOG("%s epha-ots server on :%u (TTL=%ds, max=%d, %.1fKiB/blob, pool=%u threads)",
 	    use_tls ? "HTTPS" : "HTTP", port, ttl_sec, max_blobs,
-	    thread_pool_size);
+	    ((float)MAX_BLOB_SIZE / 1024.0f), thread_pool_size);
 	LOG("Endpoints: POST /blob/<id>, GET /blob/<id>, GET /status");
 
 	signal(SIGINT, on_sigint);
