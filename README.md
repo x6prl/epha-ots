@@ -133,6 +133,9 @@ This project is licensed under the GNU General Public License v3.0. See `LICENSE
 - rate limiter
 - storage duration options
 - canary
+- "second" password for receiving a blob
+- "fake" password for blob removal
+- Android+termux support and quick roll-out
 - link-based one-time-chatty
 - images and files
 - password strength/generator
