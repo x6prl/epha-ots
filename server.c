@@ -9,23 +9,19 @@
 
 #include <immintrin.h>
 #include <arpa/inet.h>
-#include <ctype.h>
 #include <errno.h>
 #include <netinet/in.h>
 #include <pthread.h>
 #include <signal.h>
 #include <stdarg.h>
 #include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <limits.h>
-#include <string.h>
 #include <time.h>
 #include <unistd.h>
 
 #include "log.h"
 #include "debug_stuff.h"
+#include "storage.h"
 
 #ifndef MAX
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
@@ -34,12 +30,9 @@
 // ---------------- Config ----------------
 #define DEFAULT_PORT 8443
 #define MAX_BLOB_SIZE (128 * 1024) // 128 KiB per blob
-#define DEFAULT_TTL_SEC 3600
 #define DEFAULT_MAX_BLOBS 10000
 #define DEFAULT_THREAD_POOL_SIZE 4
-#define MAX_ID_LEN 128 // TODO: use uint32_t
 #define MIN_BLOB_SIZE (12 + 16 + 2 + 16) // nonce + salt + marker + GCM tag
-#define BLOB_ID_HEX_LEN 32
 
 #define RL_RATE 100.0
 #define RL_BURST 2000.0
@@ -48,18 +41,6 @@
 #define REPLACE_SIZE 10
 #define REPLACE_UPTIME "UUUUUUUUUU"
 #define REPLACE_SERVED "SSSSSSSSSS"
-
-static inline double now_s(void)
-{
-	struct timespec ts;
-	clock_gettime(CLOCK_MONOTONIC, &ts);
-	return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
-}
-
-static void secure_zero(void *p, size_t n)
-{
-	explicit_bzero(p, n);
-}
 
 static struct {
 	uint total_served;
@@ -70,26 +51,6 @@ double app_uptime_hours(void)
 {
 	return (now_s() - statistics.start_time) / 60 / 60;
 }
-
-struct blob_t {
-	char id[MAX_ID_LEN + 1];
-	uint8_t *data;
-	size_t length;
-	double expires_at;
-	bool in_use;
-};
-
-static struct {
-	struct blob_t *items;
-	int capacity;
-	int in_use;
-	int ttl_seconds;
-	pthread_mutex_t mutex;
-} blob_storage = { .items = NULL,
-		   .capacity = 0,
-		   .in_use = 0,
-		   .ttl_seconds = DEFAULT_TTL_SEC,
-		   .mutex = PTHREAD_MUTEX_INITIALIZER };
 
 static volatile sig_atomic_t reaper_stop = 0;
 static pthread_t reaper_tid;
@@ -129,7 +90,7 @@ static asset_t assets[ASSETS_COUNT] = {
 static const char *asset_file_paths[ASSETS_COUNT] = {
 	[ASSET_CLIENT_HTML] = "assets/client.html",
 	[ASSET_CLIENT_CSS] = "assets/client.css",
-#ifdef JS_MINIFY
+#if JS_MINIFY
 	[ASSET_CLIENT_JS] = "assets/client.min.js",
 	[ASSET_QRCODE_JS] = "assets/qrcode.min.js",
 #else
@@ -246,11 +207,6 @@ bool asset_find(const char *url, asset_t **asset)
 	return false;
 }
 
-typedef struct {
-	uint8_t *data;
-	size_t size;
-} pem_data_t;
-
 static uint8_t *tls_key_and_cert_memory;
 static size_t tls_key_and_cert_memory_size;
 static uint8_t *tls_cert, *tls_key;
@@ -340,24 +296,6 @@ cleanup:
 	return success;
 }
 
-// Securely discard an entry; caller must hold blob_storage.mutex.
-static void blob_free_locked(struct blob_t *b)
-{
-	if (!b || !b->in_use)
-		return;
-	if (b->data) {
-		secure_zero(b->data, b->length);
-		free(b->data);
-	}
-	secure_zero(b->id, sizeof(b->id));
-	b->data = NULL;
-	b->length = 0;
-	b->expires_at = 0;
-	b->in_use = false;
-	if (blob_storage.in_use > 0)
-		blob_storage.in_use--;
-}
-
 // Frees expired blobs until shutdown is requested
 static void *reaper_thread(void *arg)
 {
@@ -415,111 +353,6 @@ static uint8_t *find_10(const uint8_t *data, size_t size, const char ch)
 	return NULL;
 }
 
-enum BlobPutStatus {
-	BLOB_PUT_OK = 0,
-	BLOB_PUT_DUP,
-	BLOB_PUT_FULL,
-	BLOB_PUT_OOM
-};
-
-// Ensure blob id is canonical lowercase hex.
-static bool id_valid(char *id)
-{
-	if (!id)
-		return false;
-	size_t len = strlen(id);
-	if (len != BLOB_ID_HEX_LEN || len > MAX_ID_LEN)
-		return false;
-	for (size_t i = 0; i < len; i++) {
-		unsigned char c = (unsigned char)id[i];
-		if (!isxdigit(c))
-			return false;
-		id[i] = (char)tolower(c);
-	}
-	return true;
-}
-
-// Reserve space and copy payload into the in-memory blob store.
-static enum BlobPutStatus blob_put(const char *id, const uint8_t *buf,
-				   size_t len)
-{
-	if (!id || !buf)
-		return BLOB_PUT_OOM;
-
-	pthread_mutex_lock(&blob_storage.mutex);
-	struct blob_t *slot = NULL;
-	for (int i = 0; i < blob_storage.capacity; i++) {
-		struct blob_t *b = &blob_storage.items[i];
-		if (!b->in_use) {
-			if (!slot)
-				slot = b;
-			continue;
-		}
-		if (strcmp(b->id, id) == 0) {
-			pthread_mutex_unlock(&blob_storage.mutex);
-			return BLOB_PUT_DUP;
-		}
-	}
-	if (!slot) {
-		pthread_mutex_unlock(&blob_storage.mutex);
-		return BLOB_PUT_FULL;
-	}
-
-	// Copy payload into a new buffer owned by the store until retrieved.
-	uint8_t *data = (uint8_t *)malloc(len);
-	if (!data) {
-		pthread_mutex_unlock(&blob_storage.mutex);
-		return BLOB_PUT_OOM;
-	}
-	memcpy(data, buf, len);
-
-	struct blob_t *b = slot;
-	strncpy(b->id, id, sizeof(b->id) - 1);
-	b->id[sizeof(b->id) - 1] = '\0';
-	b->data = data;
-	b->length = len;
-	b->expires_at = now_s() + (blob_storage.ttl_seconds > 0 ?
-					   blob_storage.ttl_seconds :
-					   DEFAULT_TTL_SEC);
-	b->in_use = true;
-	blob_storage.in_use++;
-	pthread_mutex_unlock(&blob_storage.mutex);
-
-	++(statistics.total_served);
-	return BLOB_PUT_OK;
-}
-
-// Remove-and-return a blob by id; ownership transfers to caller.
-static bool blob_take(const char *id, uint8_t **out_buf, size_t *out_len)
-{
-	if (!id || !out_buf)
-		return false;
-	bool ok = false;
-	pthread_mutex_lock(&blob_storage.mutex);
-	for (int i = 0; i < blob_storage.capacity; i++) {
-		struct blob_t *b = &blob_storage.items[i];
-		if (!b->in_use)
-			continue;
-		if (strcmp(b->id, id) != 0)
-			continue;
-		// Transfer ownership of the payload buffer to the caller.
-		*out_buf = b->data;
-		if (out_len)
-			*out_len = b->length;
-		b->data = NULL;
-		b->length = 0;
-		b->expires_at = 0;
-		b->in_use = false;
-		secure_zero(b->id, sizeof(b->id));
-		if (blob_storage.in_use > 0)
-			blob_storage.in_use--;
-		ok = true;
-		break;
-	}
-	pthread_mutex_unlock(&blob_storage.mutex);
-	return ok;
-}
-
 // Extract `<id>` out of "/blob/<id>[?query]" style paths.
 static bool parse_blob_id(const char *url, char out_id[MAX_ID_LEN + 1])
 {
@@ -538,7 +371,6 @@ static bool parse_blob_id(const char *url, char out_id[MAX_ID_LEN + 1])
 	out_id[len] = '\0';
 	return id_valid(out_id);
 }
-
 // ---------------- Rate limiting ----------------
 struct RL {
 	uint32_t ip;
@@ -829,6 +661,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 			req_ctx_clear(ctx);
 			switch (st) {
 			case BLOB_PUT_OK:
+				++(statistics.total_served);
 				return send_json(conn, MHD_HTTP_OK,
 						 "{\"ok\":true}");
 			case BLOB_PUT_DUP:

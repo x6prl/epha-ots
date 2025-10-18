@@ -6,9 +6,6 @@
 #include <stdarg.h>
 #include <stdbool.h>
 
-#include <pthread.h>
-#define THREAD_LOCAL __thread
-
 #define ANSI_RESET "\x1b[0m"
 #define ANSI_RED "\x1b[31m"
 #define ANSI_GREEN "\x1b[32m"
@@ -23,7 +20,17 @@ static const char *log_file_path = "epha.log";
 static FILE *log_file;
 #endif
 
-static inline const char *now_local_iso8601();
+static __always_inline const char *now_local_iso8601()
+{
+	static thread_local char buf[32];
+	time_t t = time(NULL);
+	struct tm tm;
+	if (!localtime_r(&t, &tm))
+		return NULL;
+	if (strftime(buf, 32, "%Y-%m-%d %H:%M:%S %z", &tm) == 0)
+		return "time buffer too small";
+	return buf;
+}
 
 static inline void logd_(const char *restrict func, const char *restrict fmt,
 			 ...)

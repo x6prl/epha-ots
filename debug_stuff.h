@@ -4,22 +4,12 @@
 #include <stdio.h>
 #include <microhttpd.h>
 
-static __always_inline const char *now_local_iso8601()
-{
-	static thread_local char buf[32];
-	time_t t = time(NULL);
-	struct tm tm;
-	if (!localtime_r(&t, &tm))
-		return NULL;
-	if (strftime(buf, 32, "%Y-%m-%d %H:%M:%S %z", &tm) == 0)
-		return "time buffer too small";
-	return buf;
-}
-
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+
+static __always_inline const char *now_local_iso8601();
 
 static enum MHD_Result log_header_cb(void *cls, enum MHD_ValueKind kind,
 				     const char *k, const char *v)
