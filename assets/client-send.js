@@ -88,7 +88,7 @@
 	}
 
 	function setInputsDisabled(disabled) {
-		['btnGetLink', 'btnCopyLink', 'btnCopyQrImage', 'optionalPassword']
+		['btnGetLink', 'btnCopyLink', 'btnCopyLinkInline', 'btnCopyQrImage', 'optionalPassword']
 			.forEach((id) => {
 				const el = shared.$(id);
 				if (el)
@@ -313,6 +313,7 @@
 	function init() {
 		const btnGetLink = shared.$('btnGetLink');
 		const btnCopyLink = shared.$('btnCopyLink');
+		const btnCopyLinkInline = shared.$('btnCopyLinkInline'); // NOTE: only in client.html
 		const btnCopyQrImage = shared.$('btnCopyQrImage');
 		const optionalPasswordField = shared.$('optionalPassword');
 		const textArea = shared.$('text');
@@ -329,6 +330,7 @@
 
 		btnGetLink.addEventListener('click', () => { void sendSecret(); });
 		btnCopyLink.addEventListener('click', shared.copyLink);
+		btnCopyLinkInline && btnCopyLinkInline.addEventListener('click', shared.copyLink); // NOTE: because only in client.html
 		if (btnCopyQrImage)
 			btnCopyQrImage.addEventListener('click', () => {
 				void shared.copyQrImage();
