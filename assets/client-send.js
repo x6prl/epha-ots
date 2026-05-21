@@ -275,6 +275,12 @@
 				shared.showPopup('Link created',
 					friendlySendError(copyErr));
 			}
+
+			// NOTE: randomize text field background in order to
+			// notify the user that something was changed
+			if (textField)
+				textField.style.backgroundColor =
+					`hsl(${Math.floor(Math.random() * 360)} 35% 10%)`;
 		} catch (err) {
 			console.error(err);
 			resetPrimaryButton();
