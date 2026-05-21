@@ -268,7 +268,7 @@
 					throw new Error('Clipboard API unavailable');
 				}
 				await navigator.clipboard.writeText(shared.state.link);
-				setPrimaryButtonLabel('Success! Create another?', 'success');
+				setPrimaryButtonLabel('Link copied! Create another?', 'success');
 			} catch (copyErr) {
 				console.error(copyErr);
 				setPrimaryButtonLabel('Link ready', 'ready');
