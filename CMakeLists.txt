@@ -90,7 +90,7 @@ if(ASSEMBLED_HTML)
   )
 endif()
 
-add_executable(adnihilum server.c storage.c log.c)
+add_executable(adnihilum server.c storage.c translations.c log.c)
 if(ASSEMBLED_HTML)
   add_dependencies(adnihilum client_assets)
 endif()

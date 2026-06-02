@@ -51,6 +51,7 @@
 #include "log.h"
 #include "balloc.h"
 #include "storage.h"
+#include "translations.h"
 #if DEBUG
 #include "debug_stuff.h"
 #endif
@@ -207,7 +208,7 @@ enum assets_id_t {
 };
 static uint8_t *assets_memory;
 
-static asset_t assets[ASSETS_COUNT] = {
+static asset_t assets[lang_COUNT][ASSETS_COUNT] = { {
 #if ASSEMBLED_HTML
 	[ASSET_CLIENT_ASSEMBLED_HTML] = { .content_type = _CONTENT_TYPE_HTML },
 	[ASSET_CLIENT_SIMPLE_ASSEMBLED_HTML] = { .content_type =
@@ -226,8 +227,7 @@ static asset_t assets[ASSETS_COUNT] = {
 	[ASSET_CLIENT_JS] = { .content_type = _CONTENT_TYPE_JS },
 	[ASSET_QRCODE_JS] = { .content_type = _CONTENT_TYPE_JS },
 #endif
-	[ASSET_ADNIHILUM128_PNG] = { .content_type = _CONTENT_TYPE_PNG }
-};
+	[ASSET_ADNIHILUM128_PNG] = { .content_type = _CONTENT_TYPE_PNG } } };
 
 static const char *asset_file_paths[ASSETS_COUNT] = {
 #if ASSEMBLED_HTML
@@ -328,6 +328,76 @@ bool read_and_close_file(int fd, uint8_t *out, ssize_t size)
 	return true;
 }
 
+blk_size_t get_translated_file_size(const char *path, uint8_t *file_data,
+				   blk_size_t file_size,
+				   const TranslationEntry *entries,
+				   int entries_size)
+{
+	constexpr uint8_t TR_KEY_MARKER = '@';
+	blk_size_t ret = file_size;
+	if (0 == strncmp(path, "/", 1) || 0 == strncmp(path, "/simple", 7) ||
+	    0 == strncmp(path, "/receive", 9)) {
+		for (auto ptr = file_data; ptr < file_data + file_size; ++ptr) {
+			if (*ptr == TR_KEY_MARKER) {
+				for (auto entry = entries;
+				     entry < entries + entries_size; ++entry) {
+					if (0 == memcmp(ptr, entry->key.data,
+							entry->key.size)) {
+						ret -= entry->key.size;
+						ret += entry->value.size;
+						ptr += entry->key.size;
+						break;
+					}
+				}
+			}
+		}
+	} else {
+		return file_size;
+	}
+	return ret;
+}
+
+blk_size_t translate_file(const char *path, uint8_t *file_data,
+			  blk_size_t file_size, const TranslationEntry *entries,
+			  int entries_size, uint8_t *out_ptr)
+{
+	constexpr uint8_t TR_KEY_MARKER = '@';
+	blk_size_t ret = file_size;
+	if (0 == strncmp(path, "/", 1) || 0 == strncmp(path, "/simple", 7) ||
+	    0 == strncmp(path, "/receive", 9)) {
+		for (auto in_ptr = file_data; in_ptr < file_data + file_size;
+		     ++in_ptr) {
+			if (*in_ptr == TR_KEY_MARKER) {
+				for (auto entry = entries;
+				     entry < entries + entries_size; ++entry) {
+					if (0 == memcmp(in_ptr, entry->key.data,
+							entry->key.size)) {
+						in_ptr += entry->key.size - 1;
+						memcpy(out_ptr,
+						       entry->value.data,
+						       entry->value.size);
+						ret -= entry->key.size;
+						ret += entry->value.size;
+						out_ptr += entry->value.size;
+						LOGD("%s -> %s\n",
+						     entry->key.data,
+						     entry->value.data);
+						continue;
+					}
+					// LOG("%.*s", (int)entry->key.size, in_ptr);
+				}
+			} else {
+				*out_ptr = *in_ptr;
+				++out_ptr;
+			}
+		}
+	} else {
+		ret = file_size;
+		memcpy(out_ptr, file_data, file_size);
+	}
+	return ret;
+}
+
 /*
  * In case of errors server will not start, thus we do not care of closing fds — OS will do it automatically
  */
@@ -364,26 +434,68 @@ bool assets_load()
 			return false;
 		}
 
-		assets[i].data = current_ptr;
-		assets[i].size = asset_size;
+		assets[0][i].data = current_ptr;
+		assets[0][i].size = asset_size;
 		current_ptr += asset_size;
 	}
 	LOG("%u static assets loaded for paths:", ASSETS_COUNT);
 	for (size_t i = 0; i < ASSETS_COUNT; ++i) {
 		LOG("%s", asset_paths[i]);
 		LOGD("%s\t%.1fKiB\n", asset_file_paths[i],
-		     (float)assets[i].size / 1024.f);
+		     (float)assets[0][i].size / 1024.f);
 	}
 	LOGD("total size %zu bytes\n", assets_size_total);
 	return true;
 }
 
-bool asset_find(const char *url, asset_t **asset)
+bool translate_assets()
+{
+	size_t translated_assets_memory_size = 0;
+	for (Lang i = 0; i < lang_COUNT; ++i) {
+		for (size_t j = 0; j < ASSETS_COUNT; ++j) {
+			// NOTE: we are touching only first language
+			auto asset = &assets[0][j];
+			auto path = asset_paths[j];
+			auto translated_size = get_translated_file_size(
+				path, asset->data, asset->size, translations[i],
+				translation_COUNT);
+			translated_assets_memory_size += translated_size;
+		}
+	}
+
+	uint8_t *translated_assets_memory =
+		malloc(translated_assets_memory_size);
+	if (!translated_assets_memory) {
+		return false;
+	}
+	uint8_t *data_ptr = translated_assets_memory;
+
+	for (Lang i = 0; i < lang_COUNT; ++i) {
+		for (size_t j = 0; j < ASSETS_COUNT; ++j) {
+			auto asset = &assets[i][j];
+
+			auto path = asset_paths[j];
+			// NOTE: translate only html assets
+			auto translated_size = translate_file(
+				path, asset->data, asset->size, translations[i],
+				translation_COUNT, data_ptr);
+			asset->data = data_ptr;
+			asset->size = translated_size;
+			data_ptr += translated_size;
+		}
+	}
+
+	free(assets_memory);
+	assets_memory = translated_assets_memory;
+	return true;
+}
+
+bool asset_find(Lang language, const char *url, asset_t **asset)
 {
 	for (size_t i = 0; i < ASSETS_COUNT; ++i) {
 		if (0 ==
 		    strncmp(url, asset_paths[i], ASSET_PATH_STRING_MAX_SIZE)) {
-			*asset = &assets[i];
+			*asset = &assets[language][i];
 			return true;
 		}
 	}
@@ -489,7 +601,8 @@ static bool all16_eq_byte(const uint8_t *data, size_t remaining, uint8_t ch)
 	return all16_eq_byte_scalar(data, remaining, ch);
 }
 
-static char *html_uptime_ptr, *html_served_ptr, *html_version_ptr;
+static char *html_uptime_ptr[lang_COUNT], *html_served_ptr[lang_COUNT],
+	*html_version_ptr[lang_COUNT];
 
 static uint8_t *find_16_scalar(const uint8_t *data, size_t size, uint8_t ch)
 {
@@ -789,18 +902,31 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 	);
 
 	bool is_get = (0 == memcmp(method, "GET", 4));
+	Lang language = lang_en;
 	asset_t *asset = NULL;
 	bool is_get_path_static = false;
 	bool is_get_path_root = false;
 #if STATISTICS
 	bool is_get_path_simple = false;
 #endif
+	const char *language_header = MHD_lookup_connection_value(
+		conn, MHD_HEADER_KIND, "Accept-Language");
+	if (language_header) {
+		LOGD("Accept-Language: %s", language_header);
+		if (language_header[0] != '\0' && language_header[1] != '\0') {
+			// we have 2 symbols
+			language = lang_from_str(language_header);
+		}
+		// language = lang_ru;
+	} else {
+		LOGD("no laguge header");
+	}
 	if (is_get) {
 		is_get_path_root = 0 == memcmp(url, "/", 2);
 #if STATISTICS
 		is_get_path_simple = 0 == memcmp(url, "/simple", 8);
 #endif
-		is_get_path_static = asset_find(url, &asset);
+		is_get_path_static = asset_find(language, url, &asset);
 	}
 
 #if STATISTICS
@@ -844,17 +970,23 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 #endif
 			if (is_get_path_root) {
 				// NOTE: be careful
-				snprintf(html_uptime_ptr, REPLACE_SIZE,
-					 "%-14.1fH", app_uptime_hours());
-				html_uptime_ptr[REPLACE_SIZE - 1] = ' ';
+				snprintf(html_uptime_ptr[language],
+					 REPLACE_SIZE, "%-14.1fH",
+					 app_uptime_hours());
+				html_uptime_ptr[language][REPLACE_SIZE - 1] =
+					' ';
 				// NOTE: be careful
-				snprintf(html_served_ptr, REPLACE_SIZE, "%-15u",
+				snprintf(html_served_ptr[language],
+					 REPLACE_SIZE, "%-15u",
 					 statistics.total_served);
-				html_served_ptr[REPLACE_SIZE - 1] = ' ';
+				html_served_ptr[language][REPLACE_SIZE - 1] =
+					' ';
 				// NOTE: be careful
-				snprintf(html_version_ptr, REPLACE_SIZE,
-					 "%-15.15s", AD_NIHILUM_VERSION);
-				html_version_ptr[REPLACE_SIZE - 1] = ' ';
+				snprintf(html_version_ptr[language],
+					 REPLACE_SIZE, "%-15.15s",
+					 AD_NIHILUM_VERSION);
+				html_version_ptr[language][REPLACE_SIZE - 1] =
+					' ';
 			}
 			AHC_RETURN(send_response(
 				conn, MHD_HTTP_OK, asset->data, asset->size,
@@ -1187,23 +1319,39 @@ int main(int argc, char **argv)
 		goto cleanup;
 	}
 
-	html_uptime_ptr = (char *)find_16(assets[0].data, assets[0].size,
-					  REPLACE_UPTIME_CH);
-	if (!html_uptime_ptr) {
-		LOGE("Cannot find the point of uptime setting in HTML.");
+	{ // finish assets array init: we have index 0 initialized
+		for (Lang i = 1; i < lang_COUNT; ++i) {
+			memcpy(assets + i, assets, sizeof(assets[0]));
+		}
+	}
+
+	if (!translate_assets()) {
+		LOGE("Failed to translate assets.");
 		goto cleanup;
 	}
-	html_served_ptr = (char *)find_16(assets[0].data, assets[0].size,
-					  REPLACE_SERVED_CH);
-	if (!html_served_ptr) {
-		LOGE("Cannot find the point of served setting in HTML.");
-		goto cleanup;
-	}
-	html_version_ptr = (char *)find_16(assets[0].data, assets[0].size,
-					   REPLACE_VERSION_CH);
-	if (!html_version_ptr) {
-		LOGE("Cannot find the point of version setting in HTML.");
-		goto cleanup;
+
+	for (Lang i = 0; i < lang_COUNT; ++i) {
+		html_uptime_ptr[i] = (char *)find_16(assets[i][0].data,
+						     assets[i][0].size,
+						     REPLACE_UPTIME_CH);
+		if (!html_uptime_ptr[i]) {
+			LOGE("Cannot find the point of uptime setting in HTML.");
+			goto cleanup;
+		}
+		html_served_ptr[i] = (char *)find_16(assets[i][0].data,
+						     assets[i][0].size,
+						     REPLACE_SERVED_CH);
+		if (!html_served_ptr[i]) {
+			LOGE("Cannot find the point of served setting in HTML.");
+			goto cleanup;
+		}
+		html_version_ptr[i] = (char *)find_16(assets[i][0].data,
+						      assets[i][0].size,
+						      REPLACE_VERSION_CH);
+		if (!html_version_ptr[i]) {
+			LOGE("Cannot find the point of version setting in HTML.");
+			goto cleanup;
+		}
 	}
 
 	req_ctx_memory_size = ctxa_footprint(REQUESTS_MAX);

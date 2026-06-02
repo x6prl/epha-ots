@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>One link. One view. Gone.</title>
+    <title>@page_title@</title>
     <link rel="icon" type="image/png" href="adnihilum128.png">
     <link rel="stylesheet" href="client.css">
 </head>
@@ -15,41 +15,41 @@
                 <img src="adnihilum128.png" width="40" height="40" alt="Ad Nihilum">
                 <div>
                     <strong>Ad Nihilum</strong>
-                    <span>Let secrets disappear</span>
+                    <span>@tagline@</span>
                 </div>
             </a>
             <nav class="topbar-links" aria-label="Primary">
-                <a href="/simple">Simplier!</a>
-                <a href="https://github.com/x6prl/adnihilum/#what-ad-nihilum-does-not-protect-against">Be careful</a>
-                <a href="https://github.com/x6prl/adnihilum/">GitHub</a>
+                <a href="/simple">@simple@</a>
+                <a href="https://github.com/x6prl/adnihilum/#what-ad-nihilum-does-not-protect-against">@be_careful@</a>
+                <a href="https://github.com/x6prl/adnihilum/">@github@</a>
             </nav>
         </header>
         <noscript>
-            JavaScript with WebCrypto and Fetch is required to create or open secrets.
+            @noscript@
         </noscript>
 
         <main class="layout-single">
             <section class="how-to-use" aria-labelledby="how-to-use-title">
-                <div class="eyebrow">How To Use</div>
+                <div class="eyebrow">@how_to_use@</div>
                 <ol>
-                    <li>Paste the secret you want to share.</li>
-                    <li>Add a password if needed and share that separately.</li>
-                    <li>Create the link and send the full URL to the recipient.</li>
+                    <li>@how_to_use_step_paste@</li>
+                    <li>@how_to_use_step_password@</li>
+                    <li>@how_to_use_step_link@</li>
                 </ol>
-                <p>The message can be opened once, then it disappears.</p>
+                <p>@how_to_use_note@</p>
             </section>
 
             <section class="panel panel-primary composer-panel">
                 <div class="field-group field-group-main">
-                    <label for="text">Write your message in this field</label>
-                    <textarea id="text" rows="8" tabindex="1" autocomplete="off" data-limit-indicator="true" data-placeholder-desktop="Paste the message, token, or credentials here.&#10;Press Ctrl+Enter to create and copy the link." data-placeholder-mobile="Paste the message, token, or credentials here." placeholder="Paste the message, token, or credentials here.&#10;Press Ctrl+Enter to create and copy the link."></textarea>
+                    <label for="text">@message_label@</label>
+                    <textarea id="text" rows="8" tabindex="1" autocomplete="off" data-limit-indicator="true" data-placeholder-desktop="@message_placeholder_desktop@" data-placeholder-mobile="@message_placeholder_mobile@" placeholder="@message_placeholder_desktop@"></textarea>
                 </div>
 
                 <div class="field-grid">
                     <div class="field-group">
-                        <label for="optionalPassword">Password (optional)</label>
-                        <input id="optionalPassword" tabindex="2" type="password" autocomplete="new-password" spellcheck="false" placeholder="Send not with the link, though.">
-                        <p class="field-note">The password is <b>never</b> sent to the server.</p>
+                        <label for="optionalPassword">@password_optional@</label>
+                        <input id="optionalPassword" tabindex="2" type="password" autocomplete="new-password" spellcheck="false" placeholder="@password_placeholder@">
+                        <p class="field-note">@password_note@</p>
                     </div>
                 </div>
 
@@ -58,33 +58,32 @@
                         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                         </svg>
-                        <span id="btnGetLinkLabel">Create and copy link</span>
+                        <span id="btnGetLinkLabel">@create_copy_link@</span>
                     </button>
-                    <button class="secondary-btn" id="btnCopyLink" type="button" hidden>Copy link</button>
-                    <button class="secondary-btn" id="btnCopyQrImage" type="button" hidden>Copy QR image</button>
+                    <button class="secondary-btn" id="btnCopyLink" type="button" hidden>@copy_link@</button>
+                    <button class="secondary-btn" id="btnCopyQrImage" type="button" hidden>@copy_qr_image@</button>
                 </div>
 
                 <div class="generated-output" id="generatedWrap" hidden>
-                    <label for="generatedUrl">Share Link</label>
+                    <label for="generatedUrl">@share_link@</label>
                     <input id="generatedUrl" type="text" readonly autocomplete="off" spellcheck="false">
-                    <button class="secondary-btn" id="btnCopyLinkInline" type="button">Copy link</button>
+                    <button class="secondary-btn" id="btnCopyLinkInline" type="button">@copy_link@</button>
                 </div>
 
                 <div class="qr-output" id="qrWrap" hidden>
                     <div class="qr-card">
                         <div id="qrCode"></div>
-                        <p class="field-note">Use the QR code only if the recipient can open the link immediately.</p>
+                        <p class="field-note">@qr_note@</p>
                     </div>
                 </div>
             </section>
 
             <section class="info-section info-section-features" aria-labelledby="key-features-title">
                 <div class="info-hero">
-                    <div class="eyebrow">Details</div>
-                    <h2 id="key-features-title">Use this for secrets that should not stay in chats or email.</h2>
+                    <div class="eyebrow">@details@</div>
+                    <h2 id="key-features-title">@features_title@</h2>
                     <p>
-                        A small tool for sending sensitive text through a link that can be
-                        opened once.
+                        @features_body@
                     </p>
                 </div>
 
@@ -96,8 +95,8 @@
                                 <path d="M9.5 12.5l1.8 1.8 3.7-4.1"></path>
                             </svg>
                         </div>
-                        <h3>Private delivery</h3>
-                        <p>Share passwords, tokens, access codes, and confidential notes through a flow built specifically for sensitive data.</p>
+                        <h3>@private_delivery@</h3>
+                        <p>@private_delivery_body@</p>
                     </article>
 
                     <article class="feature-card">
@@ -107,8 +106,8 @@
                                 <circle cx="12" cy="12" r="8"></circle>
                             </svg>
                         </div>
-                        <h3>Ephemeral by design</h3>
-                        <p>Secrets disappear after the first successful retrieval or when the server-side lifetime runs out.</p>
+                        <h3>@ephemeral@</h3>
+                        <p>@ephemeral_body@</p>
                     </article>
 
                     <article class="feature-card">
@@ -118,8 +117,8 @@
                                 <path d="M8 11V8a4 4 0 118 0v3"></path>
                             </svg>
                         </div>
-                        <h3>Controlled access</h3>
-                        <p>Add an optional password layer so the link alone is not enough to reveal the message.</p>
+                        <h3>@controlled_access@</h3>
+                        <p>@controlled_access_body@</p>
                     </article>
 
                     <article class="feature-card feature-card-wide">
@@ -131,8 +130,8 @@
                                 <path d="M17 14l3 3-3 3"></path>
                             </svg>
                         </div>
-                        <h3>Reduced exposure across everyday channels</h3>
-                        <p>Keep sensitive information out of long email threads, chat histories, shared docs, and screenshots that are difficult to control later.</p>
+                        <h3>@reduced_exposure@</h3>
+                        <p>@reduced_exposure_body@</p>
                     </article>
 
                     <article class="feature-card feature-card-wide">
@@ -142,8 +141,8 @@
                                 <path d="M13 6l6 6-6 6"></path>
                             </svg>
                         </div>
-                        <h3>Fast, low-friction sharing</h3>
-                        <p>Create a protected share in seconds and move information where it needs to go without breaking the workflow around it.</p>
+                        <h3>@fast_sharing@</h3>
+                        <p>@fast_sharing_body@</p>
                     </article>
 
                     <article class="feature-card feature-card-wide">
@@ -153,60 +152,59 @@
                                 <path d="M6 15l4-4 3 3 5-6"></path>
                             </svg>
                         </div>
-                        <h3>Built for real operational use</h3>
-                        <p>Useful for administrators, developers, support staff, and anyone who handles sensitive information as part of daily work.</p>
+                        <h3>@real_use@</h3>
+                        <p>@real_use_body@</p>
                     </article>
                 </div>
 
                 <div class="info-band">
                     <div class="info-panel">
-                        <h3>Why it stands out</h3>
+                        <h3>@why_stands_out@</h3>
                         <ul class="info-list">
-                            <li>Client-side encryption keeps the decryption key out of the server.</li>
-                            <li>Single-use retrieval and expiration reduce unnecessary persistence.</li>
-                            <li>Simple enough for quick sharing, serious enough for confidential data.</li>
+                            <li>@client_encryption@</li>
+                            <li>@single_use@</li>
+                            <li>@simple_serious@</li>
                         </ul>
                     </div>
                     <div class="info-panel info-panel-stat">
-                        <strong>Less exposure</strong>
-                        <span>A cleaner alternative to sending secrets through channels that were never designed for them.</span>
+                        <strong>@less_exposure@</strong>
+                        <span>@less_exposure_body@</span>
                     </div>
                 </div>
             </section>
 
             <section class="info-section" aria-labelledby="how-it-works-title">
                 <div class="info-hero">
-                    <div class="eyebrow">How It Works</div>
-                    <h2 id="how-it-works-title">Three steps from secret creation to disappearance.</h2>
+                    <div class="eyebrow">@how_it_works@</div>
+                    <h2 id="how-it-works-title">@how_it_works_title@</h2>
                     <p>
-                        The workflow is built to stay short: encrypt in the browser,
-                        share the link, then let the stored blob vanish after use.
+                        @how_it_works_body@
                     </p>
                 </div>
 
                 <div class="step-grid">
                     <article class="step-card">
                         <span class="step-index">01</span>
-                        <h3>Compose and encrypt locally</h3>
-                        <p>Write the secret here. The browser encrypts it before upload, and the key stays in the link fragment instead of going to the server.</p>
+                        <h3>@step_compose@</h3>
+                        <p>@step_compose_body@</p>
                     </article>
 
                     <article class="step-card">
                         <span class="step-index">02</span>
-                        <h3>Share the generated link</h3>
-                        <p>Send the resulting link to the recipient. If needed, share the optional password through a different channel.</p>
+                        <h3>@step_share@</h3>
+                        <p>@step_share_body@</p>
                     </article>
 
                     <article class="step-card">
                         <span class="step-index">03</span>
-                        <h3>Open once, then lose access</h3>
-                        <p>When the recipient opens the full link, the secret is retrieved, decrypted in the browser, and removed from the server after the first successful fetch.</p>
+                        <h3>@step_open_once@</h3>
+                        <p>@step_open_once_body@</p>
                     </article>
                 </div>
 
                 <div class="info-panel info-panel-inline">
-                    <h3>Operational note</h3>
-                    <p>The server stores encrypted blobs in RAM with a fixed time limit, so anything not opened still ages out instead of lingering indefinitely.</p>
+                    <h3>@operational_note@</h3>
+                    <p>@operational_note_body@</p>
                 </div>
             </section>
         </main>
@@ -214,22 +212,22 @@
         <footer class="site-footer">
             <div class="footer-block">
                 <strong>Ad Nihilum</strong>
-                <p>A secure drop for confidential messages that can be opened once and then vanish.</p>
+                <p>@footer_body@</p>
                 <div class="footer-meta" aria-label="Service metadata">
                     <p class="footer-version">
-                        Version <span>VVVVVVVVVVVVVVVV</span>
+                        @version@ <span>VVVVVVVVVVVVVVVV</span>
                     </p>
                     <p class="footer-version">
-                        Uptime <span>UUUUUUUUUUUUUUUU</span>
+                        @uptime@ <span>UUUUUUUUUUUUUUUU</span>
                     </p>
                     <p class="footer-version">
-                        Secrets Served <span>SSSSSSSSSSSSSSSS</span>
+                        @secrets_served@ <span>SSSSSSSSSSSSSSSS</span>
                     </p>
                 </div>
             </div>
             <div class="footer-links">
-                <a href="https://github.com/x6prl/adnihilum/">GitHub</a>
-                <a href="https://github.com/x6prl/adnihilum/blob/master/README.md">Readme</a>
+                <a href="https://github.com/x6prl/adnihilum/">@github@</a>
+                <a href="https://github.com/x6prl/adnihilum/blob/master/README.md">@readme@</a>
                 <a href="mailto:x6prlie@gmail.com">x6prlie@gmail.com</a>
                 <a href="https://t.me/x6prl">Telegram</a>
             </div>
@@ -238,11 +236,11 @@
         <dialog class="app-popup" id="appPopup" aria-labelledby="appPopupTitle">
             <form class="app-popup-card" method="dialog">
                 <div class="app-popup-head">
-                    <h2 id="appPopupTitle">JavaScript required</h2>
+                    <h2 id="appPopupTitle">@javascript_required@</h2>
                 </div>
-                <p class="app-popup-body" id="appPopupBody">This page requires JavaScript with WebCrypto and Fetch to create or open secrets.</p>
+                <p class="app-popup-body" id="appPopupBody">@javascript_required_body@</p>
                 <div class="app-popup-actions">
-                    <button class="primary-btn" type="submit">OK</button>
+                    <button class="primary-btn" type="submit">@ok@</button>
                 </div>
             </form>
         </dialog>

@@ -1,0 +1,324 @@
+@page_title
+en: One link. One view. Gone.
+ru: Одна ссылка. Один просмотр. Исчезло.
+@tagline
+en: Let secrets disappear
+ru: Пусть секреты исчезают
+@be_careful
+en: Be careful
+ru: Будьте осторожны
+@github
+en: GitHub
+ru: GitHub
+@readme
+en: Readme
+ru: Readme
+@simple
+en: Simplier!
+ru: Проще!
+@noscript
+en: JavaScript with WebCrypto and Fetch is required to create or open secrets.
+ru: Для создания или открытия секретов нужен JavaScript с WebCrypto и Fetch.
+@how_to_use
+en: How To Use
+ru: Как пользоваться
+@how_to_use_step_paste
+en: Paste the secret you want to share.
+ru: Вставьте секрет, которым хотите поделиться.
+@how_to_use_step_password
+en: Add a password if needed and share that separately.
+ru: При необходимости добавьте пароль и передайте его отдельно.
+@how_to_use_step_link
+en: Create the link and send the full URL to the recipient.
+ru: Создайте ссылку и отправьте получателю полный URL.
+@how_to_use_note
+en: The message can be opened once, then it disappears.
+ru: Сообщение можно открыть один раз, после чего оно исчезнет.
+@message_label
+en: Write your message in this field
+ru: Напишите сообщение в этом поле
+@message_placeholder_desktop
+en: Paste the message, token, or credentials here. Press Ctrl+Enter to create and copy the link.
+ru: Вставьте сюда сообщение, токен или учётные данные. Нажмите Ctrl+Enter, чтобы создать и скопировать ссылку.
+@message_placeholder_mobile
+en: Paste the message, token, or credentials here.
+ru: Вставьте сюда сообщение, токен или учётные данные.
+@password_optional
+en: Password (optional)
+ru: Пароль (необязательно)
+@password
+en: Password
+ru: Пароль
+@password_placeholder
+en: Send not with the link, though.
+ru: Но не отправляйте его вместе со ссылкой.
+@password_note
+en: The password is never sent to the server.
+ru: Пароль никогда не отправляется на сервер.
+@create_copy_link
+en: Create and copy link
+ru: Создать и скопировать ссылку
+@copy_link
+en: Copy link
+ru: Скопировать ссылку
+@copy_qr_image
+en: Copy QR image
+ru: Скопировать QR-код
+@share_link
+en: Share Link
+ru: Ссылка для отправки
+@qr_note
+en: Use the QR code only if the recipient can open the link immediately.
+ru: Используйте QR-код только если получатель сможет сразу открыть ссылку.
+@details
+en: Details
+ru: Детали
+@features_title
+en: Use this for secrets that should not stay in chats or email.
+ru: Используйте это для секретов, которым не место в чатах или почте.
+@features_body
+en: A small tool for sending sensitive text through a link that can be opened once.
+ru: Небольшой инструмент для отправки чувствительного текста по ссылке, которую можно открыть один раз.
+@private_delivery
+en: Private delivery
+ru: Приватная доставка
+@private_delivery_body
+en: Share passwords, tokens, access codes, and confidential notes through a flow built specifically for sensitive data.
+ru: Передавайте пароли, токены, коды доступа и конфиденциальные заметки через сценарий, созданный для чувствительных данных.
+@ephemeral
+en: Ephemeral by design
+ru: Одноразово по замыслу
+@ephemeral_body
+en: Secrets disappear after the first successful retrieval or when the server-side lifetime runs out.
+ru: Секреты исчезают после первого успешного получения или по истечении срока хранения на сервере.
+@controlled_access
+en: Controlled access
+ru: Контролируемый доступ
+@controlled_access_body
+en: Add an optional password layer so the link alone is not enough to reveal the message.
+ru: Добавьте необязательный пароль, чтобы одной ссылки было недостаточно для раскрытия сообщения.
+@reduced_exposure
+en: Reduced exposure across everyday channels
+ru: Меньше следов в повседневных каналах
+@reduced_exposure_body
+en: Keep sensitive information out of long email threads, chat histories, shared docs, and screenshots that are difficult to control later.
+ru: Не оставляйте чувствительные данные в длинных почтовых цепочках, историях чатов, общих документах и скриншотах.
+@fast_sharing
+en: Fast, low-friction sharing
+ru: Быстрая отправка без лишних шагов
+@fast_sharing_body
+en: Create a protected share in seconds and move information where it needs to go without breaking the workflow around it.
+ru: Создайте защищённую ссылку за секунды и передайте информацию без лишних прерываний.
+@real_use
+en: Built for real operational use
+ru: Для реальной рабочей практики
+@real_use_body
+en: Useful for administrators, developers, support staff, and anyone who handles sensitive information as part of daily work.
+ru: Полезно администраторам, разработчикам, поддержке и всем, кто ежедневно работает с чувствительной информацией.
+@why_stands_out
+en: Why it stands out
+ru: Почему это удобно
+@client_encryption
+en: Client-side encryption keeps the decryption key out of the server.
+ru: Шифрование на клиенте не передаёт ключ расшифровки серверу.
+@single_use
+en: Single-use retrieval and expiration reduce unnecessary persistence.
+ru: Одноразовое получение и срок жизни уменьшают лишнее хранение.
+@simple_serious
+en: Simple enough for quick sharing, serious enough for confidential data.
+ru: Достаточно просто для быстрой отправки и достаточно серьёзно для конфиденциальных данных.
+@less_exposure
+en: Less exposure
+ru: Меньше раскрытия
+@less_exposure_body
+en: A cleaner alternative to sending secrets through channels that were never designed for them.
+ru: Более чистая альтернатива отправке секретов через каналы, которые для этого не предназначены.
+@how_it_works
+en: How It Works
+ru: Как это работает
+@how_it_works_title
+en: Three steps from secret creation to disappearance.
+ru: Три шага от создания секрета до исчезновения.
+@how_it_works_body
+en: The workflow is built to stay short: encrypt in the browser, share the link, then let the stored blob vanish after use.
+ru: Сценарий короткий: зашифровать в браузере, отправить ссылку, затем дать сохранённому блобу исчезнуть после использования.
+@step_compose
+en: Compose and encrypt locally
+ru: Напишите и зашифруйте локально
+@step_compose_body
+en: Write the secret here. The browser encrypts it before upload, and the key stays in the link fragment instead of going to the server.
+ru: Напишите секрет здесь. Браузер зашифрует его перед загрузкой, а ключ останется во фрагменте ссылки и не попадёт на сервер.
+@step_share
+en: Share the generated link
+ru: Отправьте созданную ссылку
+@step_share_body
+en: Send the resulting link to the recipient. If needed, share the optional password through a different channel.
+ru: Отправьте полученную ссылку адресату. Если нужен пароль, передайте его по другому каналу.
+@step_open_once
+en: Open once, then lose access
+ru: Открыть один раз и потерять доступ
+@step_open_once_body
+en: When the recipient opens the full link, the secret is retrieved, decrypted in the browser, and removed from the server after the first successful fetch.
+ru: Когда получатель открывает полную ссылку, секрет загружается, расшифровывается в браузере и удаляется с сервера после первого успешного получения.
+@operational_note
+en: Operational note
+ru: Рабочая заметка
+@operational_note_body
+en: The server stores encrypted blobs in RAM with a fixed time limit, so anything not opened still ages out instead of lingering indefinitely.
+ru: Сервер хранит зашифрованные блобы в RAM с ограниченным сроком жизни, поэтому даже неоткрытые данные не остаются навсегда.
+@footer_body
+en: A secure drop for confidential messages that can be opened once and then vanish.
+ru: Безопасное место для конфиденциальных сообщений, которые открываются один раз и исчезают.
+@version
+en: Version
+ru: Версия
+@uptime
+en: Uptime
+ru: Время работы
+@secrets_served
+en: Secrets Served
+ru: Секретов выдано
+@javascript_required
+en: JavaScript required
+ru: Требуется JavaScript
+@javascript_required_body
+en: This page requires JavaScript with WebCrypto and Fetch to create or open secrets.
+ru: Для создания или открытия секретов этой странице нужен JavaScript с WebCrypto и Fetch.
+@ok
+en: OK
+ru: OK
+@action_needed
+en: Action needed
+ru: Требуется действие
+@too_large
+en: Too large. Shorten the secret and try again.
+ru: Слишком большой секрет. Сократите его и попробуйте снова.
+@very_close_limit
+en: Very close to the limit.
+ru: Почти достигнут лимит.
+@approaching_limit
+en: Approaching the size limit.
+ru: Приближение к лимиту размера.
+@create_link_error
+en: Could not create link
+ru: Не удалось создать ссылку
+@invalid_service_url
+en: Enter a valid service URL, for example https://example.com.
+ru: Введите корректный URL сервиса, например https://example.com.
+@origin_credentials
+en: Remove the username and password from the service URL.
+ru: Уберите имя пользователя и пароль из URL сервиса.
+@origin_path
+en: Use only the site origin. Do not include a path, query string, or #fragment.
+ru: Используйте только origin сайта. Не добавляйте путь, query string или #fragment.
+@origin_https
+en: Use an https:// service URL unless you are working on localhost.
+ru: Используйте URL сервиса с https://, если это не localhost.
+@generated_invalid
+en: The generated link data was invalid. Try creating the secret again.
+ru: Данные созданной ссылки некорректны. Попробуйте создать секрет заново.
+@clipboard_image_unavailable
+en: Your browser cannot copy images directly. Copy the image yourself.
+ru: Ваш браузер не может копировать изображения напрямую. Скопируйте изображение вручную.
+@clipboard_text_unavailable
+en: The secret was created, but this browser could not copy the link automatically. Select the generated link and copy it yourself.
+ru: Секрет создан, но браузер не смог автоматически скопировать ссылку. Выделите созданную ссылку и скопируйте её вручную.
+@service_unreachable
+en: Could not reach the secret service. Check that the server is running and the address is correct.
+ru: Не удалось подключиться к сервису секретов. Проверьте, что сервер запущен и адрес указан верно.
+@server_refused
+en: The server refused to save this secret. Try again with a fresh page.
+ru: Сервер отказался сохранить этот секрет. Обновите страницу и попробуйте снова.
+@server_busy
+en: The server is not accepting this request right now. Try again in a moment.
+ru: Сервер сейчас не принимает этот запрос. Попробуйте чуть позже.
+@rate_limited
+en: The service is being rate-limited or blocked. Wait a bit and try again.
+ru: Сервис ограничен по частоте запросов или заблокирован. Подождите и попробуйте снова.
+@server_failed
+en: The server failed while saving the secret. Try again in a moment.
+ru: Сервер не смог сохранить секрет. Попробуйте чуть позже.
+@create_secret_failed
+en: Could not create the secret link. Please try again.
+ru: Не удалось создать ссылку на секрет. Попробуйте снова.
+@creating_link
+en: Creating link…
+ru: Создание ссылки…
+@nothing_to_send
+en: Nothing to send
+ru: Нечего отправлять
+@enter_secret
+en: Enter a secret before creating a link.
+ru: Введите секрет перед созданием ссылки.
+@secret_too_large
+en: Secret is too large
+ru: Секрет слишком большой
+@shorten_secret
+en: Shorten the secret and try again.
+ru: Сократите секрет и попробуйте снова.
+@link_copied
+en: Link copied! Create another?
+ru: Ссылка скопирована! Создать ещё одну?
+@link_ready
+en: Link ready
+ru: Ссылка готова
+@link_created
+en: Link created
+ru: Ссылка создана
+@the_message
+en: The message
+ru: Сообщение
+@open_full_link_initial
+en: Open a full secret link to view its contents.
+ru: Откройте полную ссылку на секрет, чтобы увидеть содержимое.
+@copy_text
+en: Copy text
+ru: Скопировать текст
+@create_own_secret
+en: Create your own secret
+ru: Создать свой секрет
+@password_required
+en: Password required
+ru: Требуется пароль
+@enter_shared_password
+en: Enter the shared password to reveal the message
+ru: Введите переданный пароль, чтобы раскрыть сообщение
+@password_receive_placeholder
+en: If any, it should be sent to you via another route
+ru: Если пароль есть, его должны передать вам другим способом
+@open_secret
+en: Open secret
+ru: Открыть секрет
+@broken_link
+en: This link looks broken or incomplete.
+ru: Эта ссылка выглядит повреждённой или неполной.
+@secret_unavailable
+en: This secret is no longer available. It may have already been opened or expired.
+ru: Этот секрет больше недоступен. Возможно, его уже открыли или срок хранения истёк.
+@secret_damaged
+en: This secret could not be opened. The link may be damaged.
+ru: Не удалось открыть этот секрет. Возможно, ссылка повреждена.
+@secret_prepare_failed
+en: This secret could not be prepared for decryption.
+ru: Не удалось подготовить этот секрет к расшифровке.
+@open_secret_failed
+en: Could not open the secret. Try opening the full link again.
+ru: Не удалось открыть секрет. Попробуйте открыть полную ссылку ещё раз.
+@open_full_link
+en: Open a full secret link to view a message.
+ru: Откройте полную ссылку на секрет, чтобы увидеть сообщение.
+@receiving_secret
+en: Receiving secret...
+ru: Получение секрета...
+@no_pending_secret
+en: There is no secret waiting for password decryption.
+ru: Нет секрета, ожидающего расшифровки паролем.
+@wrong_password
+en: That password did not work. Check it and try again.
+ru: Этот пароль не подошёл. Проверьте его и попробуйте снова.
+@copied
+en: Copied
+ru: Скопировано
+@copy_failed
+en: Copy failed
+ru: Не удалось скопировать
