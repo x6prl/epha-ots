@@ -329,9 +329,9 @@ bool read_and_close_file(int fd, uint8_t *out, ssize_t size)
 }
 
 blk_size_t get_translated_file_size(const char *path, uint8_t *file_data,
-				   blk_size_t file_size,
-				   const TranslationEntry *entries,
-				   int entries_size)
+				    blk_size_t file_size,
+				    const TranslationEntry *entries,
+				    int entries_size)
 {
 	constexpr uint8_t TR_KEY_MARKER = '@';
 	blk_size_t ret = file_size;
@@ -363,7 +363,7 @@ blk_size_t translate_file(const char *path, uint8_t *file_data,
 {
 	constexpr uint8_t TR_KEY_MARKER = '@';
 	blk_size_t ret = file_size;
-	if (0 == strncmp(path, "/", 1) || 0 == strncmp(path, "/simple", 7) ||
+	if (0 == strncmp(path, "/", 2) || 0 == strncmp(path, "/simple", 8) ||
 	    0 == strncmp(path, "/receive", 9)) {
 		for (auto in_ptr = file_data; in_ptr < file_data + file_size;
 		     ++in_ptr) {
@@ -372,7 +372,7 @@ blk_size_t translate_file(const char *path, uint8_t *file_data,
 				     entry < entries + entries_size; ++entry) {
 					if (0 == memcmp(in_ptr, entry->key.data,
 							entry->key.size)) {
-						in_ptr += entry->key.size - 1;
+						in_ptr += entry->key.size;
 						memcpy(out_ptr,
 						       entry->value.data,
 						       entry->value.size);
@@ -382,14 +382,13 @@ blk_size_t translate_file(const char *path, uint8_t *file_data,
 						LOGD("%s -> %s\n",
 						     entry->key.data,
 						     entry->value.data);
-						continue;
+						break;
 					}
 					// LOG("%.*s", (int)entry->key.size, in_ptr);
 				}
-			} else {
-				*out_ptr = *in_ptr;
-				++out_ptr;
 			}
+			*out_ptr = *in_ptr;
+			++out_ptr;
 		}
 	} else {
 		ret = file_size;
