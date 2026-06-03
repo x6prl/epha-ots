@@ -328,71 +328,57 @@ bool read_and_close_file(int fd, uint8_t *out, ssize_t size)
 	return true;
 }
 
-blk_size_t get_translated_file_size(const char *path, uint8_t *file_data,
-				    blk_size_t file_size,
+blk_size_t get_translated_file_size(uint8_t *file_data, blk_size_t file_size,
 				    const TranslationEntry *entries,
 				    int entries_size)
 {
 	constexpr uint8_t TR_KEY_MARKER = '@';
 	blk_size_t ret = file_size;
-	if (0 == strncmp(path, "/", 1) || 0 == strncmp(path, "/simple", 7) ||
-	    0 == strncmp(path, "/receive", 9)) {
-		for (auto ptr = file_data; ptr < file_data + file_size; ++ptr) {
-			if (*ptr == TR_KEY_MARKER) {
-				for (auto entry = entries;
-				     entry < entries + entries_size; ++entry) {
-					if (0 == memcmp(ptr, entry->key.data,
-							entry->key.size)) {
-						ret -= entry->key.size;
-						ret += entry->value.size;
-						ptr += entry->key.size;
-						break;
-					}
+	for (auto ptr = file_data; ptr < file_data + file_size; ++ptr) {
+		if (*ptr == TR_KEY_MARKER) {
+			for (auto entry = entries;
+			     entry < entries + entries_size; ++entry) {
+				if (0 == memcmp(ptr, entry->key.data,
+						entry->key.size)) {
+					ret -= entry->key.size;
+					ret += entry->value.size;
+					ptr += entry->key.size;
+					break;
 				}
 			}
 		}
-	} else {
-		return file_size;
 	}
 	return ret;
 }
 
-blk_size_t translate_file(const char *path, uint8_t *file_data,
-			  blk_size_t file_size, const TranslationEntry *entries,
-			  int entries_size, uint8_t *out_ptr)
+blk_size_t translate_file(uint8_t *file_data, blk_size_t file_size,
+			  const TranslationEntry *entries, int entries_size,
+			  uint8_t *out_ptr)
 {
 	constexpr uint8_t TR_KEY_MARKER = '@';
 	blk_size_t ret = file_size;
-	if (0 == strncmp(path, "/", 2) || 0 == strncmp(path, "/simple", 8) ||
-	    0 == strncmp(path, "/receive", 9)) {
-		for (auto in_ptr = file_data; in_ptr < file_data + file_size;
-		     ++in_ptr) {
-			if (*in_ptr == TR_KEY_MARKER) {
-				for (auto entry = entries;
-				     entry < entries + entries_size; ++entry) {
-					if (0 == memcmp(in_ptr, entry->key.data,
-							entry->key.size)) {
-						in_ptr += entry->key.size;
-						memcpy(out_ptr,
-						       entry->value.data,
-						       entry->value.size);
-						ret -= entry->key.size;
-						ret += entry->value.size;
-						out_ptr += entry->value.size;
-						LOGD("%s -> %s\n",
-						     entry->key.data,
-						     entry->value.data);
-						break;
-					}
-					// LOG("%.*s", (int)entry->key.size, in_ptr);
+	for (auto in_ptr = file_data; in_ptr < file_data + file_size;
+	     ++in_ptr) {
+		if (*in_ptr == TR_KEY_MARKER) {
+			for (auto entry = entries;
+			     entry < entries + entries_size; ++entry) {
+				if (0 == memcmp(in_ptr, entry->key.data,
+						entry->key.size)) {
+					in_ptr += entry->key.size;
+					memcpy(out_ptr, entry->value.data,
+					       entry->value.size);
+					ret -= entry->key.size;
+					ret += entry->value.size;
+					out_ptr += entry->value.size;
+					LOGD("%s -> %s\n", entry->key.data,
+					     entry->value.data);
+					break;
 				}
+				// LOG("%.*s", (int)entry->key.size, in_ptr);
 			}
-			*out_ptr = *in_ptr;
-			++out_ptr;
 		}
-	} else {
-		ret = file_size;
-		memcpy(out_ptr, file_data, file_size);
+		*out_ptr = *in_ptr;
+		++out_ptr;
 	}
 	return ret;
 }
@@ -454,9 +440,8 @@ bool translate_assets()
 		for (size_t j = 0; j < ASSETS_COUNT; ++j) {
 			// NOTE: we are touching only first language
 			auto asset = &assets[0][j];
-			auto path = asset_paths[j];
 			auto translated_size = get_translated_file_size(
-				path, asset->data, asset->size, translations[i],
+				asset->data, asset->size, translations[i],
 				translation_COUNT);
 			translated_assets_memory_size += translated_size;
 		}
@@ -472,11 +457,8 @@ bool translate_assets()
 	for (Lang i = 0; i < lang_COUNT; ++i) {
 		for (size_t j = 0; j < ASSETS_COUNT; ++j) {
 			auto asset = &assets[i][j];
-
-			auto path = asset_paths[j];
-			// NOTE: translate only html assets
 			auto translated_size = translate_file(
-				path, asset->data, asset->size, translations[i],
+				asset->data, asset->size, translations[i],
 				translation_COUNT, data_ptr);
 			asset->data = data_ptr;
 			asset->size = translated_size;
