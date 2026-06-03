@@ -73,6 +73,12 @@ endif()
 
 configure_file(version.h.in version.h @ONLY)
 
+add_custom_target(translations ALL
+  COMMAND ${PYTHON3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/translations.py
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMENT "Generating translations"
+)
+
 if(ASSEMBLED_HTML)
   message(STATUS
     "ASSEMBLED_HTML requires python3 for tools/assemble_html.py and "
@@ -91,6 +97,7 @@ if(ASSEMBLED_HTML)
 endif()
 
 add_executable(adnihilum server.c storage.c translations.c log.c)
+add_dependencies(adnihilum translations)
 if(ASSEMBLED_HTML)
   add_dependencies(adnihilum client_assets)
 endif()
