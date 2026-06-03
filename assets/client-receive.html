@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>One link. One view. Gone.</title>
+    <title>@page_title@</title>
     <link rel="icon" type="image/png" href="adnihilum128.png">
     <link rel="stylesheet" href="client.css">
 </head>
@@ -15,12 +15,12 @@
                 <img src="adnihilum128.png" width="40" height="40" alt="Ad Nihilum">
                 <div>
                     <strong>Ad Nihilum</strong>
-                    <span>Let secrets disappear</span>
+                    <span>@tagline@</span>
                 </div>
             </a>
             <nav class="topbar-links" aria-label="Primary">
-                <a href="https://github.com/x6prl/adnihilum/#what-ad-nihilum-does-not-protect-against">Be careful</a>
-                <a href="https://github.com/x6prl/adnihilum/">GitHub</a>
+                <a href="https://github.com/x6prl/adnihilum/#what-ad-nihilum-does-not-protect-against">@be_careful@</a>
+                <a href="https://github.com/x6prl/adnihilum/">@github@</a>
             </nav>
         </header>
 
@@ -28,32 +28,32 @@
             <section class="panel panel-primary viewer-panel">
                 <div class="stack">
                     <div class="field-group field-group-main">
-                        <label for="text">The message</label>
-                        <output id="text" class="message-output receive-state-info" tabindex="0">Open a full secret link to view its contents.</output>
+                        <label for="text">@the_message@</label>
+                        <output id="text" class="message-output receive-state-info" tabindex="0">@open_full_link_initial@</output>
                     </div>
 
                     <div class="action-row">
-                        <button class="primary-btn" id="copySecretBtn" type="button">Copy text</button>
+                        <button class="primary-btn" id="copySecretBtn" type="button">@copy_text@</button>
                         <a class="secondary-btn primary-btn-link" data-create-link="true" href="/">
                             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M12 5v14M5 12h14"></path>
                             </svg>
-                            <span>Create your own secret</span>
+                            <span>@create_own_secret@</span>
                         </a>
                     </div>
 
                     <section class="decryption-card" id="decryptionCard">
                         <div class="decryption-copy">
-                            <h2>Password required</h2>
-                            <p class="field-note">Enter the shared password to reveal the message</p>
+                            <h2>@password_required@</h2>
+                            <p class="field-note">@enter_shared_password@</p>
                         </div>
                         <div class="field-grid">
                             <div class="field-group">
-                                <label for="decryptionPassword">Password</label>
-                                <input id="decryptionPassword" type="password" autocomplete="current-password" spellcheck="false" placeholder="If any, it should be sent to you via another route">
+                                <label for="decryptionPassword">@password@</label>
+                                <input id="decryptionPassword" type="password" autocomplete="current-password" spellcheck="false" placeholder="@password_receive_placeholder@">
                             </div>
                             <div class="inline-action">
-                                <button id="decryptBtn" class="primary-btn" type="button">Open secret</button>
+                                <button id="decryptBtn" class="primary-btn" type="button">@open_secret@</button>
                             </div>
                         </div>
                     </section>
@@ -64,11 +64,11 @@
         <footer class="site-footer">
             <div class="footer-block">
                 <strong>Ad Nihilum</strong>
-                <p>A secure drop for confidential messages that can be opened once and then vanish.</p>
+                <p>@footer_body@</p>
             </div>
             <div class="footer-links">
-                <a href="https://github.com/x6prl/adnihilum/">GitHub</a>
-                <a href="https://github.com/x6prl/adnihilum/blob/master/README.md">Readme</a>
+                <a href="https://github.com/x6prl/adnihilum/">@github@</a>
+                <a href="https://github.com/x6prl/adnihilum/blob/master/README.md">@readme@</a>
                 <a href="mailto:x6prlie@gmail.com">x6prlie@gmail.com</a>
                 <a href="https://t.me/x6prl">Telegram</a>
             </div>
