@@ -1,6 +1,6 @@
 @page_title
-en: One link. One view. Gone.
-ru: Одна ссылка. Один просмотр. Исчезло.
+en: Ad Nihilum
+ru: Ad Nihilum
 @tagline
 en: Let secrets disappear
 ru: Пусть секреты исчезают
@@ -27,13 +27,13 @@ en: Paste the secret you want to share.
 ru: Вставьте секрет, которым хотите поделиться.
 @how_to_use_step_password
 en: Add a password if needed and share that separately.
-ru: При необходимости добавьте пароль и передайте его отдельно.
+ru: При необходимости добавьте пароль и передайте его другим способом.
 @how_to_use_step_link
 en: Create the link and send the full URL to the recipient.
-ru: Создайте ссылку и отправьте получателю полный URL.
+ru: Сгенерируйте ссылку и отправьте получателю полный URL.
 @how_to_use_note
 en: The message can be opened once, then it disappears.
-ru: Сообщение можно открыть один раз, после чего оно исчезнет.
+ru: Сообщение можно открыть только единожды, после чего оно удаляется.
 @message_label
 en: Write your message in this field
 ru: Напишите сообщение в этом поле
@@ -81,10 +81,10 @@ en: A small tool for sending sensitive text through a link that can be opened on
 ru: Небольшой инструмент для отправки чувствительного текста по ссылке, которую можно открыть один раз.
 @private_delivery
 en: Private delivery
-ru: Приватная доставка
+ru: Конфиденциальная доставка
 @private_delivery_body
 en: Share passwords, tokens, access codes, and confidential notes through a flow built specifically for sensitive data.
-ru: Передавайте пароли, токены, коды доступа и конфиденциальные заметки через сценарий, созданный для чувствительных данных.
+ru: Передавайте пароли, токены, коды доступа и конфиденциальные заметки способом, специально созданном для чувствительных данных.
 @ephemeral
 en: Ephemeral by design
 ru: Одноразово по замыслу
@@ -96,7 +96,7 @@ en: Controlled access
 ru: Контролируемый доступ
 @controlled_access_body
 en: Add an optional password layer so the link alone is not enough to reveal the message.
-ru: Добавьте необязательный пароль, чтобы одной ссылки было недостаточно для раскрытия сообщения.
+ru: Добавьте пароль, и одной только ссылки будет недостаточно для раскрытия сообщения.
 @reduced_exposure
 en: Reduced exposure across everyday channels
 ru: Меньше следов в повседневных каналах
@@ -108,22 +108,22 @@ en: Fast, low-friction sharing
 ru: Быстрая отправка без лишних шагов
 @fast_sharing_body
 en: Create a protected share in seconds and move information where it needs to go without breaking the workflow around it.
-ru: Создайте защищённую ссылку за секунды и передайте информацию без лишних прерываний.
+ru: Создайте защищённую ссылку за секунды и передайте информацию без излишних усложнений.
 @real_use
 en: Built for real operational use
 ru: Для реальной рабочей практики
 @real_use_body
 en: Useful for administrators, developers, support staff, and anyone who handles sensitive information as part of daily work.
-ru: Полезно администраторам, разработчикам, поддержке и всем, кто ежедневно работает с чувствительной информацией.
+ru: Полезно администраторам, разработчикам, саппорту и всем, кто ежедневно работает с чувствительной информацией.
 @why_stands_out
 en: Why it stands out
-ru: Почему это удобно
+ru: Почему Ad Nihilum
 @client_encryption
 en: Client-side encryption keeps the decryption key out of the server.
 ru: Шифрование на клиенте не передаёт ключ расшифровки серверу.
 @single_use
 en: Single-use retrieval and expiration reduce unnecessary persistence.
-ru: Одноразовое получение и срок жизни уменьшают лишнее хранение.
+ru: Одноразовое получение и срок жизни уменьшают излишние цифровые следы.
 @simple_serious
 en: Simple enough for quick sharing, serious enough for confidential data.
 ru: Достаточно просто для быстрой отправки и достаточно серьёзно для конфиденциальных данных.
@@ -138,13 +138,13 @@ en: How It Works
 ru: Как это работает
 @how_it_works_title
 en: Three steps from secret creation to disappearance.
-ru: Три шага от создания секрета до исчезновения.
+ru: Три шага: от создания секрета до исчезновения.
 @how_it_works_body
 en: The workflow is built to stay short: encrypt in the browser, share the link, then let the stored blob vanish after use.
-ru: Сценарий короткий: зашифровать в браузере, отправить ссылку, затем дать сохранённому блобу исчезнуть после использования.
+ru: Сценарий короткий: зашифровать в браузере, отправить ссылку — и секрет сам исчезнет после использования.
 @step_compose
-en: Compose and encrypt locally
-ru: Напишите и зашифруйте локально
+en: Encrypt locally
+ru: Шифруйте локально
 @step_compose_body
 en: Write the secret here. The browser encrypts it before upload, and the key stays in the link fragment instead of going to the server.
 ru: Напишите секрет здесь. Браузер зашифрует его перед загрузкой, а ключ останется во фрагменте ссылки и не попадёт на сервер.
@@ -153,22 +153,22 @@ en: Share the generated link
 ru: Отправьте созданную ссылку
 @step_share_body
 en: Send the resulting link to the recipient. If needed, share the optional password through a different channel.
-ru: Отправьте полученную ссылку адресату. Если нужен пароль, передайте его по другому каналу.
+ru: Отправьте полученную ссылку адресату. Если если вы также используете пароль, передайте его по другому каналу.
 @step_open_once
 en: Open once, then lose access
 ru: Открыть один раз и потерять доступ
 @step_open_once_body
-en: When the recipient opens the full link, the secret is retrieved, decrypted in the browser, and removed from the server after the first successful fetch.
-ru: Когда получатель открывает полную ссылку, секрет загружается, расшифровывается в браузере и удаляется с сервера после первого успешного получения.
+en: When the recipient opens the full link, the secret is retrieved, decrypted in the browser, and removed from the server.
+ru: Когда получатель открывает полную ссылку, секрет загружается, расшифровывается в браузере и удаляется с сервера.
 @operational_note
 en: Operational note
-ru: Рабочая заметка
+ru: Имейте в виду
 @operational_note_body
-en: The server stores encrypted blobs in RAM with a fixed time limit, so anything not opened still ages out instead of lingering indefinitely.
-ru: Сервер хранит зашифрованные блобы в RAM с ограниченным сроком жизни, поэтому даже неоткрытые данные не остаются навсегда.
+en: The server stores your encrypted data in RAM with a fixed time limit, so anything not opened still ages out instead of lingering indefinitely.
+ru: Сервер хранит ваши зашифрованные данные в RAM с ограниченным сроком жизни, поэтому даже неоткрытые данные будут удалены.
 @footer_body
 en: A secure drop for confidential messages that can be opened once and then vanish.
-ru: Безопасное место для конфиденциальных сообщений, которые открываются один раз и исчезают.
+ru: Безопасное место для конфиденциальных сообщений, которые открываются только один раз.
 @version
 en: Version
 ru: Версия
@@ -177,7 +177,7 @@ en: Uptime
 ru: Время работы
 @secrets_served
 en: Secrets Served
-ru: Секретов выдано
+ru: Секретов доверено
 @javascript_required
 en: JavaScript required
 ru: Требуется JavaScript
@@ -186,7 +186,7 @@ en: This page requires JavaScript with WebCrypto and Fetch to create or open sec
 ru: Для создания или открытия секретов этой странице нужен JavaScript с WebCrypto и Fetch.
 @ok
 en: OK
-ru: OK
+ru: Хорошо
 @action_needed
 en: Action needed
 ru: Требуется действие
