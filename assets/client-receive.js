@@ -36,16 +36,16 @@
 	function friendlyReceiveError(err) {
 		const message = err && err.message ? err.message : String(err || '');
 		if (err && err.name === 'IdMismatchError')
-			return 'This link looks broken or incomplete.';
+			return shared.i18n('broken_link');
 		if (/Invalid base64 data|Key length mismatch|ID length mismatch/i.test(message))
-			return 'This link looks broken or incomplete.';
+			return shared.i18n('broken_link');
 		if (/GET .* (404|410)\b/i.test(message))
-			return 'This secret is no longer available. It may have already been opened or expired.';
+			return shared.i18n('secret_unavailable');
 		if (/Blob is too small|Unsupported blob type|Decrypted payload missing type tag/i.test(message))
-			return 'This secret could not be opened. The link may be damaged.';
+			return shared.i18n('secret_damaged');
 		if (/Failed to prepare password protected payload/i.test(message))
-			return 'This secret could not be prepared for decryption.';
-		return 'Could not open the secret. Try opening the full link again.';
+			return shared.i18n('secret_prepare_failed');
+		return shared.i18n('open_secret_failed');
 	}
 
 	function syncCopyButtonState() {
@@ -59,14 +59,14 @@
 	async function tryToReceiveSecret() {
 		const info = shared.parseLocationHash(window.location.hash || '');
 		if (!info) {
-			setViewerText('Open a full secret link to view a message.', 'info');
+			setViewerText(shared.i18n('open_full_link'), 'info');
 			return;
 		}
 
 		shared.clearLocationHash();
 		shared.clearPendingSecret();
 		shared.lockTextarea(true);
-		setViewerText('Receiving secret...', 'info');
+		setViewerText(shared.i18n('receiving_secret'), 'info');
 
 		let keyBytes = null;
 		let buf = null;
@@ -192,8 +192,7 @@
 	async function decryptPendingSecretWithPassword() {
 		const pending = shared.state.pendingSecret;
 		if (!pending || !pending.ciphertext) {
-			setViewerText('There is no secret waiting for password decryption.',
-				'error');
+			setViewerText(shared.i18n('no_pending_secret'));
 			return;
 		}
 
@@ -211,7 +210,7 @@
 		let decrypted = false;
 
 		try {
-			setViewerText('Receiving secret...', 'info');
+			setViewerText(shared.i18n('receiving_secret'), 'info');
 			const passwordKey = await shared.derivePasswordKey(
 				passwordValue,
 				pending.salt,
@@ -235,7 +234,7 @@
 			decrypted = true;
 		} catch (err) {
 			console.error(err);
-			setViewerText('That password did not work. Check it and try again.',
+			setViewerText(shared.i18n('wrong_password'),
 				'error');
 			passwordField.select();
 			passwordField.focus();
@@ -277,13 +276,13 @@
 					}
 					try {
 						await navigator.clipboard.writeText(currentText.textContent);
-						copyBtn.textContent = 'Copied';
+						copyBtn.textContent = shared.i18n('copied');
 						setTimeout(() => {
 							copyBtn.textContent = defaultCopyLabel;
 						}, 1200);
 					} catch (err) {
 						console.error(err);
-						copyBtn.textContent = 'Copy failed';
+						copyBtn.textContent = shared.i18n('copy_failed');
 						setTimeout(() => {
 							copyBtn.textContent = defaultCopyLabel;
 						}, 1200);

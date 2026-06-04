@@ -48,6 +48,7 @@
 	shared.initCommonUi();
 	shared.initPopup();
 	shared.bindSensitiveUiScrubbing();
+	shared.initI18n();
 	initResponsivePlaceholders();
 
 	if (window.AdNihilumSend && typeof window.AdNihilumSend.init === 'function')

@@ -57,34 +57,34 @@
 	function friendlySendError(err) {
 		const message = err && err.message ? err.message : String(err || '');
 		if (/^Invalid service origin URL$/i.test(message))
-			return 'Enter a valid service URL, for example https://example.com.';
+			return shared.i18n('invalid_service_url');
 		if (/^Origin must not include credentials$/i.test(message))
-			return 'Remove the username and password from the service URL.';
+			return shared.i18n('origin_credentials');
 		if (/^Origin must not include path, query, or fragment$/i.test(message))
-			return 'Use only the site origin. Do not include a path, query string, or #fragment.';
+			return shared.i18n('origin_path');
 		if (/^Service origin must use https:\/\//i.test(message))
-			return 'Use an https:// service URL unless you are working on localhost.';
+			return shared.i18n('origin_https');
 		if (/^Key length mismatch$|^ID length mismatch$|^Invalid base64 data$/i.test(message))
-			return 'The generated link data was invalid. Try creating the secret again.';
+			return shared.i18n('generated_invalid');
 		if (/^Image clipboard is not available/i.test(message))
-			return 'Your browser cannot copy images directly. Copy the image yourself.';
+			return shared.i18n('clipboard_image_unavailable');
 		if (/^Clipboard API unavailable$/i.test(message))
-			return 'The secret was created, but this browser could not copy the link automatically. Select the generated link and copy it yourself.';
+			return shared.i18n('clipboard_text_unavailable');
 		if (/Failed to fetch|NetworkError|Load failed/i.test(message))
-			return 'Could not reach the secret service. Check that the server is running and the address is correct.';
+			return shared.i18n('service_unreachable');
 		if (/POST .* 40[034]\b/i.test(message))
-			return 'The server refused to save this secret. Try again with a fresh page.';
+			return shared.i18n('server_refused');
 		if (/POST .* 41[03]\b/i.test(message))
-			return 'The server is not accepting this request right now. Try again in a moment.';
+			return shared.i18n('server_busy');
 		if (/POST .* 42[39]\b/i.test(message))
-			return 'The service is being rate-limited or blocked. Wait a bit and try again.';
+			return shared.i18n('rate_limited');
 		if (/POST .* 5\d\d\b/i.test(message))
-			return 'The server failed while saving the secret. Try again in a moment.';
-		return 'Could not create the secret link. Please try again.';
+			return shared.i18n('server_failed');
+		return shared.i18n('create_secret_failed');
 	}
 
 	function showSendError(err) {
-		shared.showPopup('Could not create link', friendlySendError(err));
+		shared.showPopup(shared.i18n('create_link_error'), friendlySendError(err));
 	}
 
 	function setInputsDisabled(disabled) {
@@ -163,7 +163,7 @@
 		shared.clearPendingSecret();
 		shared.lockTextarea(true);
 		setInputsDisabled(true);
-		setPrimaryButtonLabel('Creating link…', 'busy');
+		setPrimaryButtonLabel(shared.i18n('creating_link'), 'busy');
 
 		let keyBytes = null;
 		let nonce = null;
@@ -184,8 +184,8 @@
 			if (!textField.value) {
 				resetPrimaryButton();
 				textField.focus();
-				shared.showPopup('Nothing to send',
-					'Enter a secret before creating a link.');
+				shared.showPopup(shared.i18n('nothing_to_send'),
+					shared.i18n('enter_secret'));
 				return;
 			}
 
@@ -241,8 +241,8 @@
 			blob.set(ciphertext, nonce.length + salt.length);
 			if (blob.length > shared.BLOB_SIZE_MAX - 100) {
 				resetPrimaryButton();
-				shared.showPopup('Secret is too large',
-					'Shorten the secret and try again.');
+				shared.showPopup(shared.i18n('secret_too_large'),
+					shared.i18n('shorten_secret'));
 				return;
 			}
 
@@ -265,14 +265,14 @@
 				if (typeof navigator === 'undefined' ||
 					!navigator.clipboard ||
 					typeof navigator.clipboard.writeText !== 'function') {
-					throw new Error('Clipboard API unavailable');
+					throw new Error(shared.i18n('clipboard_text_unavailable'));
 				}
 				await navigator.clipboard.writeText(shared.state.link);
-				setPrimaryButtonLabel('Link copied! Create another?', 'success');
+				setPrimaryButtonLabel(shared.i18n('link_copied'), 'success');
 			} catch (copyErr) {
 				console.error(copyErr);
-				setPrimaryButtonLabel('Link ready', 'ready');
-				shared.showPopup('Link created',
+				setPrimaryButtonLabel(shared.i18n('link_ready'), 'ready');
+				shared.showPopup(shared.i18n('link_created'),
 					friendlySendError(copyErr));
 			}
 

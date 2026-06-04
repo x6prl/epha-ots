@@ -53,6 +53,22 @@
 	};
 	let qrInstance = null;
 
+	// Initialize i18n translations from data-i18n attribute
+	let i18nData = {};
+	const initI18n = () => {
+		try {
+			const rootElement = document.body;
+			if (rootElement && rootElement.dataset && rootElement.dataset.i18n) {
+				i18nData = JSON.parse(rootElement.dataset.i18n);
+			}
+		} catch (e) {
+			console.error('Failed to parse i18n data:', e);
+			i18nData = {};
+		}
+	};
+
+	const i18n = (key) => i18nData[key] || key;
+
 	const isMacLike = (() => {
 		if (typeof navigator === 'undefined')
 			return false;
@@ -100,7 +116,7 @@
 		if (!popup || !titleEl || !bodyEl)
 			return;
 
-		titleEl.textContent = title || 'Action needed';
+		titleEl.textContent = title || i18n('action_needed');
 		bodyEl.textContent = message || '';
 		if (typeof popup.showModal === 'function') {
 			if (!popup.open)
@@ -610,15 +626,15 @@
 					if (usageRatio >= 1) {
 						indicator.classList.add('danger');
 						label.textContent =
-							'Too large. Shorten the secret and try again.';
+							i18n('too_large');
 					} else if (usageRatio > 0.9) {
 						indicator.classList.add('danger');
 						label.textContent =
-							'Very close to the limit.';
+							i18n('very_close_limit');
 					} else {
 						indicator.classList.add('warning');
 						label.textContent =
-							'Approaching the size limit.';
+							i18n('approaching_limit');
 					}
 				};
 
@@ -632,6 +648,8 @@
 		$,
 		encoder,
 		decoder,
+		initI18n,
+		i18n,
 		KEY_SIZE,
 		NONCE_SIZE,
 		SALT_SIZE,
