@@ -152,13 +152,11 @@ label,
 
 .how-to-use {
     display: grid;
-    gap: 12px;
     max-width: 760px;
 }
 
 .how-to-use ol {
     display: grid;
-    gap: 8px;
     margin: 0;
     padding-left: 1.35rem;
     color: var(--ink-soft);
