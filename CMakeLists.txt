@@ -73,10 +73,12 @@ endif()
 
 configure_file(version.h.in version.h @ONLY)
 
-add_custom_target(translations ALL
+find_program(PYTHON3_EXECUTABLE python3 REQUIRED)
+
+message(STATUS "Generating translations")
+execute_process(
   COMMAND ${PYTHON3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/translations.py
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  COMMENT "Generating translations"
 )
 
 if(ASSEMBLED_HTML)
@@ -84,7 +86,6 @@ if(ASSEMBLED_HTML)
     "ASSEMBLED_HTML requires python3 for tools/assemble_html.py and "
     "uglifyjs (from uglify-js) for tools/minify.sh"
   )
-  find_program(PYTHON3_EXECUTABLE python3 REQUIRED)
   set(CSP_HASHES_HEADER ${CMAKE_CURRENT_BINARY_DIR}/csp_hashes.h)
 
   add_custom_target(client_assets ALL
@@ -97,7 +98,6 @@ if(ASSEMBLED_HTML)
 endif()
 
 add_executable(adnihilum server.c storage.c translations.c log.c)
-add_dependencies(adnihilum translations)
 if(ASSEMBLED_HTML)
   add_dependencies(adnihilum client_assets)
 endif()

@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential cmake libmicrohttpd-dev
+          sudo apt-get install -y build-essential cmake libmicrohttpd-dev python3
 
       - name: Configure
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DASSEMBLED_HTML=OFF
