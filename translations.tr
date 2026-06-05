@@ -1,324 +1,1295 @@
 @page_title
 en: Ad Nihilum
 ru: Ad Nihilum
+de: Ad Nihilum
+zh: Ad Nihilum
+uk: Ad Nihilum
+es: Ad Nihilum
+hi: Ad Nihilum
+bn: Ad Nihilum
+pt: Ad Nihilum
+ja: Ad Nihilum
+
 @tagline
 en: Let secrets disappear
 ru: Пусть секреты исчезают
+de: Lassen Sie Geheimnisse verschwinden
+zh: 让秘密消失
+uk: Нехай секрети зникають
+es: Deja que los secretos desaparezcan
+hi: रहस्यों को गायब होने दें
+bn: গোপন বিষয়গুলোকে মিলিয়ে যেতে দিন
+pt: Deixe os segredos desaparecerem
+ja: 秘密を消し去ろう
+
 @be_careful
 en: Be careful
 ru: Будьте осторожны
+de: Vorsicht
+zh: 小心
+uk: Будьте обережні
+es: Ten cuidado
+hi: सावधान रहें
+bn: সতর্ক থাকুন
+pt: Tenha cuidado
+ja: 注意
+
 @github
 en: GitHub
 ru: GitHub
+de: GitHub
+zh: GitHub
+uk: GitHub
+es: GitHub
+hi: GitHub
+bn: GitHub
+pt: GitHub
+ja: GitHub
+
 @readme
 en: Readme
 ru: Readme
+de: Readme
+zh: 自述文件
+uk: Readme
+es: Readme
+hi: रीडमी
+bn: রিডমি
+pt: Readme
+ja: リードミー
+
 @simple
 en: Simplier!
 ru: Проще!
+de: Einfacher!
+zh: 更简单！
+uk: Простіше!
+es: ¡Más simple!
+hi: और सरल!
+bn: আরও সহজ!
+pt: Mais simples!
+ja: もっと簡単に！
+
 @noscript
 en: JavaScript with WebCrypto and Fetch is required to create or open secrets.
 ru: Для создания или открытия секретов нужен JavaScript с WebCrypto и Fetch.
+de: JavaScript mit WebCrypto und Fetch ist erforderlich, um Geheimnisse zu erstellen oder zu öffnen.
+zh: 创建或打开秘密需要支持 WebCrypto 和 Fetch 的 JavaScript。
+uk: Для створення або відкриття секретів потрібен JavaScript з WebCrypto та Fetch.
+es: Se requiere JavaScript con WebCrypto y Fetch para crear o abrir secretos.
+hi: रहस्य बनाने या खोलने के लिए WebCrypto और Fetch के साथ JavaScript की आवश्यकता है।
+bn: গোপন বিষয় তৈরি বা খোলার জন্য WebCrypto এবং Fetch সহ JavaScript প্রয়োজন।
+pt: É necessário JavaScript com WebCrypto e Fetch para criar ou abrir segredos.
+ja: 秘密を作成または開くには、WebCryptoとFetchをサポートするJavaScriptが必要です。
+
 @how_to_use
 en: How To Use
 ru: Как пользоваться
+de: Anleitung
+zh: 如何使用
+uk: Як користуватися
+es: Cómo usar
+hi: कैसे उपयोग करें
+bn: কীভাবে ব্যবহার করবেন
+pt: Como usar
+ja: 使い方
+
 @how_to_use_step_paste
 en: Paste the secret you want to share.
 ru: Вставьте секрет, которым хотите поделиться.
+de: Fügen Sie das Geheimnis ein, das Sie teilen möchten.
+zh: 粘贴您想要分享的秘密。
+uk: Вставте секрет, яким хочете поділитися.
+es: Pega el secreto que quieres compartir.
+hi: वह रहस्य पेस्ट करें जिसे आप साझा करना चाहते हैं।
+bn: আপনি যে গোপন বিষয়টি শেয়ার করতে চান তা পেস্ট করুন।
+pt: Cole o segredo que deseja compartilhar.
+ja: 共有したい秘密を貼り付けます。
+
 @how_to_use_step_password
 en: Add a password if needed and share that separately.
 ru: При необходимости добавьте пароль и передайте его другим способом.
+de: Fügen Sie bei Bedarf ein Passwort hinzu und teilen Sie es separat mit.
+zh: 如果需要，添加密码并单独分享。
+uk: За потреби додайте пароль і передайте його іншим способом.
+es: Añade una contraseña si es necesario y compártela por separado.
+hi: यदि आवश्यक हो तो एक पासवर्ड जोड़ें और उसे अलग से साझा करें।
+bn: প্রয়োজনে একটি পাসওয়ার্ড যোগ করুন এবং তা আলাদাভাবে শেয়ার করুন।
+pt: Adicione uma senha se necessário e compartilhe-a separadamente.
+ja: 必要に応じてパスワードを追加し、別途共有します。
+
 @how_to_use_step_link
 en: Create the link and send the full URL to the recipient.
 ru: Сгенерируйте ссылку и отправьте получателю полный URL.
+de: Erstellen Sie den Link und senden Sie die vollständige URL an den Empfänger.
+zh: 创建链接并将完整 URL 发送给接收者。
+uk: Згенеруйте посилання і надішліть отримувачу повний URL.
+es: Crea el enlace y envía la URL completa al destinatario.
+hi: लिंक बनाएं और प्राप्तकर्ता को पूरा URL भेजें।
+bn: লিঙ্কটি তৈরি করুন এবং প্রাপকের কাছে সম্পূর্ণ URL পাঠান।
+pt: Crie o link e envie a URL completa para o destinatário.
+ja: リンクを作成し、受信者に完全なURLを送信します。
+
 @how_to_use_note
 en: The message can be opened once, then it disappears.
 ru: Сообщение можно открыть только единожды, после чего оно удаляется.
+de: Die Nachricht kann nur einmal geöffnet werden, danach verschwindet sie.
+zh: 消息只能打开一次，然后就会消失。
+uk: Повідомлення можна відкрити лише один раз, після чого воно видаляється.
+es: El mensaje se puede abrir una sola vez, luego desaparece.
+hi: संदेश को केवल एक बार खोला जा सकता है, उसके बाद वह गायब हो जाता है।
+bn: বার্তাটি কেবল একবার খোলা যেতে পারে, তারপর এটি মিলিয়ে যায়।
+pt: A mensagem pode ser aberta apenas uma vez, depois desaparece.
+ja: メッセージは一度だけ開くことができ、その後消滅します。
+
 @message_label
 en: Write your message in this field
 ru: Напишите сообщение в этом поле
+de: Schreiben Sie Ihre Nachricht in dieses Feld
+zh: 在此字段中写下您的消息
+uk: Напишіть повідомлення в цьому полі
+es: Escribe tu mensaje en este campo
+hi: इस फ़ील्ड में अपना संदेश लिखें
+bn: এই ক্ষেত্রে আপনার বার্তা লিখুন
+pt: Escreva sua mensagem neste campo
+ja: このフィールドにメッセージを書きます
+
 @message_placeholder_desktop
 en: Paste the message, token, or credentials here. Press Ctrl+Enter to create and copy the link.
 ru: Вставьте сюда сообщение, токен или учётные данные. Нажмите Ctrl+Enter, чтобы создать и скопировать ссылку.
+de: Fügen Sie hier die Nachricht, das Token oder die Zugangsdaten ein. Drücken Sie Strg+Enter, um den Link zu erstellen und zu kopieren.
+zh: 在此处粘贴消息、令牌或凭据。按 Ctrl+Enter 创建并复制链接。
+uk: Вставте сюди повідомлення, токен або облікові дані. Натисніть Ctrl+Enter, щоб створити та скопіювати посилання.
+es: Pega aquí el mensaje, token o credenciales. Presiona Ctrl+Enter para crear y copiar el enlace.
+hi: यहां संदेश, टोकन या क्रेडेंशियल्स पेस्ट करें। लिंक बनाने और कॉपी करने के लिए Ctrl+Enter दबाएं।
+bn: এখানে বার্তা, টোকেন বা শংসাপত্র পেস্ট করুন। লিঙ্ক তৈরি এবং কপি করতে Ctrl+Enter চাপুন।
+pt: Cole a mensagem, token ou credenciais aqui. Pressione Ctrl+Enter para criar e copiar o link.
+ja: ここにメッセージ、トークン、または資格情報を貼り付けます。Ctrl+Enterを押してリンクを作成し、コピーします。
+
 @message_placeholder_mobile
 en: Paste the message, token, or credentials here.
 ru: Вставьте сюда сообщение, токен или учётные данные.
+de: Fügen Sie hier die Nachricht, das Token oder die Zugangsdaten ein.
+zh: 在此处粘贴消息、令牌或凭据。
+uk: Вставте сюди повідомлення, токен або облікові дані.
+es: Pega aquí el mensaje, token o credenciales.
+hi: यहां संदेश, टोकन या क्रेडेंशियल्स पेस्ट करें।
+bn: এখানে বার্তা, টোকেন বা শংসাপত্র পেস্ট করুন।
+pt: Cole a mensagem, token ou credenciais aqui.
+ja: ここにメッセージ、トークン、または資格情報を貼り付けます。
+
 @password_optional
 en: Password (optional)
 ru: Пароль (необязательно)
+de: Passwort (optional)
+zh: 密码（可选）
+uk: Пароль (необов'язково)
+es: Contraseña (opcional)
+hi: पासवर्ड (वैकल्पिक)
+bn: পাসওয়ার্ড (ঐচ্ছিক)
+pt: Senha (opcional)
+ja: パスワード（任意）
+
 @password
 en: Password
 ru: Пароль
+de: Passwort
+zh: 密码
+uk: Пароль
+es: Contraseña
+hi: पासवर्ड
+bn: পাসওয়ার্ড
+pt: Senha
+ja: パスワード
+
 @password_placeholder
 en: Send not with the link, though.
 ru: Но не отправляйте его вместе со ссылкой.
+de: Senden Sie es jedoch nicht zusammen mit dem Link.
+zh: 但不要将其与链接一起发送。
+uk: Але не надсилайте його разом із посиланням.
+es: Pero no la envíes junto con el enlace.
+hi: लेकिन इसे लिंक के साथ न भेजें।
+bn: তবে এটি লিঙ্কের সাথে পাঠাবেন না।
+pt: Mas não a envie junto com o link.
+ja: ただし、リンクと一緒に送信しないでください。
+
 @password_note
 en: The password is never sent to the server.
 ru: Пароль никогда не отправляется на сервер.
+de: Das Passwort wird niemals an den Server gesendet.
+zh: 密码永远不会发送到服务器。
+uk: Пароль ніколи не надсилається на сервер.
+es: La contraseña nunca se envía al servidor.
+hi: पासवर्ड कभी भी सर्वर पर नहीं भेजा जाता है।
+bn: পাসওয়ার্ড কখনই সার্ভারে পাঠানো হয় না।
+pt: A senha nunca é enviada para o servidor.
+ja: パスワードがサーバーに送信されることはありません。
+
 @create_copy_link
 en: Create and copy link
 ru: Создать и скопировать ссылку
+de: Link erstellen und kopieren
+zh: 创建并复制链接
+uk: Створити та скопіювати посилання
+es: Crear y copiar enlace
+hi: लिंक बनाएं और कॉपी करें
+bn: লিঙ্ক তৈরি এবং কপি করুন
+pt: Criar e copiar link
+ja: リンクを作成してコピー
+
 @copy_link
 en: Copy link
 ru: Скопировать ссылку
+de: Link kopieren
+zh: 复制链接
+uk: Скопіювати посилання
+es: Copiar enlace
+hi: लिंक कॉपी करें
+bn: লিঙ্ক কপি করুন
+pt: Copiar link
+ja: リンクをコピー
+
 @copy_qr_image
 en: Copy QR image
 ru: Скопировать QR-код
+de: QR-Bild kopieren
+zh: 复制二维码图像
+uk: Скопіювати QR-код
+es: Copiar imagen QR
+hi: QR छवि कॉपी करें
+bn: QR ছবি কপি করুন
+pt: Copiar imagem QR
+ja: QR画像をコピー
+
 @share_link
 en: Share Link
 ru: Ссылка для отправки
+de: Link teilen
+zh: 分享链接
+uk: Посилання для надсилання
+es: Compartir enlace
+hi: लिंक साझा करें
+bn: লিঙ্ক শেয়ার করুন
+pt: Compartilhar link
+ja: リンクを共有
+
 @qr_note
 en: Use the QR code only if the recipient can open the link immediately.
 ru: Используйте QR-код только если получатель сможет сразу открыть ссылку.
+de: Verwenden Sie den QR-Code nur, wenn der Empfänger den Link sofort öffnen kann.
+zh: 仅当接收者可以立即打开链接时才使用二维码。
+uk: Використовуйте QR-код, лише якщо отримувач зможе одразу відкрити посилання.
+es: Usa el código QR solo si el destinatario puede abrir el enlace inmediatamente.
+hi: QR कोड का उपयोग केवल तभी करें जब प्राप्तकर्ता तुरंत लिंक खोल सके।
+bn: প্রাপক যদি অবিলম্বে লিঙ্কটি খুলতে পারেন তবেই QR কোড ব্যবহার করুন।
+pt: Use o código QR apenas se o destinatário puder abrir o link imediatamente.
+ja: 受信者がすぐにリンクを開ける場合にのみQRコードを使用してください。
+
 @details
 en: Details
 ru: Детали
+de: Details
+zh: 详情
+uk: Деталі
+es: Detalles
+hi: विवरण
+bn: বিবরণ
+pt: Detalhes
+ja: 詳細
+
 @features_title
 en: Use this for secrets that should not stay in chats or email.
 ru: Используйте это для секретов, которым не место в чатах или почте.
+de: Nutzen Sie dies für Geheimnisse, die nicht in Chats oder E-Mails verweilen sollten.
+zh: 将此用于不应留在聊天或电子邮件中的秘密。
+uk: Використовуйте це для секретів, яким не місце в чатах чи пошті.
+es: Usa esto para secretos que no deberían quedarse en chats o correos.
+hi: इसका उपयोग उन रहस्यों के लिए करें जिन्हें चैट या ईमेल में नहीं रहना चाहिए।
+bn: চ্যাট বা ইমেইলে থাকা উচিত নয় এমন গোপন বিষয়ের জন্য এটি ব্যবহার করুন।
+pt: Use isso para segredos que não deveriam ficar em chats ou e-mails.
+ja: チャットやメールに残すべきではない秘密にこれを使用してください。
+
 @features_body
 en: A small tool for sending sensitive text through a link that can be opened once.
 ru: Небольшой инструмент для отправки чувствительного текста по ссылке, которую можно открыть один раз.
+de: Ein kleines Werkzeug zum Senden sensibler Texte über einen Link, der nur einmal geöffnet werden kann.
+zh: 一个小工具，用于通过只能打开一次的链接发送敏感文本。
+uk: Невеликий інструмент для надсилання чутливого тексту за посиланням, яке можна відкрити один раз.
+es: Una pequeña herramienta para enviar texto sensible a través de un enlace que se puede abrir una vez.
+hi: एक बार खोले जा सकने वाले लिंक के माध्यम से संवेदनशील टेक्स्ट भेजने के लिए एक छोटा उपकरण।
+bn: একবার খোলা যায় এমন লিঙ্কের মাধ্যমে সংবেদনশীল পাঠ্য পাঠানোর জন্য একটি ছোট টুল।
+pt: Uma pequena ferramenta para enviar texto sensível através de um link que pode ser aberto uma vez.
+ja: 一度だけ開けるリンクを通じて機密テキストを送信するための小さなツール。
+
 @private_delivery
 en: Private delivery
 ru: Конфиденциальная доставка
+de: Vertrauliche Zustellung
+zh: 私密传递
+uk: Конфіденційна доставка
+es: Entrega privada
+hi: निजी डिलीवरी
+bn: ব্যক্তিগত ডেলিভারি
+pt: Entrega privada
+ja: プライベートな配送
+
 @private_delivery_body
 en: Share passwords, tokens, access codes, and confidential notes through a flow built specifically for sensitive data.
 ru: Передавайте пароли, токены, коды доступа и конфиденциальные заметки способом, специально созданном для чувствительных данных.
+de: Teilen Sie Passwörter, Token, Zugangscodes und vertrauliche Notizen über einen Fluss, der speziell für sensible Daten entwickelt wurde.
+zh: 通过专为敏感数据构建的流程分享密码、令牌、访问代码和机密笔记。
+uk: Передавайте паролі, токени, коди доступу та конфіденційні нотатки способом, спеціально створеним для чутливих даних.
+es: Comparte contraseñas, tokens, códigos de acceso y notas confidenciales a través de un flujo diseñado específicamente para datos sensibles.
+hi: संवेदनशील डेटा के लिए विशेष रूप से बनाए गए प्रवाह के माध्यम से पासवर्ड, टोकन, एक्सेस कोड और गोपनीय नोट साझा करें।
+bn: সংবেদনশীল ডেটার জন্য বিশেষভাবে তৈরি প্রবাহের মাধ্যমে পাসওয়ার্ড, টোকেন, অ্যাক্সেস কোড এবং গোপন নোট শেয়ার করুন।
+pt: Compartilhe senhas, tokens, códigos de acesso e notas confidenciais através de um fluxo construído especificamente para dados sensíveis.
+ja: 機密データ専用に構築されたフローを通じて、パスワード、トークン、アクセスコード、機密メモを共有します。
+
 @ephemeral
 en: Ephemeral by design
 ru: Одноразово по замыслу
+de: Von Natur aus vergänglich
+zh: 设计上的一次性
+uk: Одноразово за задумом
+es: Efímero por diseño
+hi: डिज़ाइन द्वारा क्षणिक
+bn: ডিজাইনগতভাবে ক্ষণস্থায়ী
+pt: Efêmero por design
+ja: 設計上の一時的なもの
+
 @ephemeral_body
 en: Secrets disappear after the first successful retrieval or when the server-side lifetime runs out.
 ru: Секреты исчезают после первого успешного получения или по истечении срока хранения на сервере.
+de: Geheimnisse verschwinden nach der ersten erfolgreichen Abfrage oder wenn die serverseitige Lebensdauer abläuft.
+zh: 秘密在第一次成功检索后或服务器端生存期耗尽时消失。
+uk: Секрети зникають після першого успішного отримання або після закінчення терміну зберігання на сервері.
+es: Los secretos desaparecen después de la primera recuperación exitosa o cuando caduca el tiempo de vida en el servidor.
+hi: रहस्य पहली सफल पुनर्प्राप्ति के बाद या सर्वर-साइड जीवनकाल समाप्त होने पर गायब हो जाते हैं।
+bn: প্রথম সফল পুনরুদ্ধারের পরে বা সার্ভার-সাইডের জীবনকাল শেষ হয়ে গেলে গোপন বিষয়গুলো মিলিয়ে যায়।
+pt: Os segredos desaparecem após a primeira recuperação bem-sucedida ou quando o tempo de vida no servidor acaba.
+ja: 秘密は、最初の正常な取得後、またはサーバー側の有効期限が切れると消滅します。
+
 @controlled_access
 en: Controlled access
 ru: Контролируемый доступ
+de: Kontrollierter Zugriff
+zh: 受控访问
+uk: Контрольований доступ
+es: Acceso controlado
+hi: नियंत्रित पहुंच
+bn: নিয়ন্ত্রিত অ্যাক্সেস
+pt: Acesso controlado
+ja: 制御されたアクセス
+
 @controlled_access_body
 en: Add an optional password layer so the link alone is not enough to reveal the message.
 ru: Добавьте пароль, и одной только ссылки будет недостаточно для раскрытия сообщения.
+de: Fügen Sie eine optionale Passwortschicht hinzu, damit der Link allein nicht ausreicht, um die Nachricht zu enthüllen.
+zh: 添加可选的密码层，这样仅靠链接不足以揭示消息。
+uk: Додайте пароль, і одного лише посилання буде недостатньо для розкриття повідомлення.
+es: Añade una capa de contraseña opcional para que solo el enlace no sea suficiente para revelar el mensaje.
+hi: एक वैकल्पिक पासवर्ड लेयर जोड़ें ताकि केवल लिंक संदेश को प्रकट करने के लिए पर्याप्त न हो।
+bn: একটি ঐচ্ছিক পাসওয়ার্ড স্তর যোগ করুন যাতে শুধুমাত্র লিঙ্কটি বার্তা প্রকাশ করার জন্য যথেষ্ট না হয়।
+pt: Adicione uma camada de senha opcional para que apenas o link não seja suficiente para revelar a mensagem.
+ja: オプションのパスワード層を追加して、リンクだけではメッセージを明らかにできないようにします。
+
 @reduced_exposure
 en: Reduced exposure across everyday channels
 ru: Меньше следов в повседневных каналах
+de: Reduzierte Exposition in alltäglichen Kanälen
+zh: 减少在日常渠道中的暴露
+uk: Менше слідів у повсякденних каналах
+es: Menor exposición en los canales cotidianos
+hi: रोजमर्रा के चैनलों पर कम जोखिम
+bn: প্রতিদিনের চ্যানেলগুলোতে কম এক্সপোজার
+pt: Menor exposição nos canais do dia a dia
+ja: 日常のチャネルでの露出を低減
+
 @reduced_exposure_body
 en: Keep sensitive information out of long email threads, chat histories, shared docs, and screenshots that are difficult to control later.
 ru: Не оставляйте чувствительные данные в длинных почтовых цепочках, историях чатов, общих документах и скриншотах.
+de: Halten Sie sensible Informationen aus langen E-Mail-Threads, Chat-Verläufen, gemeinsamen Dokumenten und Screenshots fern, die später schwer zu kontrollieren sind.
+zh: 避免将敏感信息留在以后难以控制的长电子邮件线程、聊天记录、共享文档和截图中。
+uk: Не залишайте чутливі дані в довгих поштових ланцюжках, історіях чатів, спільних документах та скріншотах.
+es: Mantén la información sensible fuera de hilos de correo largos, historiales de chat, documentos compartidos y capturas de pantalla que son difíciles de controlar más tarde.
+hi: संवेदनशील जानकारी को लंबे ईमेल थ्रेड्स, चैट हिस्ट्री, साझा दस्तावेज़ों और स्क्रीनशॉट से दूर रखें जिन्हें बाद में नियंत्रित करना मुश्किल होता है।
+bn: সংবেদনশীল তথ্যকে দীর্ঘ ইমেইল থ্রেড, চ্যাট ইতিহাস, শেয়ার করা ডকুমেন্ট এবং স্ক্রিনশট থেকে দূরে রাখুন যা পরে নিয়ন্ত্রণ করা কঠিন।
+pt: Mantenha informações sensíveis fora de longas threads de e-mail, históricos de chat, documentos compartilhados e capturas de tela que são difíceis de controlar depois.
+ja: 後で制御するのが難しい長いメールスレッド、チャット履歴、共有ドキュメント、スクリーンショットから機密情報を除外します。
+
 @fast_sharing
 en: Fast, low-friction sharing
 ru: Быстрая отправка без лишних шагов
+de: Schnelles, reibungsloses Teilen
+zh: 快速、低摩擦的分享
+uk: Швидке надсилання без зайвих кроків
+es: Compartir rápido y sin fricciones
+hi: तेज़, कम घर्षण वाला साझाकरण
+bn: দ্রুত, কম ঘর্ষণের শেয়ারিং
+pt: Compartilhamento rápido e sem atrito
+ja: 速くて摩擦の少ない共有
+
 @fast_sharing_body
 en: Create a protected share in seconds and move information where it needs to go without breaking the workflow around it.
 ru: Создайте защищённую ссылку за секунды и передайте информацию без излишних усложнений.
+de: Erstellen Sie in Sekunden eine geschützte Freigabe und verschieben Sie Informationen dorthin, wo sie hingehören, ohne den Arbeitsablauf zu unterbrechen.
+zh: 在几秒内创建受保护的分享，并将信息移动到需要的地方，而不会破坏周围的工作流程。
+uk: Створіть захищене посилання за лічені секунди і передайте інформацію без зайвих ускладнень.
+es: Crea un recurso compartido protegido en segundos y mueve la información donde necesita ir sin romper el flujo de trabajo.
+hi: सेकंडों में एक सुरक्षित साझाकरण बनाएं और जानकारी को वहां ले जाएं जहां इसे जाने की आवश्यकता है, बिना इसके आसपास के वर्कफ़्लो को तोड़े।
+bn: সেকেন্ডের মধ্যে একটি সুরক্ষিত শেয়ার তৈরি করুন এবং তথ্যকে যেখানে যাওয়া দরকার সেখানে নিয়ে যান, এর চারপাশের ওয়ার্কফ্লো না ভেঙে।
+pt: Crie um compartilhamento protegido em segundos e mova as informações para onde precisam ir sem quebrar o fluxo de trabalho.
+ja: 数秒で保護された共有を作成し、ワークフローを中断せずに情報が必要な場所に移動します。
+
 @real_use
 en: Built for real operational use
 ru: Для реальной рабочей практики
+de: Für den echten operativen Einsatz gebaut
+zh: 为实际运营使用而构建
+uk: Для реальної робочої практики
+es: Construido para uso operativo real
+hi: वास्तविक परिचालन उपयोग के लिए निर्मित
+bn: বাস্তব অপারেশনাল ব্যবহারের জন্য তৈরি
+pt: Construído para uso operacional real
+ja: 実際の運用使用のために構築
+
 @real_use_body
 en: Useful for administrators, developers, support staff, and anyone who handles sensitive information as part of daily work.
 ru: Полезно администраторам, разработчикам, саппорту и всем, кто ежедневно работает с чувствительной информацией.
+de: Nützlich für Administratoren, Entwickler, Support-Mitarbeiter und alle, die im Rahmen ihrer täglichen Arbeit mit sensiblen Informationen umgehen.
+zh: 对管理员、开发人员、支持人员以及日常工作中处理敏感信息的任何人都有用。
+uk: Корисно адміністраторам, розробникам, підтримці та всім, хто щодня працює з чутливою інформацією.
+es: Útil para administradores, desarrolladores, personal de soporte y cualquiera que maneje información sensible como parte de su trabajo diario.
+hi: व्यवस्थापकों, डेवलपर्स, सहायता कर्मचारियों और किसी भी व्यक्ति के लिए उपयोगी जो दैनिक कार्य के हिस्से के रूप में संवेदनशील जानकारी को संभालता है।
+bn: প্রশাসক, ডেভেলপার, সাপোর্ট স্টাফ এবং যারা দৈনন্দিন কাজের অংশ হিসেবে সংবেদনশীল তথ্য পরিচালনা করেন তাদের জন্য উপযোগী।
+pt: Útil para administradores, desenvolvedores, equipe de suporte e qualquer pessoa que lide com informações sensíveis como parte do trabalho diário.
+ja: 管理者、開発者、サポートスタッフ、および日々の業務の一部として機密情報を扱うすべての人に役立ちます。
+
 @why_stands_out
 en: Why it stands out
 ru: Почему Ad Nihilum
+de: Warum es heraussticht
+zh: 为何脱颖而出
+uk: Чому Ad Nihilum
+es: Por qué destaca
+hi: यह क्यों अलग है
+bn: এটি কেন আলাদা
+pt: Por que se destaca
+ja: 際立っている理由
+
 @client_encryption
 en: Client-side encryption keeps the decryption key out of the server.
 ru: Шифрование на клиенте не передаёт ключ расшифровки серверу.
+de: Clientseitige Verschlüsselung hält den Entschlüsselungsschlüssel fern vom Server.
+zh: 客户端加密使解密密钥远离服务器。
+uk: Шифрування на клієнті не передає ключ розшифровки серверу.
+es: El cifrado del lado del cliente mantiene la clave de descifrado fuera del servidor.
+hi: क्लाइंट-साइड एन्क्रिप्शन डिक्रिप्शन कुंजी को सर्वर से दूर रखता है।
+bn: ক্লায়েন্ট-সাইড এনক্রিপশন ডিক্রিপশন কীকে সার্ভারের বাইরে রাখে।
+pt: A criptografia do lado do cliente mantém a chave de descriptografia fora do servidor.
+ja: クライアントサイドの暗号化により、復号キーがサーバーから離れます。
+
 @single_use
 en: Single-use retrieval and expiration reduce unnecessary persistence.
 ru: Одноразовое получение и срок жизни уменьшают излишние цифровые следы.
+de: Einmalige Abfrage und Ablauf reduzieren unnötige Persistenz.
+zh: 一次性检索和过期减少了不必要的持久性。
+uk: Одноразове отримання та термін життя зменшують зайві цифрові сліди.
+es: La recuperación de un solo uso y la caducidad reducen la persistencia innecesaria.
+hi: एकल-उपयोग पुनर्प्राप्ति और समाप्ति अनावश्यक दृढ़ता को कम करते हैं।
+bn: একক-ব্যবহারের পুনরুদ্ধার এবং মেয়াদ শেষ হওয়া অপ্রয়োজনীয় স্থায়িত্ব কমিয়ে দেয়।
+pt: A recuperação de uso único e a expiração reduzem a persistência desnecessária.
+ja: 1回限りの取得と有効期限により、不要な永続性が減少します。
+
 @simple_serious
 en: Simple enough for quick sharing, serious enough for confidential data.
 ru: Достаточно просто для быстрой отправки и достаточно серьёзно для конфиденциальных данных.
+de: Einfach genug für schnelles Teilen, ernsthaft genug für vertrauliche Daten.
+zh: 足够简单以进行快速分享，足够严肃以处理机密数据。
+uk: Достатньо просто для швидкого надсилання і достатньо серйозно для конфіденційних даних.
+es: Lo suficientemente simple para compartir rápido, lo suficientemente serio para datos confidenciales.
+hi: त्वरित साझाकरण के लिए काफी सरल, गोपनीय डेटा के लिए काफी गंभीर।
+bn: দ্রুত শেয়ারিংয়ের জন্য যথেষ্ট সহজ, গোপনীয় ডেটার জন্য যথেষ্ট গুরুতর।
+pt: Simples o suficiente para compartilhamento rápido, sério o suficiente para dados confidenciais.
+ja: 迅速な共有に十分シンプルで、機密データに十分真剣。
+
 @less_exposure
 en: Less exposure
 ru: Меньше раскрытия
+de: Weniger Exposition
+zh: 更少暴露
+uk: Менше розкриття
+es: Menos exposición
+hi: कम जोखिम
+bn: কম এক্সপোজার
+pt: Menos exposição
+ja: 露出の減少
+
 @less_exposure_body
 en: A cleaner alternative to sending secrets through channels that were never designed for them.
 ru: Более чистая альтернатива отправке секретов через каналы, которые для этого не предназначены.
+de: Eine sauberere Alternative zum Senden von Geheimnissen über Kanäle, die nie dafür gedacht waren.
+zh: 通过从未为此设计的渠道发送秘密的更清洁的替代方案。
+uk: Більш чиста альтернатива надсиланню секретів через канали, які для цього не призначені.
+es: Una alternativa más limpia para enviar secretos a través de canales que nunca fueron diseñados para ellos.
+hi: उन चैनलों के माध्यम से रहस्य भेजने का एक साफ विकल्प जो कभी भी उनके लिए डिज़ाइन नहीं किए गए थे।
+bn: এমন চ্যানেলের মাধ্যমে গোপন বিষয় পাঠানোর একটি পরিষ্কার বিকল্প যা কখনও তাদের জন্য ডিজাইন করা হয়নি।
+pt: Uma alternativa mais limpa para enviar segredos através de canais que nunca foram projetados para eles.
+ja: それらのために設計されたことのないチャネルを通じて秘密を送信するためのよりクリーンな代替案。
+
 @how_it_works
 en: How It Works
 ru: Как это работает
+de: Wie es funktioniert
+zh: 工作原理
+uk: Як це працює
+es: Cómo funciona
+hi: यह कैसे काम करता है
+bn: এটি কীভাবে কাজ করে
+pt: Como funciona
+ja: 仕組み
+
 @how_it_works_title
 en: Three steps from secret creation to disappearance.
 ru: Три шага: от создания секрета до исчезновения.
+de: Drei Schritte von der Erstellung des Geheimnisses bis zum Verschwinden.
+zh: 从创建秘密到消失的三个步骤。
+uk: Три кроки: від створення секрету до зникнення.
+es: Tres pasos desde la creación del secreto hasta su desaparición.
+hi: रहस्य निर्माण से गायब होने तक तीन कदम।
+bn: গোপন বিষয় তৈরি থেকে মিলিয়ে যাওয়া পর্যন্ত তিনটি ধাপ।
+pt: Três passos da criação do segredo até o desaparecimento.
+ja: 秘密の作成から消滅までの3つのステップ。
+
 @how_it_works_body
 en: The workflow is built to stay short: encrypt in the browser, share the link, then let the stored blob vanish after use.
 ru: Сценарий короткий: зашифровать в браузере, отправить ссылку — и секрет сам исчезнет после использования.
+de: Der Arbeitsablauf ist kurz gehalten: Im Browser verschlüsseln, den Link teilen und dann das gespeicherte Blob nach der Benutzung verschwinden lassen.
+zh: 工作流程旨在保持简短：在浏览器中加密，分享链接，然后让存储的 blob 在使用后消失。
+uk: Сценарій короткий: зашифрувати в браузері, надіслати посилання — і секрет сам зникне після використання.
+es: El flujo de trabajo está diseñado para ser breve: cifrar en el navegador, compartir el enlace y luego dejar que el blob almacenado desaparezca después de su uso.
+hi: वर्कफ़्लो को छोटा रखने के लिए बनाया गया है: ब्राउज़र में एन्क्रिप्ट करें, लिंक साझा करें, और फिर उपयोग के बाद स्टोर किए गए ब्लॉब को गायब होने दें।
+bn: ওয়ার্কফ্লোটি ছোট রাখার জন্য তৈরি করা হয়েছে: ব্রাউজারে এনক্রিপ্ট করুন, লিঙ্ক শেয়ার করুন, এবং তারপর ব্যবহারের পরে সংরক্ষিত ব্লবকে মিলিয়ে যেতে দিন।
+pt: O fluxo de trabalho é construído para ser curto: criptografar no navegador, compartilhar o link e depois deixar o blob armazenado desaparecer após o uso.
+ja: ワークフローは短く保つように構築されています。ブラウザで暗号化し、リンクを共有し、使用後に保存されたブロブを消滅させます。
+
 @step_compose
 en: Encrypt locally
 ru: Шифруйте локально
+de: Lokal verschlüsseln
+zh: 本地加密
+uk: Шифруйте локально
+es: Cifrar localmente
+hi: स्थानीय रूप से एन्क्रिप्ट करें
+bn: স্থানীয়ভাবে এনক্রিপ্ট করুন
+pt: Criptografar localmente
+ja: ローカルで暗号化
+
 @step_compose_body
 en: Write the secret here. The browser encrypts it before upload, and the key stays in the link fragment instead of going to the server.
 ru: Напишите секрет здесь. Браузер зашифрует его перед загрузкой, а ключ останется во фрагменте ссылки и не попадёт на сервер.
+de: Schreiben Sie das Geheimnis hier auf. Der Browser verschlüsselt es vor dem Upload, und der Schlüssel bleibt im Link-Fragment, anstatt an den Server zu gehen.
+zh: 在此处写下秘密。浏览器在上传前对其进行加密，密钥保留在链接片段中，而不是发送到服务器。
+uk: Напишіть секрет тут. Браузер зашифрує його перед завантаженням, а ключ залишиться у фрагменті посилання і не потрапить на сервер.
+es: Escribe el secreto aquí. El navegador lo cifra antes de subirlo, y la clave permanece en el fragmento del enlace en lugar de ir al servidor.
+hi: यहां रहस्य लिखें। ब्राउज़र इसे अपलोड करने से पहले एन्क्रिप्ट करता है, और कुंजी सर्वर पर जाने के बजाय लिंक फ्रैगमेंट में रहती है।
+bn: এখানে গোপন বিষয়টি লিখুন। ব্রাউজার আপলোড করার আগে এটি এনক্রিপ্ট করে, এবং কীটি সার্ভারে যাওয়ার পরিবর্তে লিঙ্ক ফ্র্যাগমেন্টে থেকে যায়।
+pt: Escreva o segredo aqui. O navegador o criptografa antes do upload, e a chave permanece no fragmento do link em vez de ir para o servidor.
+ja: ここに秘密を書きます。ブラウザはアップロード前にそれを暗号化し、キーはサーバーに行く代わりにリンクフラグメントに残ります。
+
 @step_share
 en: Share the generated link
 ru: Отправьте созданную ссылку
+de: Den generierten Link teilen
+zh: 分享生成的链接
+uk: Надішліть створене посилання
+es: Compartir el enlace generado
+hi: उत्पन्न लिंक साझा करें
+bn: তৈরি করা লিঙ্ক শেয়ার করুন
+pt: Compartilhar o link gerado
+ja: 生成されたリンクを共有
+
 @step_share_body
 en: Send the resulting link to the recipient. If needed, share the optional password through a different channel.
 ru: Отправьте полученную ссылку адресату. Если если вы также используете пароль, передайте его по другому каналу.
+de: Senden Sie den resultierenden Link an den Empfänger. Teilen Sie bei Bedarf das optionale Passwort über einen anderen Kanal.
+zh: 将生成的链接发送给接收者。如果需要，通过不同的渠道分享可选密码。
+uk: Надішліть отримане посилання адресату. Якщо ви також використовуєте пароль, передайте його іншим каналом.
+es: Envía el enlace resultante al destinatario. Si es necesario, comparte la contraseña opcional a través de un canal diferente.
+hi: प्राप्तकर्ता को परिणामी लिंक भेजें। यदि आवश्यक हो, तो वैकल्पिक पासवर्ड को एक अलग चैनल के माध्यम से साझा करें।
+bn: প্রাপকের কাছে ফলাফলস্বরূপ লিঙ্কটি পাঠান। প্রয়োজনে, একটি ভিন্ন চ্যানেলের মাধ্যমে ঐচ্ছিক পাসওয়ার্ড শেয়ার করুন।
+pt: Envie o link resultante para o destinatário. Se necessário, compartilhe a senha opcional através de um canal diferente.
+ja: 結果のリンクを受信者に送信します。必要に応じて、オプションのパスワードを別のチャネルを通じて共有します。
+
 @step_open_once
 en: Open once, then lose access
 ru: Открыть один раз и потерять доступ
+de: Einmal öffnen, dann den Zugriff verlieren
+zh: 打开一次，然后失去访问权限
+uk: Відкрити один раз і втратити доступ
+es: Abrir una vez, luego perder el acceso
+hi: एक बार खोलें, फिर पहुंच खो दें
+bn: একবার খুলুন, তারপর অ্যাক্সেস হারান
+pt: Abrir uma vez, depois perder o acesso
+ja: 一度開いてからアクセスを失う
+
 @step_open_once_body
 en: When the recipient opens the full link, the secret is retrieved, decrypted in the browser, and removed from the server.
 ru: Когда получатель открывает полную ссылку, секрет загружается, расшифровывается в браузере и удаляется с сервера.
+de: Wenn der Empfänger den vollständigen Link öffnet, wird das Geheimnis abgerufen, im Browser entschlüsselt und vom Server entfernt.
+zh: 当接收者打开完整链接时，秘密被检索，在浏览器中解密，并从服务器中删除。
+uk: Коли отримувач відкриває повне посилання, секрет завантажується, розшифровується в браузері та видаляється з сервера.
+es: Cuando el destinatario abre el enlace completo, el secreto se recupera, se descifra en el navegador y se elimina del servidor.
+hi: जब प्राप्तकर्ता पूरा लिंक खोलता है, तो रहस्य पुनर्प्राप्त किया जाता है, ब्राउज़र में डिक्रिप्ट किया जाता है, और सर्वर से हटा दिया जाता है।
+bn: যখন প্রাপক সম্পূর্ণ লিঙ্কটি খোলে, তখন গোপন বিষয়টি পুনরুদ্ধার করা হয়, ব্রাউজারে ডিক্রিপ্ট করা হয়, এবং সার্ভার থেকে সরিয়ে ফেলা হয়।
+pt: Quando o destinatário abre o link completo, o segredo é recuperado, descriptografado no navegador e removido do servidor.
+ja: 受信者が完全なリンクを開くと、秘密が取得され、ブラウザで復号化され、サーバーから削除されます。
+
 @operational_note
 en: Operational note
 ru: Имейте в виду
+de: Betrieblicher Hinweis
+zh: 操作说明
+uk: Майте на увазі
+es: Nota operativa
+hi: परिचालन नोट
+bn: অপারেশনাল নোট
+pt: Nota operacional
+ja: 運用上の注意
+
 @operational_note_body
 en: The server stores your encrypted data in RAM with a fixed time limit, so anything not opened still ages out instead of lingering indefinitely.
 ru: Сервер хранит ваши зашифрованные данные в RAM с ограниченным сроком жизни, поэтому даже неоткрытые данные будут удалены.
+de: Der Server speichert Ihre verschlüsselten Daten im RAM mit einem festen Zeitlimit, sodass alles, was nicht geöffnet wird, stattdessen altert, anstatt auf unbestimmte Zeit zu verweilen.
+zh: 服务器将您的加密数据存储在 RAM 中，并有固定的时间限制，因此任何未打开的数据都会老化，而不是无限期地停留。
+uk: Сервер зберігає ваші зашифровані дані в RAM з обмеженим терміном життя, тому навіть невідкриті дані будуть видалені.
+es: El servidor almacena tus datos cifrados en la RAM con un límite de tiempo fijo, por lo que cualquier cosa que no se abra envejece en lugar de permanecer indefinidamente.
+hi: सर्वर आपके एन्क्रिप्टेड डेटा को RAM में एक निश्चित समय सीमा के साथ संग्रहीत करता है, इसलिए न खोली गई कोई भी चीज़ अनिश्चित काल तक बने रहने के बजाय पुरानी हो जाती है।
+bn: সার্ভার আপনার এনক্রিপ্টেড ডেটা RAM-এ একটি নির্দিষ্ট সময় সীমা সহ সংরক্ষণ করে, তাই খোলা না হওয়া যেকোনো কিছু অনির্দিষ্টকালের জন্য থেকে যাওয়ার পরিবর্তে পুরানো হয়ে যায়।
+pt: O servidor armazena seus dados criptografados na RAM com um limite de tempo fixo, então qualquer coisa não aberta envelhece em vez de permanecer indefinidamente.
+ja: サーバーは暗号化されたデータをRAMに保存し、固定時間制限を設けているため、開かれなかったものは無限に留まる代わりに古いものとなります。
+
 @footer_body
 en: A secure drop for confidential messages that can be opened once and then vanish.
 ru: Безопасное место для конфиденциальных сообщений, которые открываются только один раз.
+de: Ein sicherer Drop für vertrauliche Nachrichten, die einmal geöffnet werden können und dann verschwinden.
+zh: 一个安全的投递箱，用于可以打开一次然后消失的机密消息。
+uk: Безпечне місце для конфіденційних повідомлень, які відкриваються лише один раз.
+es: Un buzón seguro para mensajes confidenciales que se pueden abrir una vez y luego desaparecer.
+hi: गोपनीय संदेशों के लिए एक सुरक्षित ड्रॉप जिसे एक बार खोला जा सकता है और फिर गायब हो जाता है।
+bn: গোপনীয় বার্তার জন্য একটি নিরাপদ ড্রপ যা একবার খোলা যেতে পারে এবং তারপর মিলিয়ে যায়।
+pt: Um drop seguro para mensagens confidenciais que podem ser abertas uma vez e depois desaparecem.
+ja: 一度開いてから消滅する機密メッセージのための安全なドロップ。
+
 @version
 en: Version
 ru: Версия
+de: Version
+zh: 版本
+uk: Версія
+es: Versión
+hi: संस्करण
+bn: সংস্করণ
+pt: Versão
+ja: バージョン
+
 @uptime
 en: Uptime
 ru: Время работы
+de: Betriebszeit
+zh: 运行时间
+uk: Час роботи
+es: Tiempo de actividad
+hi: अपटाइम
+bn: আপটাইম
+pt: Tempo de atividade
+ja: 稼働時間
+
 @secrets_served
 en: Secrets Served
 ru: Секретов доверено
+de: Zugestellte Geheimnisse
+zh: 已服务的秘密
+uk: Секретів довірено
+es: Secretos servidos
+hi: सेवा किए गए रहस्य
+bn: পরিবেশিত গোপন বিষয়
+pt: Segredos servidos
+ja: 提供された秘密
+
 @javascript_required
 en: JavaScript required
 ru: Требуется JavaScript
+de: JavaScript erforderlich
+zh: 需要 JavaScript
+uk: Потрібен JavaScript
+es: JavaScript requerido
+hi: JavaScript आवश्यक
+bn: JavaScript প্রয়োজন
+pt: JavaScript necessário
+ja: JavaScriptが必要
+
 @javascript_required_body
 en: This page requires JavaScript with WebCrypto and Fetch to create or open secrets.
 ru: Для создания или открытия секретов этой странице нужен JavaScript с WebCrypto и Fetch.
+de: Diese Seite benötigt JavaScript mit WebCrypto und Fetch, um Geheimnisse zu erstellen oder zu öffnen.
+zh: 此页面需要支持 WebCrypto 和 Fetch 的 JavaScript 来创建或打开秘密。
+uk: Для створення або відкриття секретів на цій сторінці потрібен JavaScript з WebCrypto та Fetch.
+es: Esta página requiere JavaScript con WebCrypto y Fetch para crear o abrir secretos.
+hi: इस पेज को रहस्य बनाने या खोलने के लिए WebCrypto और Fetch के साथ JavaScript की आवश्यकता है।
+bn: এই পৃষ্ঠায় গোপন বিষয় তৈরি বা খোলার জন্য WebCrypto এবং Fetch সহ JavaScript প্রয়োজন।
+pt: Esta página requer JavaScript com WebCrypto e Fetch para criar ou abrir segredos.
+ja: このページで秘密を作成または開くには、WebCryptoとFetchをサポートするJavaScriptが必要です。
+
 @ok
 en: OK
 ru: Хорошо
+de: OK
+zh: 确定
+uk: Добре
+es: OK
+hi: ठीक है
+bn: ঠিক আছে
+pt: OK
+ja: OK
+
 @action_needed
 en: Action needed
 ru: Требуется действие
+de: Aktion erforderlich
+zh: 需要操作
+uk: Потрібна дія
+es: Acción requerida
+hi: कार्रवाई आवश्यक
+bn: অ্যাকশন প্রয়োজন
+pt: Ação necessária
+ja: 操作が必要
+
 @too_large
 en: Too large. Shorten the secret and try again.
 ru: Слишком большой секрет. Сократите его и попробуйте снова.
+de: Zu groß. Kürzen Sie das Geheimnis und versuchen Sie es erneut.
+zh: 太大。缩短秘密并重试。
+uk: Занадто великий секрет. Скоротіть його і спробуйте знову.
+es: Demasiado grande. Acorta el secreto e inténtalo de nuevo.
+hi: बहुत बड़ा। रहस्य को छोटा करें और पुनः प्रयास करें।
+bn: খুব বড়। গোপন বিষয়টি ছোট করুন এবং আবার চেষ্টা করুন।
+pt: Grande demais. Encurte o segredo e tente novamente.
+ja: 大きすぎます。秘密を短くして再試行してください。
+
 @very_close_limit
 en: Very close to the limit.
 ru: Почти достигнут лимит.
+de: Sehr nah am Limit.
+zh: 非常接近限制。
+uk: Майже досягнуто ліміт.
+es: Muy cerca del límite.
+hi: सीमा के बहुत करीब।
+bn: সীমার খুব কাছাকাছি।
+pt: Muito perto do limite.
+ja: 制限に非常に近いです。
+
 @approaching_limit
 en: Approaching the size limit.
 ru: Приближение к лимиту размера.
+de: Nähert sich dem Größenlimit.
+zh: 接近大小限制。
+uk: Наближення до ліміту розміру.
+es: Acercándose al límite de tamaño.
+hi: आकार सीमा के करीब आ रहा है।
+bn: আকারের সীমার কাছাকাছি আসছে।
+pt: Aproximando-se do limite de tamanho.
+ja: サイズ制限に近づいています。
+
 @create_link_error
 en: Could not create link
 ru: Не удалось создать ссылку
+de: Link konnte nicht erstellt werden
+zh: 无法创建链接
+uk: Не вдалося створити посилання
+es: No se pudo crear el enlace
+hi: लिंक नहीं बना सका
+bn: লিঙ্ক তৈরি করা যায়নি
+pt: Não foi possível criar o link
+ja: リンクを作成できませんでした
+
 @invalid_service_url
 en: Enter a valid service URL, for example https://example.com.
 ru: Введите корректный URL сервиса, например https://example.com.
+de: Geben Sie eine gültige Service-URL ein, z. B. https://example.com.
+zh: 输入有效的服务 URL，例如 https://example.com。
+uk: Введіть коректний URL сервісу, наприклад https://example.com.
+es: Introduce una URL de servicio válida, por ejemplo https://example.com.
+hi: एक मान्य सेवा URL दर्ज करें, उदाहरण के लिए https://example.com।
+bn: একটি বৈধ সার্ভিস URL লিখুন, উদাহরণস্বরূপ https://example.com।
+pt: Insira uma URL de serviço válida, por exemplo https://example.com.
+ja: 有効なサービスURL（例：https://example.com）を入力してください。
+
 @origin_credentials
 en: Remove the username and password from the service URL.
 ru: Уберите имя пользователя и пароль из URL сервиса.
+de: Entfernen Sie den Benutzernamen und das Passwort aus der Service-URL.
+zh: 从服务 URL 中删除用户名和密码。
+uk: Приберіть ім'я користувача та пароль з URL сервісу.
+es: Elimina el nombre de usuario y la contraseña de la URL del servicio.
+hi: सेवा URL से उपयोगकर्ता नाम और पासवर्ड हटा दें।
+bn: সার্ভিস URL থেকে ব্যবহারকারীর নাম এবং পাসওয়ার্ড সরিয়ে ফেলুন।
+pt: Remova o nome de usuário e a senha da URL do serviço.
+ja: サービスURLからユーザー名とパスワードを削除してください。
+
 @origin_path
 en: Use only the site origin. Do not include a path, query string, or #fragment.
 ru: Используйте только origin сайта. Не добавляйте путь, query string или #fragment.
+de: Verwenden Sie nur den Ursprung der Website. Fügen Sie keinen Pfad, keine Abfragezeichenfolge und kein #Fragment ein.
+zh: 仅使用站点源。不要包含路径、查询字符串或 #fragment。
+uk: Використовуйте лише origin сайту. Не додавайте шлях, query string або #fragment.
+es: Usa solo el origen del sitio. No incluyas una ruta, cadena de consulta o #fragmento.
+hi: केवल साइट का मूल (origin) उपयोग करें। पथ, क्वेरी स्ट्रिंग या #fragment शामिल न करें।
+bn: শুধুমাত্র সাইটের উৎপত্তি (origin) ব্যবহার করুন। পাথ, কোয়েরি স্ট্রিং বা #fragment অন্তর্ভুক্ত করবেন না।
+pt: Use apenas a origem do site. Não inclua um caminho, string de consulta ou #fragmento.
+ja: サイトのオリジンのみを使用してください。パス、クエリ文字列、または#フラグメントを含めないでください。
+
 @origin_https
 en: Use an https:// service URL unless you are working on localhost.
 ru: Используйте URL сервиса с https://, если это не localhost.
+de: Verwenden Sie eine https:// Service-URL, es sei denn, Sie arbeiten auf localhost.
+zh: 使用 https:// 服务 URL，除非您在 localhost 上工作。
+uk: Використовуйте URL сервісу з https://, якщо це не localhost.
+es: Usa una URL de servicio https:// a menos que estés trabajando en localhost.
+hi: जब तक आप localhost पर काम नहीं कर रहे हैं, तब तक https:// सेवा URL का उपयोग करें।
+bn: আপনি যদি localhost-এ কাজ না করেন তবে https:// সার্ভিস URL ব্যবহার করুন।
+pt: Use uma URL de serviço https:// a menos que você esteja trabalhando em localhost.
+ja: localhostで作業している場合を除き、https://サービスURLを使用してください。
+
 @generated_invalid
 en: The generated link data was invalid. Try creating the secret again.
 ru: Данные созданной ссылки некорректны. Попробуйте создать секрет заново.
+de: Die generierten Linkdaten waren ungültig. Versuchen Sie, das Geheimnis erneut zu erstellen.
+zh: 生成的链接数据无效。尝试重新创建秘密。
+uk: Дані створеного посилання некоректні. Спробуйте створити секрет заново.
+es: Los datos del enlace generado no eran válidos. Intenta crear el secreto de nuevo.
+hi: उत्पन्न लिंक डेटा अमान्य था। रहस्य को फिर से बनाने का प्रयास करें।
+bn: তৈরি করা লিঙ্ক ডেটা অবৈধ ছিল। গোপন বিষয়টি আবার তৈরি করার চেষ্টা করুন।
+pt: Os dados do link gerado eram inválidos. Tente criar o segredo novamente.
+ja: 生成されたリンクデータが無効でした。秘密を再度作成してみてください。
+
 @clipboard_image_unavailable
 en: Your browser cannot copy images directly. Copy the image yourself.
 ru: Ваш браузер не может копировать изображения напрямую. Скопируйте изображение вручную.
+de: Ihr Browser kann Bilder nicht direkt kopieren. Kopieren Sie das Bild selbst.
+zh: 您的浏览器无法直接复制图像。自己复制图像。
+uk: Ваш браузер не може копіювати зображення напряму. Скопіюйте зображення вручну.
+es: Tu navegador no puede copiar imágenes directamente. Copia la imagen tú mismo.
+hi: आपका ब्राउज़र सीधे छवियों को कॉपी नहीं कर सकता। छवि को स्वयं कॉपी करें।
+bn: আপনার ব্রাউজার সরাসরি ছবি কপি করতে পারে না। নিজে ছবিটি কপি করুন।
+pt: Seu navegador não pode copiar imagens diretamente. Copie a imagem você mesmo.
+ja: ブラウザが直接画像をコピーできません。自分で画像をコピーしてください。
+
 @clipboard_text_unavailable
 en: The secret was created, but this browser could not copy the link automatically. Select the generated link and copy it yourself.
 ru: Секрет создан, но браузер не смог автоматически скопировать ссылку. Выделите созданную ссылку и скопируйте её вручную.
+de: Das Geheimnis wurde erstellt, aber dieser Browser konnte den Link nicht automatisch kopieren. Wählen Sie den generierten Link aus und kopieren Sie ihn selbst.
+zh: 秘密已创建，但此浏览器无法自动复制链接。选择生成的链接并自己复制。
+uk: Секрет створено, але браузер не зміг автоматично скопіювати посилання. Виділіть створене посилання і скопіюйте його вручну.
+es: El secreto fue creado, pero este navegador no pudo copiar el enlace automáticamente. Selecciona el enlace generado y cópialo tú mismo.
+hi: रहस्य बना दिया गया था, लेकिन यह ब्राउज़र लिंक को स्वचालित रूप से कॉपी नहीं कर सका। उत्पन्न लिंक का चयन करें और इसे स्वयं कॉपी करें।
+bn: গোপন বিষয়টি তৈরি করা হয়েছিল, কিন্তু এই ব্রাউজারটি স্বয়ংক্রিয়ভাবে লিঙ্কটি কপি করতে পারেনি। তৈরি করা লিঙ্কটি নির্বাচন করুন এবং নিজে কপি করুন।
+pt: O segredo foi criado, mas este navegador não pôde copiar o link automaticamente. Selecione o link gerado e copie-o você mesmo.
+ja: 秘密は作成されましたが、このブラウザは自動的にリンクをコピーできませんでした。生成されたリンクを選択して自分でコピーしてください。
+
 @service_unreachable
 en: Could not reach the secret service. Check that the server is running and the address is correct.
 ru: Не удалось подключиться к сервису секретов. Проверьте, что сервер запущен и адрес указан верно.
+de: Der Geheimdienst konnte nicht erreicht werden. Überprüfen Sie, ob der Server läuft und die Adresse korrekt ist.
+zh: 无法访问秘密服务。检查服务器是否正在运行以及地址是否正确。
+uk: Не вдалося підключитися до сервісу секретів. Перевірте, чи запущено сервер і чи вірно вказано адресу.
+es: No se pudo alcanzar el servicio de secretos. Comprueba que el servidor esté funcionando y la dirección sea correcta.
+hi: रहस्य सेवा तक नहीं पहुंच सका। जांचें कि सर्वर चल रहा है और पता सही है।
+bn: গোপন সার্ভিসে পৌঁছানো যায়নি। পরীক্ষা করুন যে সার্ভার চলছে এবং ঠিকানাটি সঠিক।
+pt: Não foi possível alcançar o serviço de segredos. Verifique se o servidor está rodando e o endereço está correto.
+ja: 秘密サービスに到達できませんでした。サーバーが実行されており、アドレスが正しいことを確認してください。
+
 @server_refused
 en: The server refused to save this secret. Try again with a fresh page.
 ru: Сервер отказался сохранить этот секрет. Обновите страницу и попробуйте снова.
+de: Der Server hat es abgelehnt, dieses Geheimnis zu speichern. Versuchen Sie es erneut mit einer frischen Seite.
+zh: 服务器拒绝保存此秘密。使用新页面重试。
+uk: Сервер відмовився зберегти цей секрет. Оновіть сторінку і спробуйте знову.
+es: El servidor se negó a guardar este secreto. Inténtalo de nuevo con una página nueva.
+hi: सर्वर ने इस रहस्य को सहेजने से इनकार कर दिया। एक नए पेज के साथ पुनः प्रयास करें।
+bn: সার্ভার এই গোপন বিষয়টি সংরক্ষণ করতে অস্বীকার করেছে। একটি নতুন পেজ দিয়ে আবার চেষ্টা করুন।
+pt: O servidor se recusou a salvar este segredo. Tente novamente com uma página nova.
+ja: サーバーがこの秘密の保存を拒否しました。新しいページで再試行してください。
+
 @server_busy
 en: The server is not accepting this request right now. Try again in a moment.
 ru: Сервер сейчас не принимает этот запрос. Попробуйте чуть позже.
+de: Der Server akzeptiert diese Anfrage gerade nicht. Versuchen Sie es in einem Moment erneut.
+zh: 服务器当前不接受此请求。稍后重试。
+uk: Сервер зараз не приймає цей запит. Спробуйте трохи пізніше.
+es: El servidor no está aceptando esta solicitud en este momento. Inténtalo de nuevo en un momento.
+hi: सर्वर अभी इस अनुरोध को स्वीकार नहीं कर रहा है। कुछ देर बाद पुनः प्रयास करें।
+bn: সার্ভার এই মুহূর্তে এই অনুরোধ গ্রহণ করছে না। কিছুক্ষণ পরে আবার চেষ্টা করুন।
+pt: O servidor não está aceitando esta solicitação no momento. Tente novamente em um momento.
+ja: 現在、サーバーはこのリクエストを受け付けていません。しばらくしてから再試行してください。
+
 @rate_limited
 en: The service is being rate-limited or blocked. Wait a bit and try again.
 ru: Сервис ограничен по частоте запросов или заблокирован. Подождите и попробуйте снова.
+de: Der Dienst wird ratenbegrenzt oder blockiert. Warten Sie ein wenig und versuchen Sie es erneut.
+zh: 服务受到速率限制或被阻止。稍等片刻，然后重试。
+uk: Сервіс обмежено за частотою запитів або заблоковано. Зачекайте і спробуйте знову.
+es: El servicio tiene limitación de tasa o está bloqueado. Espera un poco e inténtalo de nuevo.
+hi: सेवा को दर-सीमित किया जा रहा है या अवरुद्ध किया जा रहा है। थोड़ा प्रतीक्षा करें और पुनः प्रयास करें।
+bn: সার্ভিসটি রেট-সীমিত বা ব্লক করা হচ্ছে। একটু অপেক্ষা করুন এবং আবার চেষ্টা করুন।
+pt: O serviço está com limitação de taxa ou bloqueado. Espere um pouco e tente novamente.
+ja: サービスがレート制限されているか、ブロックされています。少し待ってから再試行してください。
+
 @server_failed
 en: The server failed while saving the secret. Try again in a moment.
 ru: Сервер не смог сохранить секрет. Попробуйте чуть позже.
+de: Der Server ist beim Speichern des Geheimnisses fehlgeschlagen. Versuchen Sie es in einem Moment erneut.
+zh: 服务器在保存秘密时失败。稍后重试。
+uk: Сервер не зміг зберегти секрет. Спробуйте трохи пізніше.
+es: El servidor falló al guardar el secreto. Inténtalo de nuevo en un momento.
+hi: रहस्य को सहेजते समय सर्वर विफल हो गया। कुछ देर बाद पुनः प्रयास करें।
+bn: গোপন বিষয়টি সংরক্ষণ করার সময় সার্ভার ব্যর্থ হয়েছে। কিছুক্ষণ পরে আবার চেষ্টা করুন।
+pt: O servidor falhou ao salvar o segredo. Tente novamente em um momento.
+ja: 秘密の保存中にサーバーが失敗しました。しばらくしてから再試行してください。
+
 @create_secret_failed
 en: Could not create the secret link. Please try again.
 ru: Не удалось создать ссылку на секрет. Попробуйте снова.
+de: Der Geheimnis-Link konnte nicht erstellt werden. Bitte versuchen Sie es erneut.
+zh: 无法创建秘密链接。请重试。
+uk: Не вдалося створити посилання на секрет. Спробуйте знову.
+es: No se pudo crear el enlace secreto. Por favor, inténtalo de nuevo.
+hi: रहस्य लिंक नहीं बना सका। कृपया पुनः प्रयास करें।
+bn: গোপন লিঙ্ক তৈরি করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।
+pt: Não foi possível criar o link secreto. Por favor, tente novamente.
+ja: 秘密リンクを作成できませんでした。再試行してください。
+
 @creating_link
 en: Creating link…
 ru: Создание ссылки…
+de: Link wird erstellt…
+zh: 正在创建链接…
+uk: Створення посилання…
+es: Creando enlace…
+hi: लिंक बना रहा है…
+bn: লিঙ্ক তৈরি করা হচ্ছে…
+pt: Criando link…
+ja: リンクを作成中…
+
 @nothing_to_send
 en: Nothing to send
 ru: Нечего отправлять
+de: Nichts zu senden
+zh: 没有可发送的内容
+uk: Нічого надсилати
+es: Nada que enviar
+hi: भेजने के लिए कुछ नहीं
+bn: পাঠানোর জন্য কিছু নেই
+pt: Nada para enviar
+ja: 送信するものがありません
+
 @enter_secret
 en: Enter a secret before creating a link.
 ru: Введите секрет перед созданием ссылки.
+de: Geben Sie ein Geheimnis ein, bevor Sie einen Link erstellen.
+zh: 在创建链接之前输入秘密。
+uk: Введіть секрет перед створенням посилання.
+es: Introduce un secreto antes de crear un enlace.
+hi: लिंक बनाने से पहले एक रहस्य दर्ज करें।
+bn: লিঙ্ক তৈরি করার আগে একটি গোপন বিষয় লিখুন।
+pt: Insira um segredo antes de criar um link.
+ja: リンクを作成する前に秘密を入力してください。
+
 @secret_too_large
 en: Secret is too large
 ru: Секрет слишком большой
+de: Geheimnis ist zu groß
+zh: 秘密太大
+uk: Секрет занадто великий
+es: El secreto es demasiado grande
+hi: रहस्य बहुत बड़ा है
+bn: গোপন বিষয়টি খুব বড়
+pt: O segredo é muito grande
+ja: 秘密が大きすぎます
+
 @shorten_secret
 en: Shorten the secret and try again.
 ru: Сократите секрет и попробуйте снова.
+de: Kürzen Sie das Geheimnis und versuchen Sie es erneut.
+zh: 缩短秘密并重试。
+uk: Скоротіть секрет і спробуйте знову.
+es: Acorta el secreto e inténtalo de nuevo.
+hi: रहस्य को छोटा करें और पुनः प्रयास करें।
+bn: গোপন বিষয়টি ছোট করুন এবং আবার চেষ্টা করুন।
+pt: Encurte o segredo e tente novamente.
+ja: 秘密を短くして再試行してください。
+
 @link_copied
 en: Link copied! Create another?
 ru: Ссылка скопирована! Создать ещё одну?
+de: Link kopiert! Einen weiteren erstellen?
+zh: 链接已复制！创建另一个？
+uk: Посилання скопійоване! Створити ще одне?
+es: ¡Enlace copiado! ¿Crear otro?
+hi: लिंक कॉपी हो गया! एक और बनाएं?
+bn: লিঙ্ক কপি হয়েছে! আরেকটি তৈরি করবেন?
+pt: Link copiado! Criar outro?
+ja: リンクがコピーされました！別のものを作成しますか？
+
 @link_ready
 en: Link ready
 ru: Ссылка готова
+de: Link bereit
+zh: 链接已就绪
+uk: Посилання готове
+es: Enlace listo
+hi: लिंक तैयार है
+bn: লিঙ্ক প্রস্তুত
+pt: Link pronto
+ja: リンクの準備ができました
+
 @link_created
 en: Link created
 ru: Ссылка создана
+de: Link erstellt
+zh: 链接已创建
+uk: Посилання створене
+es: Enlace creado
+hi: लिंक बना दिया गया
+bn: লিঙ্ক তৈরি হয়েছে
+pt: Link criado
+ja: リンクが作成されました
+
 @the_message
 en: The message
 ru: Сообщение
+de: Die Nachricht
+zh: 消息
+uk: Повідомлення
+es: El mensaje
+hi: संदेश
+bn: বার্তা
+pt: A mensagem
+ja: メッセージ
+
 @open_full_link_initial
 en: Open a full secret link to view its contents.
 ru: Откройте полную ссылку на секрет, чтобы увидеть содержимое.
+de: Öffnen Sie einen vollständigen Geheimnis-Link, um dessen Inhalt anzuzeigen.
+zh: 打开完整的秘密链接以查看其内容。
+uk: Відкрийте повне посилання на секрет, чтобы побачити вміст.
+es: Abre un enlace secreto completo para ver su contenido.
+hi: अपनी सामग्री देखने के लिए एक पूर्ण रहस्य लिंक खोलें।
+bn: এর বিষয়বস্তু দেখতে একটি সম্পূর্ণ গোপন লিঙ্ক খুলুন।
+pt: Abra um link secreto completo para ver seu conteúdo.
+ja: 完全な秘密リンクを開いてその内容を表示します。
+
 @copy_text
 en: Copy text
 ru: Скопировать текст
+de: Text kopieren
+zh: 复制文本
+uk: Скопіювати текст
+es: Copiar texto
+hi: टेक्स्ट कॉपी करें
+bn: টেক্সট কপি করুন
+pt: Copiar texto
+ja: テキストをコピー
+
 @create_own_secret
 en: Create your own secret
 ru: Создать свой секрет
+de: Erstellen Sie Ihr eigenes Geheimnis
+zh: 创建您自己的秘密
+uk: Створити свій секрет
+es: Crea tu propio secreto
+hi: अपना खुद का रहस्य बनाएं
+bn: আপনার নিজস্ব গোপন বিষয় তৈরি করুন
+pt: Crie seu próprio segredo
+ja: 独自の秘密を作成
+
 @password_required
 en: Password required
 ru: Требуется пароль
+de: Passwort erforderlich
+zh: 需要密码
+uk: Потрібен пароль
+es: Contraseña requerida
+hi: पासवर्ड आवश्यक
+bn: পাসওয়ার্ড প্রয়োজন
+pt: Senha necessária
+ja: パスワードが必要
+
 @enter_shared_password
 en: Enter the shared password to reveal the message
 ru: Введите переданный пароль, чтобы раскрыть сообщение
+de: Geben Sie das geteilte Passwort ein, um die Nachricht anzuzeigen
+zh: 输入共享密码以揭示消息
+uk: Введіть переданий пароль, чтобы розкрити повідомлення
+es: Introduce la contraseña compartida para revelar el mensaje
+hi: संदेश को प्रकट करने के लिए साझा किया गया पासवर्ड दर्ज करें
+bn: বার্তা প্রকাশ করতে শেয়ার করা পাসওয়ার্ড লিখুন
+pt: Insira a senha compartilhada para revelar a mensagem
+ja: メッセージを明らかにするために共有パスワードを入力してください
+
 @password_receive_placeholder
 en: If any, it should be sent to you via another route
 ru: Если пароль есть, его должны передать вам другим способом
+de: Falls vorhanden, sollte es Ihnen über einen anderen Weg gesendet werden
+zh: 如果有的话，应该通过其他方式发送给您
+uk: Якщо пароль є, його мають передати вам іншим способом
+es: Si la hay, deberían enviártela por otra vía
+hi: यदि कोई है, तो इसे आपको दूसरे रास्ते से भेजा जाना चाहिए
+bn: যদি থাকে, তবে তা আপনাকে অন্য পথে পাঠানো উচিত
+pt: Se houver, ela deve ser enviada a você por outra via
+ja: もしあれば、別のルートで送信されているはずです
+
 @open_secret
 en: Open secret
 ru: Открыть секрет
+de: Geheimnis öffnen
+zh: 打开秘密
+uk: Відкрити секрет
+es: Abrir secreto
+hi: रहस्य खोलें
+bn: গোপন বিষয় খুলুন
+pt: Abrir segredo
+ja: 秘密を開く
+
 @broken_link
 en: This link looks broken or incomplete.
 ru: Эта ссылка выглядит повреждённой или неполной.
+de: Dieser Link sieht beschädigt oder unvollständig aus.
+zh: 此链接看起来已损坏或不完整。
+uk: Це посилання виглядає пошкодженим або неповним.
+es: Este enlace parece roto o incompleto.
+hi: यह लिंक टूटा हुआ या अधूरा लगता है।
+bn: এই লিঙ্কটি ভাঙা বা অসম্পূর্ণ মনে হচ্ছে।
+pt: Este link parece quebrado ou incompleto.
+ja: このリンクは壊れているか、不完全に見えます。
+
 @secret_unavailable
 en: This secret is no longer available. It may have already been opened or expired.
 ru: Этот секрет больше недоступен. Возможно, его уже открыли или срок хранения истёк.
+de: Dieses Geheimnis ist nicht mehr verfügbar. Möglicherweise wurde es bereits geöffnet oder ist abgelaufen.
+zh: 此秘密不再可用。它可能已被打开或已过期。
+uk: Цей секрет більше недоступний. Можливо, його вже відкрили або термін зберігання минув.
+es: Este secreto ya no está disponible. Puede que ya haya sido abierto o haya caducado.
+hi: यह रहस्य अब उपलब्ध नहीं है। यह पहले ही खोला जा चुका होगा या समाप्त हो गया होगा।
+bn: এই গোপন বিষয়টি আর উপলব্ধ নয়। এটি ইতিমধ্যে খোলা হয়ে থাকতে পারে বা মেয়াদ শেষ হয়ে গেছে।
+pt: Este segredo não está mais disponível. Pode já ter sido aberto ou expirado.
+ja: この秘密はもう利用できません。すでに開かれたか、期限が切れた可能性があります。
+
 @secret_damaged
 en: This secret could not be opened. The link may be damaged.
 ru: Не удалось открыть этот секрет. Возможно, ссылка повреждена.
+de: Dieses Geheimnis konnte nicht geöffnet werden. Der Link könnte beschädigt sein.
+zh: 无法打开此秘密。链接可能已损坏。
+uk: Не вдалося відкрити цей секрет. Можливо, посилання пошкоджене.
+es: Este secreto no se pudo abrir. El enlace puede estar dañado.
+hi: यह रहस्य नहीं खोला जा सका। लिंक क्षतिग्रस्त हो सकता है।
+bn: এই গোপন বিষয়টি খোলা যায়নি। লিঙ্কটি ক্ষতিগ্রস্ত হতে পারে।
+pt: Este segredo não pôde ser aberto. O link pode estar danificado.
+ja: この秘密を開くことができませんでした。リンクが壊れている可能性があります。
+
 @secret_prepare_failed
 en: This secret could not be prepared for decryption.
 ru: Не удалось подготовить этот секрет к расшифровке.
+de: Dieses Geheimnis konnte nicht für die Entschlüsselung vorbereitet werden.
+zh: 无法为此秘密准备解密。
+uk: Не вдалося підготувати цей секрет до розшифровки.
+es: Este secreto no se pudo preparar para el descifrado.
+hi: यह रहस्य डिक्रिप्शन के लिए तैयार नहीं किया जा सका।
+bn: এই গোপন বিষয়টি ডিক্রিপশনের জন্য প্রস্তুত করা যায়নি।
+pt: Este segredo não pôde ser preparado para descriptografia.
+ja: この秘密を復号化用に準備できませんでした。
+
 @open_secret_failed
 en: Could not open the secret. Try opening the full link again.
 ru: Не удалось открыть секрет. Попробуйте открыть полную ссылку ещё раз.
+de: Das Geheimnis konnte nicht geöffnet werden. Versuchen Sie, den vollständigen Link erneut zu öffnen.
+zh: 无法打开秘密。尝试再次打开完整链接。
+uk: Не вдалося відкрити секрет. Спробуйте відкрити повне посилання ще раз.
+es: No se pudo abrir el secreto. Intenta abrir el enlace completo de nuevo.
+hi: रहस्य नहीं खोल सका। पूर्ण लिंक को फिर से खोलने का प्रयास करें।
+bn: গোপন বিষয়টি খোলা যায়নি। সম্পূর্ণ লিঙ্কটি আবার খোলার চেষ্টা করুন।
+pt: Não foi possível abrir o segredo. Tente abrir o link completo novamente.
+ja: 秘密を開けませんでした。完全なリンクを再度開いてみてください。
+
 @open_full_link
 en: Open a full secret link to view a message.
 ru: Откройте полную ссылку на секрет, чтобы увидеть сообщение.
+de: Öffnen Sie einen vollständigen Geheimnis-Link, um eine Nachricht anzuzeigen.
+zh: 打开完整的秘密链接以查看消息。
+uk: Відкрийте повне посилання на секрет, чтобы побачити повідомлення.
+es: Abre un enlace secreto completo para ver un mensaje.
+hi: संदेश देखने के लिए एक पूर्ण रहस्य लिंक खोलें।
+bn: একটি বার্তা দেখতে একটি সম্পূর্ণ গোপন লিঙ্ক খুলুন।
+pt: Abra um link secreto completo para ver uma mensagem.
+ja: メッセージを表示するために完全な秘密リンクを開きます。
+
 @receiving_secret
 en: Receiving secret...
 ru: Получение секрета...
+de: Geheimnis wird empfangen...
+zh: 正在接收秘密...
+uk: Отримання секрета...
+es: Recibiendo secreto...
+hi: रहस्य प्राप्त कर रहा है...
+bn: গোপন বিষয় গ্রহণ করা হচ্ছে...
+pt: Recebendo segredo...
+ja: 秘密を受信中...
+
 @no_pending_secret
 en: There is no secret waiting for password decryption.
 ru: Нет секрета, ожидающего расшифровки паролем.
+de: Es wartet kein Geheimnis auf die Passwortentschlüsselung.
+zh: 没有等待密码解密的秘密。
+uk: Немає секрета, що очікує на розшифровку паролем.
+es: No hay ningún secreto esperando descifrado por contraseña.
+hi: पासवर्ड डिक्रिप्शन की प्रतीक्षा में कोई रहस्य नहीं है।
+bn: পাসওয়ার্ড ডিক্রিপশনের জন্য অপেক্ষমাণ কোনো গোপন বিষয় নেই।
+pt: Não há segredo aguardando descriptografia por senha.
+ja: パスワード復号化を待っている秘密はありません。
+
 @wrong_password
 en: That password did not work. Check it and try again.
 ru: Этот пароль не подошёл. Проверьте его и попробуйте снова.
+de: Dieses Passwort hat nicht funktioniert. Überprüfen Sie es und versuchen Sie es erneut.
+zh: 该密码无效。检查并重试。
+uk: Цей пароль не підійшов. Перевірте його і спробуйте знову.
+es: Esa contraseña no funcionó. Compruébala e inténtalo de nuevo.
+hi: वह पासवर्ड काम नहीं किया। इसे जांचें और पुनः प्रयास करें।
+bn: ওই পাসওয়ার্ডটি কাজ করেনি। এটি পরীক্ষা করুন এবং আবার চেষ্টা করুন।
+pt: Essa senha não funcionou. Verifique-a e tente novamente.
+ja: そのパスワードは機能しませんでした。確認して再試行してください。
+
 @copied
 en: Copied
 ru: Скопировано
+de: Kopiert
+zh: 已复制
+uk: Скопійовано
+es: Copiado
+hi: कॉपी हो गया
+bn: কপি হয়েছে
+pt: Copiado
+ja: コピーされました
+
 @copy_failed
 en: Copy failed
 ru: Не удалось скопировать
+de: Kopieren fehlgeschlagen
+zh: 复制失败
+uk: Не вдалося скопіювати
+es: Copia fallida
+hi: कॉपी विफल
+bn: কপি ব্যর্থ হয়েছে
+pt: Falha ao copiar
+ja: コピーに失敗しました
