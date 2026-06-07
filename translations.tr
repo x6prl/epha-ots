@@ -1,3 +1,29 @@
+@lang
+en: en
+ru: ru
+de: de
+zh: zh
+uk: uk
+es: es
+hi: hi
+bn: bn
+pt: pt
+ja: ja
+ar: ar
+
+@dir
+en: ltr
+ru: ltr
+de: ltr
+zh: ltr
+uk: ltr
+es: ltr
+hi: ltr
+bn: ltr
+pt: ltr
+ja: ltr
+ar: rtl
+
 @page_title
 en: Ad Nihilum
 ru: Ad Nihilum
