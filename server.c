@@ -100,6 +100,17 @@ static struct {
 	uint64_t connections_debounced;
 	uint64_t page_root_total;
 	uint64_t page_simple_total;
+	uint64_t lang_en;
+	uint64_t lang_ru;
+	uint64_t lang_de;
+	uint64_t lang_zh;
+	uint64_t lang_uk;
+	uint64_t lang_es;
+	uint64_t lang_hi;
+	uint64_t lang_bn;
+	uint64_t lang_pt;
+	uint64_t lang_ja;
+	uint64_t lang_ar;
 #endif
 } statistics;
 
@@ -945,8 +956,15 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 #if STATISTICS
 			if (is_get_path_root) {
 				statistics.page_root_total += 1;
+				*(&(statistics.lang_en) + language) +=
+					1; // TODO: rewrite to switch
 			} else if (is_get_path_simple) {
 				statistics.page_simple_total += 1;
+				*(&(statistics.lang_en) + language) +=
+					1; // TODO: rewrite to switch
+			} else if (0 == strncmp(url, "/receive", 9)) {
+				*(&(statistics.lang_en) + language) +=
+					1; // TODO: rewrite to switch
 			}
 #endif
 			if (is_get_path_root) {
@@ -991,14 +1009,27 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 				"\"blobs_in_use\":%zu,\"connections\":{"
 				"\"total\":%zu,\"unknown\":%zu,"
 				"\"debounced\":%zu},\"pages\":{"
-				"\"/\":%llu,\"/simple\":%llu}}",
+				"\"/\":%llu,\"/simple\":%llu},\"langs\":{"
+				"\"en\":%llu,\"ru\":%llu,\"de\":%llu,\"zh\":%llu,"
+				"\"uk\":%llu,\"es\":%llu,\"hi\":%llu,\"bn\":%llu,"
+				"\"pt\":%llu,\"ja\":%llu,\"ar\":%llu}}",
 				app_uptime_hours(), statistics.total_served,
 				blobs_in_use, statistics.connections_total,
 				statistics.connections_unknown,
 				statistics.connections_debounced,
 				(unsigned long long)statistics.page_root_total,
-				(unsigned long long)
-					statistics.page_simple_total);
+				(unsigned long long)statistics.page_simple_total,
+				(unsigned long long)statistics.lang_en,
+				(unsigned long long)statistics.lang_ru,
+				(unsigned long long)statistics.lang_de,
+				(unsigned long long)statistics.lang_zh,
+				(unsigned long long)statistics.lang_uk,
+				(unsigned long long)statistics.lang_es,
+				(unsigned long long)statistics.lang_hi,
+				(unsigned long long)statistics.lang_bn,
+				(unsigned long long)statistics.lang_pt,
+				(unsigned long long)statistics.lang_ja,
+				(unsigned long long)statistics.lang_ar);
 #else
 			int written = snprintf(payload, sizeof(payload),
 					       "{\"uptime_hours\":%.1f,"
