@@ -84,14 +84,13 @@
 // NOTE: be careful
 #define REPLACE_SIZE (16)
 #define REPLACE_UPTIME_CH ('U')
-#define REPLACE_SERVED_CH ('S')
 #define REPLACE_VERSION_CH ('V')
 
 static struct {
-	uint total_served;
 	// used to count uptime
 	monotonic_time_t start_time;
 #if STATISTICS
+	uint total_served;
 	uint64_t req_ctx_total_created;
 	uint64_t req_ctx_alive_current;
 	uint64_t req_ctx_alive_max;
@@ -594,8 +593,7 @@ static bool all16_eq_byte(const uint8_t *data, size_t remaining, uint8_t ch)
 	return all16_eq_byte_scalar(data, remaining, ch);
 }
 
-static char *html_uptime_ptr[lang_COUNT], *html_served_ptr[lang_COUNT],
-	*html_version_ptr[lang_COUNT];
+static char *html_uptime_ptr[lang_COUNT], *html_version_ptr[lang_COUNT];
 
 static uint8_t *find_16_scalar(const uint8_t *data, size_t size, uint8_t ch)
 {
@@ -976,12 +974,6 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 				html_uptime_ptr[language][REPLACE_SIZE - 1] =
 					' ';
 				// NOTE: be careful
-				snprintf(html_served_ptr[language],
-					 REPLACE_SIZE, "%-15u",
-					 statistics.total_served);
-				html_served_ptr[language][REPLACE_SIZE - 1] =
-					' ';
-				// NOTE: be careful
 				snprintf(html_version_ptr[language],
 					 REPLACE_SIZE, "%-15.15s",
 					 AD_NIHILUM_VERSION);
@@ -1031,15 +1023,12 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 				(unsigned long long)statistics.lang_pt,
 				(unsigned long long)statistics.lang_ja,
 				(unsigned long long)statistics.lang_ar,
-				(unsigned long long)statistics.lang_kk
-				);
+				(unsigned long long)statistics.lang_kk);
 #else
 			int written = snprintf(payload, sizeof(payload),
 					       "{\"uptime_hours\":%.1f,"
-					       "\"total_served\":%u,"
 					       "\"blobs_in_use\":%zu}",
 					       app_uptime_hours(),
-					       statistics.total_served,
 					       blobs_in_use);
 #endif
 			if (written < 0 || (size_t)written >= sizeof(payload)) {
@@ -1222,7 +1211,9 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 						MHD_HTTP_INTERNAL_SERVER_ERROR,
 						"Internal error, cannot publish the blob"));
 				}
+#if STATISTICS
 				statistics.total_served += 1;
+#endif
 				AHC_RETURN(send_response(
 					conn, MHD_HTTP_OK, NULL, 0, NULL,
 					MHD_RESPMEM_PERSISTENT, HP_API_BLOB));
@@ -1351,13 +1342,6 @@ int main(int argc, char **argv)
 						     REPLACE_UPTIME_CH);
 		if (!html_uptime_ptr[i]) {
 			LOGE("Cannot find the point of uptime setting in HTML.");
-			goto cleanup;
-		}
-		html_served_ptr[i] = (char *)find_16(assets[i][0].data,
-						     assets[i][0].size,
-						     REPLACE_SERVED_CH);
-		if (!html_served_ptr[i]) {
-			LOGE("Cannot find the point of served setting in HTML.");
 			goto cleanup;
 		}
 		html_version_ptr[i] = (char *)find_16(assets[i][0].data,

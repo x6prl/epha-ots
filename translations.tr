@@ -852,20 +852,6 @@ ja: 稼働時間
 ar: وقت التشغيل
 kk: Жұмыс уақыты
 
-@secrets_served
-en: Secrets Served
-ru: Секретов доверено
-de: Zugestellte Geheimnisse
-zh: 已服务的秘密
-uk: Секретів довірено
-es: Secretos servidos
-hi: सेवा किए गए रहस्य
-bn: পরিবেশিত গোপন বিষয়
-pt: Segredos servidos
-ja: 提供された秘密
-ar: الأسرار المقدمة
-kk: Қызмет көрсетілген құпиялар
-
 @javascript_required
 en: JavaScript required
 ru: Требуется JavaScript
