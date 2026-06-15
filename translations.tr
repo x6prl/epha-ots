@@ -10,6 +10,7 @@ bn: bn
 pt: pt
 ja: ja
 ar: ar
+kk: kk
 
 @dir
 en: ltr
@@ -23,6 +24,7 @@ bn: ltr
 pt: ltr
 ja: ltr
 ar: rtl
+kk: ltr
 
 @page_title
 en: Ad Nihilum
@@ -36,6 +38,7 @@ bn: Ad Nihilum
 pt: Ad Nihilum
 ja: Ad Nihilum
 ar: Ad Nihilum
+kk: Ad Nihilum
 
 @tagline
 en: Let secrets disappear
@@ -49,6 +52,7 @@ bn: গোপন বিষয়গুলোকে মিলিয়ে যে�
 pt: Deixe os segredos desaparecerem
 ja: 秘密を消し去ろう
 ar: دع الأسرار تختفي
+kk: Құпиялар жоғалсын
 
 @be_careful
 en: Be careful
@@ -62,6 +66,7 @@ bn: সতর্ক থাকুন
 pt: Tenha cuidado
 ja: 注意
 ar: كن حذراً
+kk: Абай болыңыз
 
 @github
 en: GitHub
@@ -75,6 +80,7 @@ bn: GitHub
 pt: GitHub
 ja: GitHub
 ar: GitHub
+kk: GitHub
 
 @readme
 en: Readme
@@ -88,6 +94,7 @@ bn: রিডমি
 pt: Readme
 ja: リードミー
 ar: اقرأني
+kk: Сипаттама
 
 @simple
 en: Simpler!
@@ -101,6 +108,7 @@ bn: আরও সহজ!
 pt: Mais simples!
 ja: もっと簡単に！
 ar: أكثر بساطة!
+kk: Қарапайымдау!
 
 @noscript
 en: JavaScript with WebCrypto and Fetch is required to create or open secrets.
@@ -114,6 +122,7 @@ bn: গোপন বিষয় তৈরি বা খোলার জন্�
 pt: É necessário JavaScript com WebCrypto e Fetch para criar ou abrir segredos.
 ja: 秘密を作成または開くには、WebCryptoとFetchをサポートするJavaScriptが必要です。
 ar: يلزم استخدام JavaScript مع WebCrypto و Fetch لإنشاء الأسرار أو فتحها.
+kk: Құпияларды жасау немесе ашу үшін WebCrypto және Fetch қолдайтын JavaScript қажет.
 
 @how_to_use
 en: How To Use
@@ -127,6 +136,7 @@ bn: কীভাবে ব্যবহার করবেন
 pt: Como usar
 ja: 使い方
 ar: كيفية الاستخدام
+kk: Қалай қолдануға болады
 
 @how_to_use_step_paste
 en: Paste the secret you want to share.
@@ -140,6 +150,7 @@ bn: আপনি যে গোপন বিষয়টি শেয়ার �
 pt: Cole o segredo que deseja compartilhar.
 ja: 共有したい秘密を貼り付けます。
 ar: الصق السر الذي تريد مشاركته.
+kk: Бөліскіңіз келетін құпияны қойыңыз.
 
 @how_to_use_step_password
 en: Add a password if needed and share that separately.
@@ -153,6 +164,7 @@ bn: প্রয়োজনে একটি পাসওয়ার্ড য�
 pt: Adicione uma senha se necessário e compartilhe-a separadamente.
 ja: 必要に応じてパスワードを追加し、別途共有します。
 ar: أضف كلمة مرور إذا لزم الأمر وشاركها بشكل منفصل.
+kk: Қажет болса, құпия сөз қосып, оны бөлек жіберіңіз.
 
 @how_to_use_step_link
 en: Create the link and send the full URL to the recipient.
@@ -166,6 +178,7 @@ bn: লিঙ্কটি তৈরি করুন এবং প্রাপক
 pt: Crie o link e envie a URL completa para o destinatário.
 ja: リンクを作成し、受信者に完全なURLを送信します。
 ar: أنشئ الرابط وأرسل عنوان URL الكامل إلى المستلم.
+kk: Сілтемені жасап, толық URL мекенжайын алушыға жіберіңіз.
 
 @how_to_use_note
 en: The message can be opened once, then it disappears.
@@ -179,6 +192,7 @@ bn: বার্তাটি কেবল একবার খোলা যেত
 pt: A mensagem pode ser aberta apenas uma vez, depois desaparece.
 ja: メッセージは一度だけ開くことができ、その後消滅します。
 ar: يمكن فتح الرسالة مرة واحدة فقط، ثم تختفي.
+kk: Хабарламаны тек бір рет ашуға болады, содан кейін ол жойылады.
 
 @message_label
 en: Write your message in this field
@@ -192,6 +206,7 @@ bn: এই ক্ষেত্রে আপনার বার্তা লিখ
 pt: Escreva sua mensagem neste campo
 ja: このフィールドにメッセージを書きます
 ar: اكتب رسالتك في هذا الحقل
+kk: Хабарламаңызды осы өріске жазыңыз
 
 @message_placeholder_desktop
 en: Paste the message, token, or credentials here. Press Ctrl+Enter to create and copy the link.
@@ -205,6 +220,7 @@ bn: এখানে বার্তা, টোকেন বা শংসাপ�
 pt: Cole a mensagem, token ou credenciais aqui. Pressione Ctrl+Enter para criar e copiar o link.
 ja: ここにメッセージ、トークン、または資格情報を貼り付けます。Ctrl+Enterを押してリンクを作成し、コピーします。
 ar: الصق الرسالة أو الرمز المميز أو بيانات الاعتماد هنا. اضغط على Ctrl+Enter لإنشاء الرابط ونسخه.
+kk: Хабарлама, токен немесе тіркелгі деректерін осында қойыңыз. Сілтемені жасау және көшіру үшін Ctrl+Enter басыңыз.
 
 @message_placeholder_mobile
 en: Paste the message, token, or credentials here.
@@ -218,6 +234,7 @@ bn: এখানে বার্তা, টোকেন বা শংসাপ�
 pt: Cole a mensagem, token ou credenciais aqui.
 ja: ここにメッセージ、トークン、または資格情報を貼り付けます。
 ar: الصق الرسالة أو الرمز المميز أو بيانات الاعتماد هنا.
+kk: Хабарлама, токен немесе тіркелгі деректерін осында қойыңыз.
 
 @password_optional
 en: Password (optional)
@@ -231,6 +248,7 @@ bn: পাসওয়ার্ড (ঐচ্ছিক)
 pt: Senha (opcional)
 ja: パスワード（任意）
 ar: كلمة المرور (اختياري)
+kk: Құпия сөз (міндетті емес)
 
 @password
 en: Password
@@ -244,6 +262,7 @@ bn: পাসওয়ার্ড
 pt: Senha
 ja: パスワード
 ar: كلمة المرور
+kk: Құпия сөз
 
 @password_placeholder
 en: Send not with the link, though.
@@ -257,6 +276,7 @@ bn: তবে এটি লিঙ্কের সাথে পাঠাবেন
 pt: Mas não a envie junto com o link.
 ja: ただし、リンクと一緒に送信しないでください。
 ar: ولكن لا ترسلها مع الرابط.
+kk: Бірақ оны сілтемемен бірге жібермеңіз.
 
 @password_note
 en: The password is never sent to the server.
@@ -270,6 +290,7 @@ bn: পাসওয়ার্ড কখনই সার্ভারে পা�
 pt: A senha nunca é enviada para o servidor.
 ja: パスワードがサーバーに送信されることはありません。
 ar: لا يتم إرسال كلمة المرور إلى الخادم مطلقاً.
+kk: Құпия сөз ешқашан серверге жіберілмейді.
 
 @create_copy_link
 en: Create and copy link
@@ -283,6 +304,7 @@ bn: লিঙ্ক তৈরি এবং কপি করুন
 pt: Criar e copiar link
 ja: リンクを作成してコピー
 ar: إنشاء الرابط ونسخه
+kk: Сілтемені жасау және көшіру
 
 @copy_link
 en: Copy link
@@ -296,6 +318,7 @@ bn: লিঙ্ক কপি করুন
 pt: Copiar link
 ja: リンクをコピー
 ar: نسخ الرابط
+kk: Сілтемені көшіру
 
 @copy_qr_image
 en: Copy QR image
@@ -309,6 +332,7 @@ bn: QR ছবি কপি করুন
 pt: Copiar imagem QR
 ja: QR画像をコピー
 ar: نسخ صورة QR
+kk: QR суретін көшіру
 
 @share_link
 en: Share Link
@@ -322,6 +346,7 @@ bn: লিঙ্ক শেয়ার করুন
 pt: Compartilhar link
 ja: リンクを共有
 ar: مشاركة الرابط
+kk: Сілтемені бөлісу
 
 @qr_note
 en: Use the QR code only if the recipient can open the link immediately.
@@ -335,6 +360,7 @@ bn: প্রাপক যদি অবিলম্বে লিঙ্কটি 
 pt: Use o código QR apenas se o destinatário puder abrir o link imediatamente.
 ja: 受信者がすぐにリンクを開ける場合にのみQRコードを使用してください。
 ar: استخدم رمز الاستجابة السريعة فقط إذا كان بإمكان المستلم فتح الرابط فوراً.
+kk: QR кодын тек алушы сілтемені бірден аша алса ғана пайдаланыңыз.
 
 @details
 en: Details
@@ -348,6 +374,7 @@ bn: বিবরণ
 pt: Detalhes
 ja: 詳細
 ar: التفاصيل
+kk: Мәліметтер
 
 @features_title
 en: Use this for secrets that should not stay in chats or email.
@@ -361,6 +388,7 @@ bn: চ্যাট বা ইমেইলে থাকা উচিত নয�
 pt: Use isso para segredos que não deveriam ficar em chats ou e-mails.
 ja: チャットやメールに残すべきではない秘密にこれを使用してください。
 ar: استخدم هذا للأسرار التي لا ينبغي أن تبقى في المحادثات أو البريد الإلكتروني.
+kk: Мұны чаттарда немесе электрондық поштада қалмауы тиіс құпиялар үшін пайдаланыңыз.
 
 @features_body
 en: A small tool for sending sensitive text through a link that can be opened once.
@@ -374,6 +402,7 @@ bn: একবার খোলা যায় এমন লিঙ্কের �
 pt: Uma pequena ferramenta para enviar texto sensível através de um link que pode ser aberto uma vez.
 ja: 一度だけ開けるリンクを通じて機密テキストを送信するための小さなツール。
 ar: أداة صغيرة لإرسال النصوص الحساسة عبر رابط يمكن فتحه مرة واحدة.
+kk: Тек бір рет ашуға болатын сілтеме арқылы сезімтал мәтінді жіберуге арналған шағын құрал.
 
 @private_delivery
 en: Private delivery
@@ -387,6 +416,7 @@ bn: ব্যক্তিগত ডেলিভারি
 pt: Entrega privada
 ja: プライベートな配送
 ar: توصيل خاص
+kk: Жеке жеткізу
 
 @private_delivery_body
 en: Share passwords, tokens, access codes, and confidential notes through a flow built specifically for sensitive data.
@@ -400,6 +430,7 @@ bn: সংবেদনশীল ডেটার জন্য বিশেষভ�
 pt: Compartilhe senhas, tokens, códigos de acesso e notas confidenciais através de um fluxo construído especificamente para dados sensíveis.
 ja: 機密データ専用に構築されたフローを通じて、パスワード、トークン、アクセスコード、機密メモを共有します。
 ar: شارك كلمات المرور والرموز المميزة وأكواد الوصول والملاحظات السرية من خلال مسار مصمم خصيصاً للبيانات الحساسة.
+kk: Сезімтал деректер үшін арнайы жасалған арна арқылы құпия сөздерді, токендерді, қатынас кодтарын және құпия жазбаларды бөлісіңіз.
 
 @ephemeral
 en: Ephemeral by design
@@ -413,6 +444,7 @@ bn: ডিজাইনগতভাবে ক্ষণস্থায়ী
 pt: Efêmero por design
 ja: 設計上の一時的なもの
 ar: زائل بحكم التصميم
+kk: Дизайн бойынша эфемерлі
 
 @ephemeral_body
 en: Secrets disappear after the first successful retrieval or when the server-side lifetime runs out.
@@ -426,6 +458,7 @@ bn: প্রথম সফল পুনরুদ্ধারের পরে ব
 pt: Os segredos desaparecem após a primeira recuperação bem-sucedida ou quando o tempo de vida no servidor acaba.
 ja: 秘密は、最初の正常な取得後、またはサーバー側の有効期限が切れると消滅します。
 ar: تختفي الأسرار بعد الاسترجاع الناجح الأول أو عند انتهاء صلاحية الخادم.
+kk: Құпиялар алғашқы сәтті алынғаннан кейін немесе сервердегі сақтау мерзімі аяқталғаннан кейін жойылады.
 
 @controlled_access
 en: Controlled access
@@ -439,6 +472,7 @@ bn: নিয়ন্ত্রিত অ্যাক্সেস
 pt: Acesso controlado
 ja: 制御されたアクセス
 ar: وصول خاضع للرقابة
+kk: Бақыланатын қатынас
 
 @controlled_access_body
 en: Add an optional password layer so the link alone is not enough to reveal the message.
@@ -452,6 +486,7 @@ bn: একটি ঐচ্ছিক পাসওয়ার্ড স্তর 
 pt: Adicione uma camada de senha opcional para que apenas o link não seja suficiente para revelar a mensagem.
 ja: オプションのパスワード層を追加して、リンクだけではメッセージを明らかにできないようにします。
 ar: أضف طبقة كلمة مرور اختيارية بحيث لا يكفي الرابط وحده لكشف الرسالة.
+kk: Хабарламаны ашу үшін сілтеменің өзі жеткіліксіз болуы үшін міндетті емес құпия сөз қабатын қосыңыз.
 
 @reduced_exposure
 en: Reduced exposure across everyday channels
@@ -465,6 +500,7 @@ bn: প্রতিদিনের চ্যানেলগুলোতে ক�
 pt: Menor exposição nos canais do dia a dia
 ja: 日常のチャネルでの露出を低減
 ar: تقليل التعرض عبر القنوات اليومية
+kk: Күнделікті арналардағы әсердің азаюы
 
 @reduced_exposure_body
 en: Keep sensitive information out of long email threads, chat histories, shared docs, and screenshots that are difficult to control later.
@@ -478,6 +514,7 @@ bn: সংবেদনশীল তথ্যকে দীর্ঘ ইমেই�
 pt: Mantenha informações sensíveis fora de longas threads de e-mail, históricos de chat, documentos compartilhados e capturas de tela que são difíceis de controlar depois.
 ja: 後で制御するのが難しい長いメールスレッド、チャット履歴、共有ドキュメント、スクリーンショットから機密情報を除外します。
 ar: احرص على إبقاء المعلومات الحساسة بعيدة عن سلاسل البريد الإلكتروني الطويلة وسجلات المحادثات والمستندات المشتركة ولقطات الشاشة التي يصعب التحكم فيها لاحقاً.
+kk: Кейіннен бақылау қиын болатын ұзын электрондық пошта тізбектерінен, чат тарихынан, ортақ құжаттардан және скриншоттардан сезімтал ақпаратты сақтаңыз.
 
 @fast_sharing
 en: Fast, low-friction sharing
@@ -491,6 +528,7 @@ bn: দ্রুত, কম ঘর্ষণের শেয়ারিং
 pt: Compartilhamento rápido e sem atrito
 ja: 速くて摩擦の少ない共有
 ar: مشاركة سريعة وسلسة
+kk: Жылдам, кедергісіз бөлісу
 
 @fast_sharing_body
 en: Create a protected share in seconds and move information where it needs to go without breaking the workflow around it.
@@ -504,6 +542,7 @@ bn: সেকেন্ডের মধ্যে একটি সুরক্ষ�
 pt: Crie um compartilhamento protegido em segundos e mova as informações para onde precisam ir sem quebrar o fluxo de trabalho.
 ja: 数秒で保護された共有を作成し、ワークフローを中断せずに情報が必要な場所に移動します。
 ar: أنشئ مشاركة محمية في ثوانٍ وانقل المعلومات إلى حيث تحتاج إلى الذهاب دون تعطيل سير العمل المحيط بها.
+kk: Бірнеше секундта қорғалған бөлісуді жасаңыз және жұмыс процесін бұзбай ақпаратты қажетті жерге жіберіңіз.
 
 @real_use
 en: Built for real operational use
@@ -517,6 +556,7 @@ bn: বাস্তব অপারেশনাল ব্যবহারের �
 pt: Construído para uso operacional real
 ja: 実際の運用使用のために構築
 ar: مصمم للاستخدام العملي الفعلي
+kk: Нақты операциялық пайдалану үшін жасалған
 
 @real_use_body
 en: Useful for administrators, developers, support staff, and anyone who handles sensitive information as part of daily work.
@@ -530,6 +570,7 @@ bn: প্রশাসক, ডেভেলপার, সাপোর্ট স�
 pt: Útil para administradores, desenvolvedores, equipe de suporte e qualquer pessoa que lide com informações sensíveis como parte do trabalho diário.
 ja: 管理者、開発者、サポートスタッフ、および日々の業務の一部として機密情報を扱うすべての人に役立ちます。
 ar: مفيد للمسؤولين والمطورين وموظفي الدعم وأي شخص يتعامل مع المعلومات الحساسة كجزء من العمل اليومي.
+kk: Әкімшілерге, әзірлеушілерге, қолдау қызметкерлеріне және күнделікті жұмысында сезімтал ақпаратпен жұмыс істейтін кез келген адамға пайдалы.
 
 @why_stands_out
 en: Why it stands out
@@ -543,6 +584,7 @@ bn: এটি কেন আলাদা
 pt: Por que se destaca
 ja: 際立っている理由
 ar: لماذا يبرز
+kk: Неге ерекшеленеді
 
 @client_encryption
 en: Client-side encryption keeps the decryption key out of the server.
@@ -556,6 +598,7 @@ bn: ক্লায়েন্ট-সাইড এনক্রিপশন ড�
 pt: A criptografia do lado do cliente mantém a chave de descriptografia fora do servidor.
 ja: クライアントサイドの暗号化により、復号キーがサーバーから離れます。
 ar: يحافظ التشفير من جانب العميل على مفتاح فك التشفير بعيداً عن الخادم.
+kk: Клиент жағындағы шифрлау шифрді ашу кілтін серверден тыс ұстайды.
 
 @single_use
 en: Single-use retrieval and expiration reduce unnecessary persistence.
@@ -569,6 +612,7 @@ bn: একক-ব্যবহারের পুনরুদ্ধার এব�
 pt: A recuperação de uso único e a expiração reduzem a persistência desnecessária.
 ja: 1回限りの取得と有効期限により、不要な永続性が減少します。
 ar: يقلل الاسترجاع لمرة واحدة وانتهاء الصلاحية من الاستمرار غير الضروري.
+kk: Бір реттік алу және мерзімінің аяқталуы қажетсіз тұрақтылықты азайтады.
 
 @simple_serious
 en: Simple enough for quick sharing, serious enough for confidential data.
@@ -582,6 +626,7 @@ bn: দ্রুত শেয়ারিংয়ের জন্য যথে�
 pt: Simples o suficiente para compartilhamento rápido, sério o suficiente para dados confidenciais.
 ja: 迅速な共有に十分シンプルで、機密データに十分真剣。
 ar: بسيط بما يكفي للمشاركة السريعة، وجدي بما يكفي للبيانات السرية.
+kk: Жылдам бөлісу үшін жеткілікті қарапайым, құпия деректер үшін жеткілікті маңызды.
 
 @less_exposure
 en: Less exposure
@@ -595,6 +640,7 @@ bn: কম এক্সপোজার
 pt: Menos exposição
 ja: 露出の減少
 ar: تعرض أقل
+kk: Азырақ әсер
 
 @less_exposure_body
 en: A cleaner alternative to sending secrets through channels that were never designed for them.
@@ -608,6 +654,7 @@ bn: এমন চ্যানেলের মাধ্যমে গোপন ব
 pt: Uma alternativa mais limpa para enviar segredos através de canais que nunca foram projetados para eles.
 ja: それらのために設計されたことのないチャネルを通じて秘密を送信するためのよりクリーンな代替案。
 ar: بديل أنظف لإرسال الأسرار عبر القنوات التي لم تُصمم لها مطلقاً.
+kk: Олар үшін ешқашан жасалмаған арналар арқылы құпияларды жіберудің таза баламасы.
 
 @how_it_works
 en: How It Works
@@ -621,6 +668,7 @@ bn: এটি কীভাবে কাজ করে
 pt: Como funciona
 ja: 仕組み
 ar: كيف يعمل
+kk: Бұл қалай жұмыс істейді
 
 @how_it_works_title
 en: Three steps from secret creation to disappearance.
@@ -634,6 +682,7 @@ bn: গোপন বিষয় তৈরি থেকে মিলিয়ে
 pt: Três passos da criação do segredo até o desaparecimento.
 ja: 秘密の作成から消滅までの3つのステップ。
 ar: ثلاث خطوات من إنشاء السر إلى اختفائه.
+kk: Құпия жасаудан жоғалтуға дейінгі үш қадам.
 
 @how_it_works_body
 en: The workflow is built to stay short: encrypt in the browser, share the link, then let the stored blob vanish after use.
@@ -647,6 +696,7 @@ bn: ওয়ার্কফ্লোটি ছোট রাখার জন্�
 pt: O fluxo de trabalho é construído para ser curto: criptografar no navegador, compartilhar o link e depois deixar o blob armazenado desaparecer após o uso.
 ja: ワークフローは短く保つように構築されています。ブラウザで暗号化し、リンクを共有し、使用後に保存されたブロブを消滅させます。
 ar: تم تصميم سير العمل ليبقى قصيراً: قم بالتشفير في المتصفح، وشارك الرابط، ثم دع الكتلة المخزنة تختفي بعد الاستخدام.
+kk: Жұмыс процесі қысқа болу үшін жасалған: браузерде шифрлаңыз, сілтемені бөлісіңіз, содан кейін пайдаланғаннан кейін сақталған блоб жойылады.
 
 @step_compose
 en: Encrypt locally
@@ -660,6 +710,7 @@ bn: স্থানীয়ভাবে এনক্রিপ্ট করু�
 pt: Criptografar localmente
 ja: ローカルで暗号化
 ar: التشفير محلياً
+kk: Жергілікті шифрлау
 
 @step_compose_body
 en: Write the secret here. The browser encrypts it before upload, and the key stays in the link fragment instead of going to the server.
@@ -673,6 +724,7 @@ bn: এখানে গোপন বিষয়টি লিখুন। ব্
 pt: Escreva o segredo aqui. O navegador o criptografa antes do upload, e a chave permanece no fragmento do link em vez de ir para o servidor.
 ja: ここに秘密を書きます。ブラウザはアップロード前にそれを暗号化し、キーはサーバーに行く代わりにリンクフラグメントに残ります。
 ar: اكتب السر هنا. يقوم المتصفح بتشفيره قبل الرفع، ويبقى المفتاح في جزء الرابط بدلاً من الانتقال إلى الخادم.
+kk: Құпияны осында жазыңыз. Браузер оны жүктеп салмас бұрын шифрлайды және кілт серверге барудың орнына сілтеме фрагментінде қалады.
 
 @step_share
 en: Share the generated link
@@ -686,6 +738,7 @@ bn: তৈরি করা লিঙ্ক শেয়ার করুন
 pt: Compartilhar o link gerado
 ja: 生成されたリンクを共有
 ar: شارك الرابط الذي تم إنشاؤه
+kk: Жасалған сілтемені бөлісу
 
 @step_share_body
 en: Send the resulting link to the recipient. If needed, share the optional password through a different channel.
@@ -699,6 +752,7 @@ bn: প্রাপকের কাছে ফলাফলস্বরূপ ল�
 pt: Envie o link resultante para o destinatário. Se necessário, compartilhe a senha opcional através de um canal diferente.
 ja: 結果のリンクを受信者に送信します。必要に応じて、オプションのパスワードを別のチャネルを通じて共有します。
 ar: أرسل الرابط الناتج إلى المستلم. إذا لزم الأمر، شارك كلمة المرور الاختيارية عبر قناة مختلفة.
+kk: Нәтижесіндегі сілтемені алушыға жіберіңіз. Қажет болса, міндетті емес құпия сөзді басқа арна арқылы бөлісіңіз.
 
 @step_open_once
 en: Open once, then lose access
@@ -712,6 +766,7 @@ bn: একবার খুলুন, তারপর অ্যাক্সেস
 pt: Abrir uma vez, depois perder o acesso
 ja: 一度開いてからアクセスを失う
 ar: افتح مرة واحدة، ثم افقد الوصول
+kk: Бір рет ашыңыз, содан кейін қатынасты жоғалтыңыз
 
 @step_open_once_body
 en: When the recipient opens the full link, the secret is retrieved, decrypted in the browser, and removed from the server.
@@ -725,6 +780,7 @@ bn: যখন প্রাপক সম্পূর্ণ লিঙ্কটি 
 pt: Quando o destinatário abre o link completo, o segredo é recuperado, descriptografado no navegador e removido do servidor.
 ja: 受信者が完全なリンクを開くと、秘密が取得され、ブラウザで復号化され、サーバーから削除されます。
 ar: عندما يفتح المستلم الرابط الكامل، يتم استرجاع السر وفك تشفيره في المتصفح وإزالته من الخادم.
+kk: Алушы толық сілтемені ашқанда, құпия алынады, браузерде шифрленеді және серверден жойылады.
 
 @operational_note
 en: Operational note
@@ -738,6 +794,7 @@ bn: অপারেশনাল নোট
 pt: Nota operacional
 ja: 運用上の注意
 ar: ملاحظة تشغيلية
+kk: Операциялық ескерту
 
 @operational_note_body
 en: The server stores your encrypted data in RAM with a fixed time limit, so anything not opened still ages out instead of lingering indefinitely.
@@ -751,6 +808,7 @@ bn: সার্ভার আপনার এনক্রিপ্টেড ড�
 pt: O servidor armazena seus dados criptografados na RAM com um limite de tempo fixo, então qualquer coisa não aberta envelhece em vez de permanecer indefinidamente.
 ja: サーバーは暗号化されたデータをRAMに保存し、固定時間制限を設けているため、開かれなかったものは無限に留まる代わりに古いものとなります。
 ar: يخزن الخادم بياناتك المشفرة في ذاكرة الوصول العشوائي (RAM) مع حد زمني ثابت، لذا فإن أي شيء لم يتم فتحه ينتهي صلاحيته بدلاً من البقاء إلى أجل غير مسمى.
+kk: Сервер сіздің шифрланған деректеріңізді RAM-да белгіленген уақыт шегімен сақтайды, сондықтан ашылмаған нәрселер шексіз күтудің орнына ескіреді.
 
 @footer_body
 en: A secure drop for confidential messages that can be opened once and then vanish.
@@ -764,6 +822,7 @@ bn: গোপনীয় বার্তার জন্য একটি নি
 pt: Um drop seguro para mensagens confidenciais que podem ser abertas uma vez e depois desaparecem.
 ja: 一度開いてから消滅する機密メッセージのための安全なドロップ。
 ar: نقطة إفلات آمنة للرسائل السرية التي يمكن فتحها مرة واحدة ثم تختفي.
+kk: Бір рет ашылып, содан кейін жойылатын құпия хабарламалар үшін қауіпсіз тастау орны.
 
 @version
 en: Version
@@ -777,6 +836,7 @@ bn: সংস্করণ
 pt: Versão
 ja: バージョン
 ar: الإصدار
+kk: Нұсқа
 
 @uptime
 en: Uptime
@@ -790,6 +850,7 @@ bn: আপটাইম
 pt: Tempo de atividade
 ja: 稼働時間
 ar: وقت التشغيل
+kk: Жұмыс уақыты
 
 @secrets_served
 en: Secrets Served
@@ -803,6 +864,7 @@ bn: পরিবেশিত গোপন বিষয়
 pt: Segredos servidos
 ja: 提供された秘密
 ar: الأسرار المقدمة
+kk: Қызмет көрсетілген құпиялар
 
 @javascript_required
 en: JavaScript required
@@ -816,6 +878,7 @@ bn: JavaScript প্রয়োজন
 pt: JavaScript necessário
 ja: JavaScriptが必要
 ar: يلزم JavaScript
+kk: JavaScript қажет
 
 @javascript_required_body
 en: This page requires JavaScript with WebCrypto and Fetch to create or open secrets.
@@ -829,6 +892,7 @@ bn: এই পৃষ্ঠায় গোপন বিষয় তৈরি �
 pt: Esta página requer JavaScript com WebCrypto e Fetch para criar ou abrir segredos.
 ja: このページで秘密を作成または開くには、WebCryptoとFetchをサポートするJavaScriptが必要です。
 ar: تتطلب هذه الصفحة JavaScript مع WebCrypto و Fetch لإنشاء الأسرار أو فتحها.
+kk: Бұл бет құпияларды жасау немесе ашу үшін WebCrypto және Fetch қолдайтын JavaScript қажет етеді.
 
 @ok
 en: OK
@@ -842,6 +906,7 @@ bn: ঠিক আছে
 pt: OK
 ja: OK
 ar: حسناً
+kk: Жарайды
 
 @action_needed
 en: Action needed
@@ -855,6 +920,7 @@ bn: অ্যাকশন প্রয়োজন
 pt: Ação necessária
 ja: 操作が必要
 ar: يلزم اتخاذ إجراء
+kk: Әрекет қажет
 
 @too_large
 en: Too large. Shorten the secret and try again.
@@ -868,6 +934,7 @@ bn: খুব বড়। গোপন বিষয়টি ছোট কর�
 pt: Grande demais. Encurte o segredo e tente novamente.
 ja: 大きすぎます。秘密を短くして再試行してください。
 ar: كبير جداً. قم بتقصير السر وحاول مرة أخرى.
+kk: Тым үлкен. Құпияны қысқартып, қайталап көріңіз.
 
 @very_close_limit
 en: Very close to the limit.
@@ -881,6 +948,7 @@ bn: সীমার খুব কাছাকাছি।
 pt: Muito perto do limite.
 ja: 制限に非常に近いです。
 ar: قريب جداً من الحد الأقصى.
+kk: Шектеуге өте жақын.
 
 @approaching_limit
 en: Approaching the size limit.
@@ -894,6 +962,7 @@ bn: আকারের সীমার কাছাকাছি আসছে।
 pt: Aproximando-se do limite de tamanho.
 ja: サイズ制限に近づいています。
 ar: الاقتراب من حد الحجم.
+kk: Өлшем шектеуіне жақындау.
 
 @create_link_error
 en: Could not create link
@@ -907,6 +976,7 @@ bn: লিঙ্ক তৈরি করা যায়নি
 pt: Não foi possível criar o link
 ja: リンクを作成できませんでした
 ar: تعذر إنشاء الرابط
+kk: Сілтемені жасау мүмкін болмады
 
 @invalid_service_url
 en: Enter a valid service URL, for example https://example.com.
@@ -920,6 +990,7 @@ bn: একটি বৈধ সার্ভিস URL লিখুন, উদা�
 pt: Insira uma URL de serviço válida, por exemplo https://example.com.
 ja: 有効なサービスURL（例：https://example.com）を入力してください。
 ar: أدخل عنوان URL صالحاً للخدمة، على سبيل المثال https://example.com.
+kk: Жарамды қызмет URL мекенжайын енгізіңіз, мысалы https://example.com.
 
 @origin_credentials
 en: Remove the username and password from the service URL.
@@ -933,6 +1004,7 @@ bn: সার্ভিস URL থেকে ব্যবহারকারীর 
 pt: Remova o nome de usuário e a senha da URL do serviço.
 ja: サービスURLからユーザー名とパスワードを削除してください。
 ar: قم بإزالة اسم المستخدم وكلمة المرور من عنوان URL للخدمة.
+kk: Қызмет URL мекенжайынан пайдаланушы атын және құпия сөзді алып тастаңыз.
 
 @origin_path
 en: Use only the site origin. Do not include a path, query string, or #fragment.
@@ -946,6 +1018,7 @@ bn: শুধুমাত্র সাইটের উৎপত্তি (origin
 pt: Use apenas a origem do site. Não inclua um caminho, string de consulta ou #fragmento.
 ja: サイトのオリジンのみを使用してください。パス、クエリ文字列、または#フラグメントを含めないでください。
 ar: استخدم أصل الموقع فقط. لا تقم بتضمين مسار أو سلسلة استعلام أو #fragment.
+kk: Тек сайттың шығу тегін пайдаланыңыз. Жолды, сұрау жолын немесе #фрагментті қоспаңыз.
 
 @origin_https
 en: Use an https:// service URL unless you are working on localhost.
@@ -959,6 +1032,7 @@ bn: আপনি যদি localhost-এ কাজ না করেন তবে
 pt: Use uma URL de serviço https:// a menos que você esteja trabalhando em localhost.
 ja: localhostで作業している場合を除き、https://サービスURLを使用してください。
 ar: استخدم عنوان URL للخدمة يبدأ بـ https:// ما لم تكن تعمل على localhost.
+kk: Егер сіз localhost-та жұмыс істемесеңіз, https:// қызмет URL мекенжайын пайдаланыңыз.
 
 @generated_invalid
 en: The generated link data was invalid. Try creating the secret again.
@@ -972,6 +1046,7 @@ bn: তৈরি করা লিঙ্ক ডেটা অবৈধ ছিল�
 pt: Os dados do link gerado eram inválidos. Tente criar o segredo novamente.
 ja: 生成されたリンクデータが無効でした。秘密を再度作成してみてください。
 ar: كانت بيانات الرابط التي تم إنشاؤها غير صالحة. حاول إنشاء السر مرة أخرى.
+kk: Жасалған сілтеме деректері жарамсыз болды. Құпияны қайта жасап көріңіз.
 
 @clipboard_image_unavailable
 en: Your browser cannot copy images directly. Copy the image yourself.
@@ -985,6 +1060,7 @@ bn: আপনার ব্রাউজার সরাসরি ছবি কপ
 pt: Seu navegador não pode copiar imagens diretamente. Copie a imagem você mesmo.
 ja: ブラウザが直接画像をコピーできません。自分で画像をコピーしてください。
 ar: لا يمكن لمتصفحك نسخ الصور مباشرة. قم بنسخ الصورة بنفسك.
+kk: Браузеріңіз суреттерді тікелей көшіре алмайды. Суретті өзіңіз көшіріңіз.
 
 @clipboard_text_unavailable
 en: The secret was created, but this browser could not copy the link automatically. Select the generated link and copy it yourself.
@@ -998,6 +1074,7 @@ bn: গোপন বিষয়টি তৈরি করা হয়েছি
 pt: O segredo foi criado, mas este navegador não pôde copiar o link automaticamente. Selecione o link gerado e copie-o você mesmo.
 ja: 秘密は作成されましたが、このブラウザは自動的にリンクをコピーできませんでした。生成されたリンクを選択して自分でコピーしてください。
 ar: تم إنشاء السر، لكن هذا المتصفح لم يتمكن من نسخ الرابط تلقائياً. حدد الرابط الذي تم إنشاؤه وانسخه بنفسك.
+kk: Құпия жасалды, бірақ бұл браузер сілтемені автоматты түрде көшіре алмады. Жасалған сілтемені таңдап, өзіңіз көшіріңіз.
 
 @service_unreachable
 en: Could not reach the secret service. Check that the server is running and the address is correct.
@@ -1011,6 +1088,7 @@ bn: গোপন সার্ভিসে পৌঁছানো যায়ন�
 pt: Não foi possível alcançar o serviço de segredos. Verifique se o servidor está rodando e o endereço está correto.
 ja: 秘密サービスに到達できませんでした。サーバーが実行されており、アドレスが正しいことを確認してください。
 ar: تعذر الوصول إلى خدمة الأسرار. تحقق من أن الخادم قيد التشغيل وأن العنوان صحيح.
+kk: Құпия қызметіне қол жеткізу мүмкін болмады. Сервер жұмыс істеп тұрғанын және мекенжай дұрыс екенін тексеріңіз.
 
 @server_refused
 en: The server refused to save this secret. Try again with a fresh page.
@@ -1024,6 +1102,7 @@ bn: সার্ভার এই গোপন বিষয়টি সংরক
 pt: O servidor se recusou a salvar este segredo. Tente novamente com uma página nova.
 ja: サーバーがこの秘密の保存を拒否しました。新しいページで再試行してください。
 ar: رفض الخادم حفظ هذا السر. حاول مرة أخرى باستخدام صفحة جديدة.
+kk: Сервер бұл құпияны сақтаудан бас тартты. Жаңа бетпен қайталап көріңіз.
 
 @server_busy
 en: The server is not accepting this request right now. Try again in a moment.
@@ -1037,6 +1116,7 @@ bn: সার্ভার এই মুহূর্তে এই অনুরো
 pt: O servidor não está aceitando esta solicitação no momento. Tente novamente em um momento.
 ja: 現在、サーバーはこのリクエストを受け付けていません。しばらくしてから再試行してください。
 ar: الخادم لا يقبل هذا الطلب الآن. حاول مرة أخرى بعد لحظة.
+kk: Сервер қазір бұл сұрауды қабылдамайды. Біраз уақыттан кейін қайталап көріңіз.
 
 @rate_limited
 en: The service is being rate-limited or blocked. Wait a bit and try again.
@@ -1050,6 +1130,7 @@ bn: সার্ভিসটি রেট-সীমিত বা ব্লক �
 pt: O serviço está com limitação de taxa ou bloqueado. Espere um pouco e tente novamente.
 ja: サービスがレート制限されているか、ブロックされています。少し待ってから再試行してください。
 ar: الخدمة مقيدة بمعدل الطلبات أو محظورة. انتظر قليلاً وحاول مرة أخرى.
+kk: Қызмет жылдамдығы шектелген немесе бұғатталған. Біраз күтіп, қайталап көріңіз.
 
 @server_failed
 en: The server failed while saving the secret. Try again in a moment.
@@ -1063,6 +1144,7 @@ bn: গোপন বিষয়টি সংরক্ষণ করার সম
 pt: O servidor falhou ao salvar o segredo. Tente novamente em um momento.
 ja: 秘密の保存中にサーバーが失敗しました。しばらくしてから再試行してください。
 ar: فشل الخادم أثناء حفظ السر. حاول مرة أخرى بعد لحظة.
+kk: Сервер құпияны сақтау кезінде сәтсіз аяқталды. Біраз уақыттан кейін қайталап көріңіз.
 
 @create_secret_failed
 en: Could not create the secret link. Please try again.
@@ -1076,6 +1158,7 @@ bn: গোপন লিঙ্ক তৈরি করা যায়নি। �
 pt: Não foi possível criar o link secreto. Por favor, tente novamente.
 ja: 秘密リンクを作成できませんでした。再試行してください。
 ar: تعذر إنشاء رابط السر. يرجى المحاولة مرة أخرى.
+kk: Құпия сілтемені жасау мүмкін болмады. Қайталап көріңіз.
 
 @creating_link
 en: Creating link…
@@ -1089,6 +1172,7 @@ bn: লিঙ্ক তৈরি করা হচ্ছে…
 pt: Criando link…
 ja: リンクを作成中…
 ar: جارٍ إنشاء الرابط…
+kk: Сілтеме жасалуда…
 
 @nothing_to_send
 en: Nothing to send
@@ -1102,6 +1186,7 @@ bn: পাঠানোর জন্য কিছু নেই
 pt: Nada para enviar
 ja: 送信するものがありません
 ar: لا يوجد شيء لإرساله
+kk: Жіберуге ештеңе жоқ
 
 @enter_secret
 en: Enter a secret before creating a link.
@@ -1115,6 +1200,7 @@ bn: লিঙ্ক তৈরি করার আগে একটি গোপ�
 pt: Insira um segredo antes de criar um link.
 ja: リンクを作成する前に秘密を入力してください。
 ar: أدخل سراً قبل إنشاء الرابط.
+kk: Сілтемені жасамас бұрын құпияны енгізіңіз.
 
 @secret_too_large
 en: Secret is too large
@@ -1128,6 +1214,7 @@ bn: গোপন বিষয়টি খুব বড়
 pt: O segredo é muito grande
 ja: 秘密が大きすぎます
 ar: السر كبير جداً
+kk: Құпия тым үлкен
 
 @shorten_secret
 en: Shorten the secret and try again.
@@ -1141,6 +1228,7 @@ bn: গোপন বিষয়টি ছোট করুন এবং আব�
 pt: Encurte o segredo e tente novamente.
 ja: 秘密を短くして再試行してください。
 ar: قم بتقصير السر وحاول مرة أخرى.
+kk: Құпияны қысқартып, қайталап көріңіз.
 
 @link_copied
 en: Link copied! Create another?
@@ -1154,6 +1242,7 @@ bn: লিঙ্ক কপি হয়েছে! আরেকটি তৈর�
 pt: Link copiado! Criar outro?
 ja: リンクがコピーされました！別のものを作成しますか？
 ar: تم نسخ الرابط! هل تريد إنشاء آخر؟
+kk: Сілтеме көшірілді! Тағы біреуін жасайсыз ба?
 
 @link_ready
 en: Link ready
@@ -1166,7 +1255,8 @@ hi: लिंक तैयार है
 bn: লিঙ্ক প্রস্তুত
 pt: Link pronto
 ja: リンクの準備ができました
-ar: الرابط جاهز
+ar: الرابط جاهз
+kk: Сілтеме дайын
 
 @link_created
 en: Link created
@@ -1180,6 +1270,7 @@ bn: লিঙ্ক তৈরি হয়েছে
 pt: Link criado
 ja: リンクが作成されました
 ar: تم إنشاء الرابط
+kk: Сілтеме жасалды
 
 @the_message
 en: The message
@@ -1193,6 +1284,7 @@ bn: বার্তা
 pt: A mensagem
 ja: メッセージ
 ar: الرسالة
+kk: Хабарлама
 
 @open_full_link_initial
 en: Open a full secret link to view its contents.
@@ -1206,6 +1298,7 @@ bn: এর বিষয়বস্তু দেখতে একটি সম্
 pt: Abra um link secreto completo para ver seu conteúdo.
 ja: 完全な秘密リンクを開いてその内容を表示します。
 ar: افتح رابط السر الكامل لعرض محتوياته.
+kk: Мазмұнын көру үшін толық құпия сілтемені ашыңыз.
 
 @copy_text
 en: Copy text
@@ -1219,6 +1312,7 @@ bn: টেক্সট কপি করুন
 pt: Copiar texto
 ja: テキストをコピー
 ar: نسخ النص
+kk: Мәтінді көшіру
 
 @create_own_secret
 en: Create your own secret
@@ -1232,6 +1326,7 @@ bn: আপনার নিজস্ব গোপন বিষয় তৈরি
 pt: Crie seu próprio segredo
 ja: 独自の秘密を作成
 ar: أنشئ سرك الخاص
+kk: Өз құпияңызды жасаңыз
 
 @password_required
 en: Password required
@@ -1245,6 +1340,7 @@ bn: পাসওয়ার্ড প্রয়োজন
 pt: Senha necessária
 ja: パスワードが必要
 ar: كلمة المرور مطلوبة
+kk: Құпия сөз қажет
 
 @enter_shared_password
 en: Enter the shared password to reveal the message
@@ -1258,6 +1354,7 @@ bn: বার্তা প্রকাশ করতে শেয়ার কর
 pt: Insira a senha compartilhada para revelar a mensagem
 ja: メッセージを明らかにするために共有パスワードを入力してください
 ar: أدخل كلمة المرور المشتركة لكشف الرسالة
+kk: Хабарламаны ашу үшін бөлісілген құпия сөзді енгізіңіз
 
 @password_receive_placeholder
 en: If any, it should be sent to you via another route
@@ -1271,6 +1368,7 @@ bn: যদি থাকে, তবে তা আপনাকে অন্য প
 pt: Se houver, ela deve ser enviada a você por outra via
 ja: もしあれば、別のルートで送信されているはずです
 ar: إذا كان هناك أي منها، فيجب إرسالها إليك عبر طريق آخر
+kk: Егер бар болса, ол сізге басқа жолмен жіберілуі керек
 
 @open_secret
 en: Open secret
@@ -1284,6 +1382,7 @@ bn: গোপন বিষয় খুলুন
 pt: Abrir segredo
 ja: 秘密を開く
 ar: فتح السر
+kk: Құпияны ашу
 
 @broken_link
 en: This link looks broken or incomplete.
@@ -1297,6 +1396,7 @@ bn: এই লিঙ্কটি ভাঙা বা অসম্পূর্ণ
 pt: Este link parece quebrado ou incompleto.
 ja: このリンクは壊れているか、不完全に見えます。
 ar: يبدو هذا الرابط تالفاً أو غير مكتمل.
+kk: Бұл сілтеме зақымдалған немесе толық емес сияқты.
 
 @secret_unavailable
 en: This secret is no longer available. It may have already been opened or expired.
@@ -1310,6 +1410,7 @@ bn: এই গোপন বিষয়টি আর উপলব্ধ নয�
 pt: Este segredo não está mais disponível. Pode já ter sido aberto ou expirado.
 ja: この秘密はもう利用できません。すでに開かれたか、期限が切れた可能性があります。
 ar: هذا السر لم يعد متاحاً. ربما تم فتحه بالفعل أو انتهت صلاحيته.
+kk: Бұл құпия енді қолжетімсіз. Ол бұрыннан ашылған немесе мерзімі өтіп кеткен болуы мүмкін.
 
 @secret_damaged
 en: This secret could not be opened. The link may be damaged.
@@ -1323,6 +1424,7 @@ bn: এই গোপন বিষয়টি খোলা যায়নি।
 pt: Este segredo não pôde ser aberto. O link pode estar danificado.
 ja: この秘密を開くことができませんでした。リンクが壊れている可能性があります。
 ar: تعذر فتح هذا السر. قد يكون الرابط تالفاً.
+kk: Бұл құпияны ашу мүмкін болмады. Сілтеме зақымдалған болуы мүмкін.
 
 @secret_prepare_failed
 en: This secret could not be prepared for decryption.
@@ -1336,6 +1438,7 @@ bn: এই গোপন বিষয়টি ডিক্রিপশনের 
 pt: Este segredo não pôde ser preparado para descriptografia.
 ja: この秘密を復号化用に準備できませんでした。
 ar: تعذر تجهيز هذا السر لفك التشفير.
+kk: Бұл құпияны шифрді ашу үшін дайындау мүмкін болмады.
 
 @open_secret_failed
 en: Could not open the secret. Try opening the full link again.
@@ -1349,6 +1452,7 @@ bn: গোপন বিষয়টি খোলা যায়নি। সম
 pt: Não foi possível abrir o segredo. Tente abrir o link completo novamente.
 ja: 秘密を開けませんでした。完全なリンクを再度開いてみてください。
 ar: تعذر فتح السر. حاول فتح الرابط الكامل مرة أخرى.
+kk: Құпияны ашу мүмкін болмады. Толық сілтемені қайта ашып көріңіз.
 
 @open_full_link
 en: Open a full secret link to view a message.
@@ -1362,6 +1466,7 @@ bn: একটি বার্তা দেখতে একটি সম্পূ
 pt: Abra um link secreto completo para ver uma mensagem.
 ja: メッセージを表示するために完全な秘密リンクを開きます。
 ar: افتح رابط السر الكامل لعرض الرسالة.
+kk: Хабарламаны көру үшін толық құпия сілтемені ашыңыз.
 
 @receiving_secret
 en: Receiving secret...
@@ -1375,6 +1480,7 @@ bn: গোপন বিষয় গ্রহণ করা হচ্ছে...
 pt: Recebendo segredo...
 ja: 秘密を受信中...
 ar: جارٍ تلقي السر...
+kk: Құпия алынуда...
 
 @no_pending_secret
 en: There is no secret waiting for password decryption.
@@ -1388,6 +1494,7 @@ bn: পাসওয়ার্ড ডিক্রিপশনের জন্�
 pt: Não há segredo aguardando descriptografia por senha.
 ja: パスワード復号化を待っている秘密はありません。
 ar: لا يوجد سر ينتظر فك التشفير بكلمة المرور.
+kk: Құпия сөз арқылы шифрді ашуды күтіп тұрған құпия жоқ.
 
 @wrong_password
 en: That password did not work. Check it and try again.
@@ -1401,6 +1508,7 @@ bn: ওই পাসওয়ার্ডটি কাজ করেনি। এ
 pt: Essa senha não funcionou. Verifique-a e tente novamente.
 ja: そのパスワードは機能しませんでした。確認して再試行してください。
 ar: كلمة المرور هذه لم تعمل. تحقق منها وحاول مرة أخرى.
+kk: Бұл құпия сөз жұмыс істемеді. Оны тексеріп, қайталап көріңіз.
 
 @copied
 en: Copied
@@ -1414,6 +1522,7 @@ bn: কপি হয়েছে
 pt: Copiado
 ja: コピーされました
 ar: تم النسخ
+kk: Көшірілді
 
 @copy_failed
 en: Copy failed
@@ -1427,3 +1536,4 @@ bn: কপি ব্যর্থ হয়েছে
 pt: Falha ao copiar
 ja: コピーに失敗しました
 ar: فشل النسخ
+kk: Көшіру сәтсіз аяқталды

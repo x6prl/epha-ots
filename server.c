@@ -111,6 +111,7 @@ static struct {
 	uint64_t lang_pt;
 	uint64_t lang_ja;
 	uint64_t lang_ar;
+	uint64_t lang_kk;
 #endif
 } statistics;
 
@@ -1012,7 +1013,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 				"\"/\":%llu,\"/simple\":%llu},\"langs\":{"
 				"\"en\":%llu,\"ru\":%llu,\"de\":%llu,\"zh\":%llu,"
 				"\"uk\":%llu,\"es\":%llu,\"hi\":%llu,\"bn\":%llu,"
-				"\"pt\":%llu,\"ja\":%llu,\"ar\":%llu}}",
+				"\"pt\":%llu,\"ja\":%llu,\"ar\":%llu,\"kk\":%llu}}",
 				app_uptime_hours(), statistics.total_served,
 				blobs_in_use, statistics.connections_total,
 				statistics.connections_unknown,
@@ -1029,7 +1030,9 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 				(unsigned long long)statistics.lang_bn,
 				(unsigned long long)statistics.lang_pt,
 				(unsigned long long)statistics.lang_ja,
-				(unsigned long long)statistics.lang_ar);
+				(unsigned long long)statistics.lang_ar,
+				(unsigned long long)statistics.lang_kk
+				);
 #else
 			int written = snprintf(payload, sizeof(payload),
 					       "{\"uptime_hours\":%.1f,"
