@@ -903,14 +903,14 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 	const char *language_header = MHD_lookup_connection_value(
 		conn, MHD_HEADER_KIND, "Accept-Language");
 	if (language_header) {
-		LOGD("Accept-Language: %s", language_header);
+		LOGD("Accept-Language: %s\n", language_header);
 		if (language_header[0] != '\0' && language_header[1] != '\0') {
 			// we have 2 symbols
 			language = lang_from_str(language_header);
 		}
 		// language = lang_ru;
 	} else {
-		LOGD("no laguge header");
+		LOGD("no language header\n");
 	}
 	if (is_get) {
 		is_get_path_root = 0 == memcmp(url, "/", 2);
@@ -1108,7 +1108,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 						    is_too_small) {
 							LOGD("%s the blob is too large (%.2f)KiB!\n",
 							     url,
-							     (double)ctx->expected /
+							     (double)content_length /
 								     1024.0);
 							*upload_data_size = 0;
 							AHC_RETURN(send_text(
