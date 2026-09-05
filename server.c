@@ -792,6 +792,21 @@ static enum MHD_Result send_text(struct MHD_Connection *c, unsigned code,
 			     MHD_RESPMEM_MUST_COPY, HP_OTHER);
 }
 
+enum DEFERRED_ERROR_CODE {
+	DEFERRED_ERROR_CODE_NO_ERROR = 0,
+	DEFERRED_ERROR_CODE_OOM,
+	DEFERRED_ERROR_CODE_DUP,
+	DEFERRED_ERROR_CODE_COUNT,
+};
+
+static struct {
+	uint32_t response_code;
+	const char *response_msg;
+} deferred_error_responses[DEFERRED_ERROR_CODE_COUNT] = {
+	[DEFERRED_ERROR_CODE_OOM] = { MHD_HTTP_INTERNAL_SERVER_ERROR, "OOM!" },
+	[DEFERRED_ERROR_CODE_DUP] = { MHD_HTTP_BAD_REQUEST, "Duplicate!" },
+};
+
 typedef struct req_ctx_t {
 	blk_t post_body; // allocation that receives an in-flight POST body
 	blk_t blob_send; // blob fetched for GET replies; freed after send
@@ -799,6 +814,9 @@ typedef struct req_ctx_t {
 	blk_size_t read; // bytes already written into post_body->data
 	htable_key_t id; // blob identifier associated with this request
 	bool have_id; // guards against mid-stream ID changes
+	// NOTE: because we cannot form a response too early, we need to have an error state
+	// see handling of POST /blob/*
+	uint8_t deferred_error;
 #if DEBOUNCER
 	bool rate_checked; // ensures we only rate-limit once per connection
 #endif
@@ -826,13 +844,20 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 	}
 	TracyCZoneN(ahc_zone, "ahc", 1);
 #define AHC_RETURN(value)                \
-	do {                             \
+	{                                \
 		TracyCZoneEnd(ahc_zone); \
 		return (value);          \
-	} while (0)
+	}
 #else
 #define AHC_RETURN(value) return (value)
 #endif
+// NOTE: to drop the connection use AHC_RETURN(MHD_NO)
+#define AHC_POST_DEFER_ERROR(error_code)            \
+	{                                           \
+		ctx->deferred_error = (error_code); \
+		*upload_data_size = 0;              \
+		AHC_RETURN(MHD_YES);                \
+	}
 
 	const union MHD_ConnectionInfo *ci = MHD_get_connection_info(
 		conn, MHD_CONNECTION_INFO_CLIENT_ADDRESS);
@@ -950,7 +975,13 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 	bool is_path_blob = 0 == strncmp(url, "/blob/", 6);
 
 	if (!is_path_blob) {
-		LOGD("%s requested…\n", url);
+		if (*upload_data_size) {
+			LOGD("%s requested, but contains body, closing the connection\n",
+			     url);
+			AHC_RETURN(MHD_NO);
+		} else {
+			LOGD("%s requested…\n", url);
+		}
 		if (is_get_path_static) {
 #if STATISTICS
 			if (is_get_path_root) {
@@ -1045,10 +1076,9 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 	} else if (ID_LENGTH == strnlen(url + 6, 1 + ID_LENGTH)) {
 		// path is '/blob/*'
 		htable_key_t id;
-		if (!id_hex_to_bytes(url + 6, id.bytes)) {
-			LOGD("%s Bad id!\n", url);
-			AHC_RETURN(send_text(conn, MHD_HTTP_BAD_REQUEST,
-					     "Bad id"));
+		if (!id_hex_to_bytes(url + 6, id.bytes) || (!id.h && !id.l)) {
+			LOGD("%s Bad or Null id!\n", url);
+			AHC_RETURN(MHD_NO);
 		}
 		if (is_get) {
 			// GET /blob/*
@@ -1065,68 +1095,82 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 				MHD_RESPMEM_PERSISTENT, HP_API_BLOB));
 		} else if (0 == strncmp(method, "POST", 5)) {
 			// POST /blob/*
+			// NOTE: AHC_POST_DEFER_ERROR is used to response with an error, direct AHC_RETURN will cause a response fail:
+			/* https://libmicrohttpd.gnu.narkive.com/NXKkd49x/mhd-queue-response-failing
+			 * Yes, the access handler being called 3+ times is normal for an upload/POST:
+			 *
+			 * 1st time, you have the chance to override 100 CONTINUE (i.e. with a
+			 * 40x-message to prevent the browser from doing an upload at all). So here
+			 * queueing a reply is OK, but it will prevent the upload.
+			 *
+			 * 2nd-N-1th time, you get the upload data (in fact, the upload data may be
+			 * given to you many times, so this can be called repeatedly with more
+			 * data, depending on the upload size). Queueing here is NOT ok,
+			 * upload-size is non-zero.
+			 *
+			 * N-th time (often 3rd for small data), you are supposed to generate the
+			 * 'normal' response to the browser, that the upload is done is indicated
+			 * by upload-size being (again) zero.
+			 *
+			 * As I said, slightly goofy API (and pretty much the only thing I'd likely
+			 * do differently if backwards-compatibility didn't matter, but it is not
+			 * so bad that I'd break compatibility to fix it).
+			 */
 			if (!ctx->have_id) {
 				ctx->id.h = id.h;
 				ctx->id.l = id.l;
 				ctx->have_id = true;
 			} else if (ctx->id.h != id.h || ctx->id.l != id.l) {
-				LOGD("%s Bad id (request was initially for another ID)!\n",
+				LOGD("%s request was initially for another ID!\n",
 				     url);
-				AHC_RETURN(send_text(conn, MHD_HTTP_BAD_REQUEST,
-						     "Bad id"));
+				AHC_RETURN(MHD_NO);
 			}
 
 			// if we have something to read
 			if (*upload_data_size) {
+				// if an error is set, skipping data chunks to properly queue the response
+				if (ctx->deferred_error != 0) {
+					*upload_data_size = 0;
+					AHC_RETURN(MHD_YES);
+				}
+
 				// get the blob size via header
 				if (0 == ctx->expected) {
+					// NOTE: we require Content-Length header
 					const char *content_length_str =
 						MHD_lookup_connection_value(
 							conn, MHD_HEADER_KIND,
 							"Content-Length");
-					if (content_length_str) {
-						unsigned long content_length =
-							strtoul(content_length_str,
-								NULL, 10);
-						// is content length provided?
-						if (!content_length ||
-						    ULONG_MAX ==
-							    content_length) {
-							AHC_RETURN(send_text(
-								conn,
-								MHD_HTTP_BAD_REQUEST,
-								"Bad Content-Length"));
-						}
-						// is size ok?
-						bool is_too_large =
-							content_length >
-							BLOB_SIZE_MAX;
-						bool is_too_small =
-							content_length <
-							BLOB_SIZE_MIN;
-						if (is_too_large ||
-						    is_too_small) {
-							LOGD("%s the blob is too large (%.2f)KiB!\n",
-							     url,
-							     (double)content_length /
-								     1024.0);
-							*upload_data_size = 0;
-							AHC_RETURN(send_text(
-								conn,
-								MHD_HTTP_CONTENT_TOO_LARGE,
-								is_too_large ?
-									"Payload Too Large" :
-									"Payload Too Small"));
-						}
-						ctx->expected = content_length;
-					} else {
+					if (!content_length_str) {
 						LOGD("%s no content header!\n",
 						     url);
-						AHC_RETURN(send_text(
-							conn,
-							MHD_HTTP_CONTENT_TOO_LARGE,
-							"Provide Content-Length header."));
+						AHC_RETURN(MHD_NO);
 					}
+					unsigned long content_length = strtoul(
+						content_length_str, NULL, 10);
+					if (ULONG_MAX == content_length) {
+						LOGD("%s invalid content header!\n",
+						     url);
+						AHC_RETURN(MHD_NO);
+					}
+
+					// is size ok?
+					bool is_too_large = content_length >
+							    BLOB_SIZE_MAX;
+					bool is_too_small = content_length <
+							    BLOB_SIZE_MIN;
+
+					if (is_too_large || is_too_small) {
+						LOGD("%s the blob is %s (%.2f)KiB!\n",
+						     url,
+						     is_too_large ?
+							     "too large" :
+							     "too small",
+						     (double)content_length /
+							     1024.0);
+						AHC_RETURN(MHD_NO);
+					}
+					ctx->expected = content_length;
 				}
 
 				size_t incoming = *upload_data_size;
@@ -1142,39 +1186,25 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 						    ctx->id)) {
 						LOGD("%s trying to put a duplicate!\n",
 						     url);
-						AHC_RETURN(send_text(
-							conn,
-							MHD_HTTP_BAD_REQUEST,
-							"Duplicate!"));
+						AHC_POST_DEFER_ERROR(
+							DEFERRED_ERROR_CODE_DUP);
 					}
 					ctx->post_body = storage_blob_create(
 						ctx->id, ctx->expected);
 					if (!ctx->post_body.size) {
 						LOGD("%s cannot get the chunk for the blob!\n",
 						     url);
-						AHC_RETURN(send_text(
-							conn,
-							MHD_HTTP_INTERNAL_SERVER_ERROR,
-							"OOM"));
+						AHC_POST_DEFER_ERROR(
+							DEFERRED_ERROR_CODE_OOM);
 					}
 				}
-				if (ctx->read + incoming >
-				    ctx->post_body.size) {
-					blk_size_t remaining =
-						ctx->post_body.size - ctx->read;
+				if (ctx->read + incoming > ctx->expected) {
 					LOGD("%s payload overflow: read=%llu incoming=%zu size=%llu\n",
 					     url, (unsigned long long)ctx->read,
 					     incoming,
 					     (unsigned long long)
 						     ctx->post_body.size);
-					if (remaining == 0) {
-						*upload_data_size = 0;
-						AHC_RETURN(send_text(
-							conn,
-							MHD_HTTP_BAD_REQUEST,
-							"Body longer than Content-Length"));
-					}
-					incoming = remaining;
+					AHC_RETURN(MHD_NO);
 				}
 				memcpy(ctx->post_body.data + ctx->read,
 				       upload_data, incoming);
@@ -1184,16 +1214,34 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 			}
 			// and when it is nothing to read
 			else {
+				// deferred errors
+				if (DEFERRED_ERROR_CODE_NO_ERROR !=
+				    ctx->deferred_error) {
+					auto response_code =
+						deferred_error_responses
+							[ctx->deferred_error]
+								.response_code;
+					auto response_msg =
+						deferred_error_responses
+							[ctx->deferred_error]
+								.response_msg;
+
+					LOGD("%s sending the error response: %u %s\n",
+					     url, response_code, response_msg);
+					AHC_RETURN(send_text(conn,
+							     response_code,
+							     response_msg));
+				}
+				// incomplete payload
 				if (!ctx->post_body.size ||
 				    ctx->read != ctx->expected) {
 					LOGD("%s bad blob!\n", url);
-					if (ctx->have_id) {
-						storage_blob_abort(ctx->id);
-					}
 					AHC_RETURN(send_text(
 						conn, MHD_HTTP_BAD_REQUEST,
 						"Bad blob"));
 				}
+
+				// commit
 				monotonic_time_t valid_until =
 					monotonic_now_s() + BLOB_TTL_S;
 				if (!storage_blob_publish(ctx->id,
@@ -1206,20 +1254,31 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 #if STATISTICS
 				statistics.total_served += 1;
 #endif
+				// blob is commited, forbid aborting it in req_done
+				ctx->post_body = (blk_t){ 0 };
+				// everything ok
 				AHC_RETURN(send_response(
 					conn, MHD_HTTP_OK, NULL, 0, NULL,
 					MHD_RESPMEM_PERSISTENT, HP_API_BLOB));
 			}
 		}
 	}
+
+	if (*upload_data_size) {
+		LOGD("%s requested, but not found AND contains body, closing the connection\n",
+		     url);
+		AHC_RETURN(MHD_NO);
+	}
 	LOGD("path not found %s\n", url);
 	AHC_RETURN(send_text(conn, MHD_HTTP_NOT_FOUND, "Not Found"));
 #undef AHC_RETURN
+#undef AHC_POST_DEFER_ERROR
 }
 
 static void req_done(void *cls, struct MHD_Connection *c, void **con_cls,
 		     enum MHD_RequestTerminationCode toe)
 {
+	(void)toe;
 	LOGD("_______-----------=====---------______\n");
 #ifdef TRACY_ENABLE
 	TracyCZoneN(req_done_zone, "req_done", 1);
@@ -1228,11 +1287,10 @@ static void req_done(void *cls, struct MHD_Connection *c, void **con_cls,
 	(void)c;
 	if (*con_cls) {
 		struct req_ctx_t *ctx = (struct req_ctx_t *)(*con_cls);
-		// if POST method was aborted, we need to free allocated block
-		if (toe != MHD_REQUEST_TERMINATED_COMPLETED_OK) {
-			if (ctx->post_body.size) {
-				storage_blob_abort(ctx->id);
-			}
+
+		// NOTE: in ahc(), ctx->post_body should be cleared on succesfull post request handling
+		if (ctx->post_body.size) {
+			storage_blob_abort(ctx->id);
 		}
 		if (ctx->blob_send.size) {
 			storage_blob_free(ctx->blob_send);
