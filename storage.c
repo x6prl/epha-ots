@@ -343,6 +343,7 @@ void storage_blob_abort(htable_key_t id)
 		index = htable_erase_slot(index);
 		secure_zero(blob_ids[index].bytes, 16);
 		storage_blob_free(blob_data[index]);
+		blob_data[index] = (blk_t){ 0 };
 		blob_valid_until[index] = VALID_UNTIL_EMPTY;
 		htable_free += 1;
 	}
