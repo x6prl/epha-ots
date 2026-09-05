@@ -81,6 +81,7 @@ static inline htable_index_t lp_find_free_slot(const htable_key_t *keys,
 	if (key_is_null(keys[i])) {
 		return i;
 	} else {
+		++i;
 #if STATISTICS
 		lp_statistics.hash_collision_count++;
 #endif
