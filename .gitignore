@@ -12,3 +12,5 @@ perf.data.old
 gmon.out
 *pycache*
 tmp
+translations.c
+translations.h
