@@ -215,6 +215,7 @@ enum assets_id_t {
 	ASSET_QRCODE_JS,
 #endif
 	ASSET_ADNIHILUM128_PNG,
+	ASSET_OG_IMAGE_PNG,
 	ASSETS_COUNT,
 };
 static uint8_t *assets_memory;
@@ -238,7 +239,9 @@ static asset_t assets[lang_COUNT][ASSETS_COUNT] = { {
 	[ASSET_CLIENT_JS] = { .content_type = _CONTENT_TYPE_JS },
 	[ASSET_QRCODE_JS] = { .content_type = _CONTENT_TYPE_JS },
 #endif
-	[ASSET_ADNIHILUM128_PNG] = { .content_type = _CONTENT_TYPE_PNG } } };
+	[ASSET_ADNIHILUM128_PNG] = { .content_type = _CONTENT_TYPE_PNG },
+	[ASSET_OG_IMAGE_PNG] = { .content_type = _CONTENT_TYPE_PNG },
+} };
 
 static const char *asset_file_paths[ASSETS_COUNT] = {
 #if ASSEMBLED_HTML
@@ -268,6 +271,7 @@ static const char *asset_file_paths[ASSETS_COUNT] = {
 #endif
 #endif
 	[ASSET_ADNIHILUM128_PNG] = "assets/adnihilum128.png",
+	[ASSET_OG_IMAGE_PNG] = "assets/og-image.png",
 };
 
 #define ASSET_PATH_STRING_MAX_SIZE 32
@@ -289,6 +293,7 @@ static const char asset_paths[ASSETS_COUNT][ASSET_PATH_STRING_MAX_SIZE] = {
 	[ASSET_QRCODE_JS] = "/qrcode.js",
 #endif
 	[ASSET_ADNIHILUM128_PNG] = "/adnihilum128.png",
+	[ASSET_OG_IMAGE_PNG] = "/og-image.png",
 };
 
 /*

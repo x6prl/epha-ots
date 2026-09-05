@@ -54,6 +54,48 @@ ja: 秘密を消し去ろう
 ar: دع الأسرار تختفي
 kk: Құпиялар жоғалсын
 
+@og_description
+en: Create secure, one-time secrets that disappear after being read.
+ru: Создавайте безопасные одноразовые секреты, которые исчезают после прочтения.
+de: Erstellen Sie sichere, einmalige Geheimnisse, die nach dem Lesen verschwinden.
+zh: 创建安全的、一次性的秘密，阅读后即消失。
+uk: Створюйте безпечні одноразові секрети, які зникають після прочитання.
+es: Crea secretos seguros de un solo uso que desaparecen después de ser leídos.
+hi: सुरक्षित, एक-बार के रहस्य बनाएं जो पढ़े जाने के बाद गायब हो जाते हैं।
+bn: নিরাপদ, এককালীন গোপন বিষয় তৈরি করুন যা পড়ার পরে মিলিয়ে যায়।
+pt: Crie segredos seguros e de uso único que desaparecem após serem lidos.
+ja: 読んだ後に消える安全なワンタイムシークレットを作成します。
+ar: أنشئ أسرارًا آمنة لمرة واحدة تختفي بعد قراءتها.
+kk: Оқылғаннан кейін жоғалатын қауіпсіз, бір реттік құпиялар жасаңыз.
+
+@og_title_receive
+en: You have a secure message
+ru: У вас есть секретное сообщение
+de: Sie haben eine sichere Nachricht
+zh: 您有一条安全消息
+uk: У вас є секретне повідомлення
+es: Tienes un mensaje seguro
+hi: आपके पास एक सुरक्षित संदेश है
+bn: আপনার কাছে একটি নিরাপদ বার্তা আছে
+pt: Você tem uma mensagem segura
+ja: 安全なメッセージが届いています
+ar: لديك رسالة آمنة
+kk: Сізде қауіпсіз хабарлама бар
+
+@og_description_receive
+en: Someone has shared a confidential, one-time secret with you. Open the link to read it.
+ru: Кто-то поделился с вами конфиденциальным одноразовым секретом. Откройте ссылку, чтобы прочитать.
+de: Jemand hat ein vertrauliches, einmaliges Geheimnis mit Ihnen geteilt. Öffnen Sie den Link, um es zu lesen.
+zh: 有人与您分享了一个机密的一次性秘密。打开链接即可阅读。
+uk: Хтось поділився з вами конфіденційним одноразовим секретом. Відкрийте посилання, щоб прочитати.
+es: Alguien ha compartido un secreto confidencial de un solo uso contigo. Abre el enlace para leerlo.
+hi: किसी ने आपके साथ एक गोपनीय, एक-बार का रहस्य साझा किया है। पढ़ने के लिए लिंक खोलें।
+bn: কেউ আপনার সাথে একটি গোপনীয়, এককালীন গোপন বিষয় ভাগ করেছে। পড়তে লিঙ্ক খুলুন।
+pt: Alguém compartilhou um segredo confidencial de uso único com você. Abra o link para lê-lo.
+ja: 誰かがあなたと機密のワンタイムシークレットを共有しました。リンクを開いて読んでください。
+ar: شارك شخص ما سراً سرياً لمرة واحدة معك. افتح الرابط لقراءته.
+kk: Біреу сізбен құпия, бір реттік құпияны бөлісті. Оқу үшін сілтемені ашыңыз.
+
 @be_careful
 en: Be careful
 ru: Будьте осторожны

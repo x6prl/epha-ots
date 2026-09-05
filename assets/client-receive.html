@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="@lang@" dir="@dir@">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
+    <meta property="og:title" content="@og_title_receive@" />
+    <meta property="og:description" content="@og_description_receive@" />
+    <meta property="og:image" content="https://adnihilum.net/og-image.png" />
+    <meta property="og:url" content="https://adnihilum.net/receive" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>@page_title@</title>
     <link rel="icon" type="image/png" href="adnihilum128.png">
     <link rel="stylesheet" href="client.css">
 </head>
-<body class="page page-receive" data-i18n='{"action_needed":"@action_needed@","too_large":"@too_large@","very_close_limit":"@very_close_limit@","approaching_limit":"@approaching_limit@","create_link_error":"@create_link_error@","invalid_service_url":"@invalid_service_url@","origin_credentials":"@origin_credentials@","origin_path":"@origin_path@","origin_https":"@origin_https@","generated_invalid":"@generated_invalid@","clipboard_image_unavailable":"@clipboard_image_unavailable@","clipboard_text_unavailable":"@clipboard_text_unavailable@","service_unreachable":"@service_unreachable@","server_refused":"@server_refused@","server_busy":"@server_busy@","rate_limited":"@rate_limited@","server_failed":"@server_failed@","create_secret_failed":"@create_secret_failed@","creating_link":"@creating_link@","nothing_to_send":"@nothing_to_send@","enter_secret":"@enter_secret@","secret_too_large":"@secret_too_large@","shorten_secret":"@shorten_secret@","link_copied":"@link_copied@","link_ready":"@link_ready@","link_created":"@link_created@","broken_link":"@broken_link@","secret_unavailable":"@secret_unavailable@","secret_damaged":"@secret_damaged@","secret_prepare_failed":"@secret_prepare_failed@","open_secret_failed":"@open_secret_failed@","open_full_link":"@open_full_link@","receiving_secret":"@receiving_secret@","no_pending_secret":"@no_pending_secret@","wrong_password":"@wrong_password@","copied":"@copied@","copy_failed":"@copy_failed@"}'>
+
+<body class="page page-receive"
+    data-i18n='{"action_needed":"@action_needed@","too_large":"@too_large@","very_close_limit":"@very_close_limit@","approaching_limit":"@approaching_limit@","create_link_error":"@create_link_error@","invalid_service_url":"@invalid_service_url@","origin_credentials":"@origin_credentials@","origin_path":"@origin_path@","origin_https":"@origin_https@","generated_invalid":"@generated_invalid@","clipboard_image_unavailable":"@clipboard_image_unavailable@","clipboard_text_unavailable":"@clipboard_text_unavailable@","service_unreachable":"@service_unreachable@","server_refused":"@server_refused@","server_busy":"@server_busy@","rate_limited":"@rate_limited@","server_failed":"@server_failed@","create_secret_failed":"@create_secret_failed@","creating_link":"@creating_link@","nothing_to_send":"@nothing_to_send@","enter_secret":"@enter_secret@","secret_too_large":"@secret_too_large@","shorten_secret":"@shorten_secret@","link_copied":"@link_copied@","link_ready":"@link_ready@","link_created":"@link_created@","broken_link":"@broken_link@","secret_unavailable":"@secret_unavailable@","secret_damaged":"@secret_damaged@","secret_prepare_failed":"@secret_prepare_failed@","open_secret_failed":"@open_secret_failed@","open_full_link":"@open_full_link@","receiving_secret":"@receiving_secret@","no_pending_secret":"@no_pending_secret@","wrong_password":"@wrong_password@","copied":"@copied@","copy_failed":"@copy_failed@"}'>
     <div class="page-shell">
         <header class="topbar">
             <a class="brand" href="/" data-create-link="true">
@@ -29,7 +38,8 @@
                 <div class="stack">
                     <div class="field-group field-group-main">
                         <label for="text">@the_message@</label>
-                        <output id="text" class="message-output receive-state-info" tabindex="0">@open_full_link_initial@</output>
+                        <output id="text" class="message-output receive-state-info"
+                            tabindex="0">@open_full_link_initial@</output>
                     </div>
 
                     <div class="action-row">
@@ -50,7 +60,8 @@
                         <div class="field-grid">
                             <div class="field-group">
                                 <label for="decryptionPassword">@password@</label>
-                                <input id="decryptionPassword" type="password" autocomplete="current-password" spellcheck="false" placeholder="@password_receive_placeholder@">
+                                <input id="decryptionPassword" type="password" autocomplete="current-password"
+                                    spellcheck="false" placeholder="@password_receive_placeholder@">
                             </div>
                             <div class="inline-action">
                                 <button id="decryptBtn" class="primary-btn" type="button">@open_secret@</button>
@@ -79,4 +90,5 @@
     <script src="client-receive.js"></script>
     <script src="client.js"></script>
 </body>
+
 </html>
