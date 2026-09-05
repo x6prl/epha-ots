@@ -21,7 +21,7 @@
 // open adressing scheme with linear probing
 #pragma once
 
-#include <stdint.h>
+#include "types.h"
 
 /*
  * ====================================================================== 
@@ -54,9 +54,6 @@ lp_erase(htable_key_t *keys, const htable_index_t i, htable_index_t table_size);
 /*
  * ====================================================================== 
  */
-
-#include "log.h"
-#include "types.h"
 
 #if STATISTICS
 static struct {
@@ -106,26 +103,16 @@ static inline htable_index_t lp_lookup(const htable_key_t *keys,
 				       htable_index_t table_size)
 {
 	const uint64_t h = htable_hash(key);
-	const htable_index_t i = lp_home_index(h, table_size);
-	if (key_cmp(keys[i], key)) {
-		return i;
-	}
-	htable_index_t j = i + 1;
-	for (; j < table_size; ++j) {
-		if (key_is_null(keys[j])) {
+	const htable_index_t home = lp_home_index(h, table_size);
+	const htable_index_t mask = table_size - 1;
+
+	for (htable_index_t step = 0; step < table_size; ++step) {
+		htable_index_t idx = (home + step) & mask;
+		if (key_is_null(keys[idx])) {
 			return table_size;
 		}
-		if (key_cmp(keys[j], key)) {
-			return j;
-		}
-	}
-	j = 0;
-	for (; j < i; ++j) {
-		if (key_is_null(keys[j])) {
-			return table_size;
-		}
-		if (key_cmp(keys[j], key)) {
-			return j;
+		if (key_cmp(keys[idx], key)) {
+			return idx;
 		}
 	}
 	return table_size;
@@ -135,14 +122,12 @@ static inline htable_index_t lp_erase(htable_key_t *keys,
 				      const htable_index_t start_idx,
 				      htable_index_t table_size)
 {
+	const htable_index_t mask = table_size - 1;
 	htable_index_t hole = start_idx;
 	htable_index_t next = hole;
 
 	while (true) {
-		next = next + 1;
-		if (next == table_size) {
-			next = 0;
-		}
+		next = (next + 1) & mask;
 
 		if (key_is_null(keys[next]) || next == start_idx) {
 			break;
@@ -151,10 +136,8 @@ static inline htable_index_t lp_erase(htable_key_t *keys,
 		htable_index_t home =
 			lp_home_index(htable_hash(keys[next]), table_size);
 
-		if (((next > hole) && ((home <= hole) || (home > next))) ||
-		    ((next < hole) && ((home <= hole) && (home > next)))) {
+		if (((hole - home) & mask) < ((next - home) & mask)) {
 			htable_swap(hole, next);
-
 			hole = next;
 		}
 	}
