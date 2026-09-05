@@ -1188,15 +1188,7 @@ static enum MHD_Result ahc(void *cls, struct MHD_Connection *conn,
 				    ctx->read != ctx->expected) {
 					LOGD("%s bad blob!\n", url);
 					if (ctx->have_id) {
-						blk_t bad_blob =
-							storage_blob_get(
-								ctx->id);
-						if (bad_blob.size) {
-							storage_blob_free(
-								bad_blob);
-							ctx->post_body =
-								(blk_t){ 0 };
-						}
+						storage_blob_abort(ctx->id);
 					}
 					AHC_RETURN(send_text(
 						conn, MHD_HTTP_BAD_REQUEST,
