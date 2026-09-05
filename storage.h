@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 adnihilum authors
+ * Copyright (C) 2026 adnihilum authors
  *
  * This file is part of adnihilum.
  *
